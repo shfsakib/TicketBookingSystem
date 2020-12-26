@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitsMasterClass">
+      <HintPath>..\BitsMasterClass\BitsMasterClass\bin\BitsMasterClass.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -98,21 +101,227 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ReferenceFile\images\DummyPic.png" />
+    <Content Include="ReferenceFile\OwnStyle.css" />
+    <Content Include="Web\SignAgent.aspx" />
+    <Content Include="Web\SignCust.aspx" />
+    <Content Include="Web\SignUpOption.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web\Index.aspx" />
+    <Content Include="Web\IndexMaster.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReferenceFile\css\all.min.css" />
+    <Content Include="ReferenceFile\css\bootstrap-datepicker.css" />
+    <Content Include="ReferenceFile\css\bootstrap.min.css" />
+    <Content Include="ReferenceFile\css\fontawesome.min.css" />
+    <Content Include="ReferenceFile\css\global.css" />
+    <Content Include="ReferenceFile\css\jquery.fancybox.min.css" />
+    <Content Include="ReferenceFile\css\owl.carousel.css" />
+    <Content Include="ReferenceFile\css\owl.theme.default.min.css" />
+    <Content Include="ReferenceFile\css\responsive.css" />
+    <Content Include="ReferenceFile\css\slick-theme.css" />
+    <Content Include="ReferenceFile\css\slick.css" />
+    <Content Include="ReferenceFile\css\style.css" />
+    <Content Include="ReferenceFile\css\swiper.min.css" />
+    <Content Include="ReferenceFile\images\01-dark.png" />
+    <Content Include="ReferenceFile\images\01.jpg" />
+    <Content Include="ReferenceFile\images\01.png" />
+    <Content Include="ReferenceFile\images\04.png" />
+    <Content Include="ReferenceFile\images\07.jpg" />
+    <Content Include="ReferenceFile\images\about-1.jpg" />
+    <Content Include="ReferenceFile\images\about-2.jpg" />
+    <Content Include="ReferenceFile\images\apple-touch-icon-114x114.png" />
+    <Content Include="ReferenceFile\images\apple-touch-icon-144x144.png" />
+    <Content Include="ReferenceFile\images\apple-touch-icon-72x72.png" />
+    <Content Include="ReferenceFile\images\apple-touch-icon.png" />
+    <Content Include="ReferenceFile\images\author.jpg" />
+    <Content Include="ReferenceFile\images\b1.jpg" />
+    <Content Include="ReferenceFile\images\b2.jpg" />
+    <Content Include="ReferenceFile\images\b3.jpg" />
+    <Content Include="ReferenceFile\images\banner\03.jpg" />
+    <Content Include="ReferenceFile\images\banner\10.jpg" />
+    <Content Include="ReferenceFile\images\banner\11.jpg" />
+    <Content Include="ReferenceFile\images\banner\12.jpg" />
+    <Content Include="ReferenceFile\images\banner\13.jpg" />
+    <Content Include="ReferenceFile\images\banner\14.jpg" />
+    <Content Include="ReferenceFile\images\bg\pattern\01-dark.png" />
+    <Content Include="ReferenceFile\images\bg\pattern\01.png" />
+    <Content Include="ReferenceFile\images\bg\pattern\02.png" />
+    <Content Include="ReferenceFile\images\bg\pattern\03.png" />
+    <Content Include="ReferenceFile\images\bg\pattern\04.png" />
+    <Content Include="ReferenceFile\images\blog\02.jpg" />
+    <Content Include="ReferenceFile\images\cars\1.jpg" />
+    <Content Include="ReferenceFile\images\cars\2.jpg" />
+    <Content Include="ReferenceFile\images\cars\3.jpg" />
+    <Content Include="ReferenceFile\images\cars\4.jpg" />
+    <Content Include="ReferenceFile\images\cars\5.jpg" />
+    <Content Include="ReferenceFile\images\cars\6.jpg" />
+    <Content Include="ReferenceFile\images\cars\7.jpg" />
+    <Content Include="ReferenceFile\images\clients\01-light.png" />
+    <Content Include="ReferenceFile\images\clients\01.png" />
+    <Content Include="ReferenceFile\images\clients\02-light.png" />
+    <Content Include="ReferenceFile\images\clients\02.png" />
+    <Content Include="ReferenceFile\images\clients\03-light.png" />
+    <Content Include="ReferenceFile\images\clients\03.png" />
+    <Content Include="ReferenceFile\images\clients\04-light.png" />
+    <Content Include="ReferenceFile\images\clients\04.png" />
+    <Content Include="ReferenceFile\images\clients\05-light.png" />
+    <Content Include="ReferenceFile\images\clients\05.png" />
+    <Content Include="ReferenceFile\images\clients\06-light.png" />
+    <Content Include="ReferenceFile\images\clients\06.png" />
+    <Content Include="ReferenceFile\images\clients\07-light.png" />
+    <Content Include="ReferenceFile\images\clients\07.png" />
+    <Content Include="ReferenceFile\images\clients\08-light.png" />
+    <Content Include="ReferenceFile\images\clients\08.png" />
+    <Content Include="ReferenceFile\images\cm-bg.jpg" />
+    <Content Include="ReferenceFile\images\cruises\1.jpg" />
+    <Content Include="ReferenceFile\images\cruises\2.jpg" />
+    <Content Include="ReferenceFile\images\cruises\3.jpg" />
+    <Content Include="ReferenceFile\images\cruises\4.jpg" />
+    <Content Include="ReferenceFile\images\cruises\5.jpg" />
+    <Content Include="ReferenceFile\images\cruises\6.jpg" />
+    <Content Include="ReferenceFile\images\cruises\7.jpg" />
+    <Content Include="ReferenceFile\images\cruises\8.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details1.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details2.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details3.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details4.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details5.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details6.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details7.jpg" />
+    <Content Include="ReferenceFile\images\cruises\room-details8.jpg" />
+    <Content Include="ReferenceFile\images\error-bg.jpg" />
+    <Content Include="ReferenceFile\images\favicon.png" />
+    <Content Include="ReferenceFile\images\flag\fr.svg" />
+    <Content Include="ReferenceFile\images\flag\gr.svg" />
+    <Content Include="ReferenceFile\images\flag\sp.svg" />
+    <Content Include="ReferenceFile\images\flag\uk.svg" />
+    <Content Include="ReferenceFile\images\flight\1.jpg" />
+    <Content Include="ReferenceFile\images\flight\2.jpg" />
+    <Content Include="ReferenceFile\images\flight\3.jpg" />
+    <Content Include="ReferenceFile\images\flight\4.jpg" />
+    <Content Include="ReferenceFile\images\flight\5.jpg" />
+    <Content Include="ReferenceFile\images\flight\6.jpg" />
+    <Content Include="ReferenceFile\images\flight\7.jpg" />
+    <Content Include="ReferenceFile\images\flight\delta.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room-details.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room-details1.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room-details2.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room-details3.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room-details4.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room1.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room2.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room3.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room4.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room5.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room6.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room7.jpg" />
+    <Content Include="ReferenceFile\images\hotels\room8.jpg" />
+    <Content Include="ReferenceFile\images\img-11.jpg" />
+    <Content Include="ReferenceFile\images\img-22.jpg" />
+    <Content Include="ReferenceFile\images\img-33.jpg" />
+    <Content Include="ReferenceFile\images\logo-footer.png" />
+    <Content Include="ReferenceFile\images\logo-header.png" />
+    <Content Include="ReferenceFile\images\photo\1.jpg" />
+    <Content Include="ReferenceFile\images\photo\2.jpg" />
+    <Content Include="ReferenceFile\images\photo\3.jpg" />
+    <Content Include="ReferenceFile\images\photo\4.jpg" />
+    <Content Include="ReferenceFile\images\photo\5.jpg" />
+    <Content Include="ReferenceFile\images\photo\6.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\01.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\02.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\03.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\04.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\05.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\06.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\07.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\08.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\09.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\10.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\11.jpg" />
+    <Content Include="ReferenceFile\images\portfolio\12.jpg" />
+    <Content Include="ReferenceFile\images\profile-bg.html" />
+    <Content Include="ReferenceFile\images\quote-2.png" />
+    <Content Include="ReferenceFile\images\restaurant-details.jpg" />
+    <Content Include="ReferenceFile\images\room-details.jpg" />
+    <Content Include="ReferenceFile\images\team\01.jpg" />
+    <Content Include="ReferenceFile\images\team\02.jpg" />
+    <Content Include="ReferenceFile\images\team\03.jpg" />
+    <Content Include="ReferenceFile\images\team\04.jpg" />
+    <Content Include="ReferenceFile\images\tour\check-mark.svg" />
+    <Content Include="ReferenceFile\images\tour\editor.svg" />
+    <Content Include="ReferenceFile\images\tour\envelope.svg" />
+    <Content Include="ReferenceFile\images\tour\home.jpg" />
+    <Content Include="ReferenceFile\images\tour\home1.jpg" />
+    <Content Include="ReferenceFile\images\tour\home2.jpg" />
+    <Content Include="ReferenceFile\images\tour\home3.jpg" />
+    <Content Include="ReferenceFile\images\tour\home4.jpg" />
+    <Content Include="ReferenceFile\images\why-us.jpg" />
+    <Content Include="ReferenceFile\js\bootstrap-datepicker.min.js" />
+    <Content Include="ReferenceFile\js\bootstrap.min.js" />
+    <Content Include="ReferenceFile\js\functions.js" />
+    <Content Include="ReferenceFile\js\imagesloaded.pkgd.min.js" />
+    <Content Include="ReferenceFile\js\isotope.pkgd.min.js" />
+    <Content Include="ReferenceFile\js\jquery-ui.min.js" />
+    <Content Include="ReferenceFile\js\jquery.fancybox.min.js" />
+    <Content Include="ReferenceFile\js\jquery.min.js" />
+    <Content Include="ReferenceFile\js\main.js" />
+    <Content Include="ReferenceFile\js\maps.js" />
+    <Content Include="ReferenceFile\js\map_infobox.js" />
+    <Content Include="ReferenceFile\js\markerclusterer.js" />
+    <Content Include="ReferenceFile\js\owl.carousel.min.js" />
+    <Content Include="ReferenceFile\js\popper.min.js" />
+    <Content Include="ReferenceFile\js\slick.js" />
+    <Content Include="ReferenceFile\js\swiper.min.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\IndexMaster.Master.cs">
+      <DependentUpon>IndexMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\IndexMaster.Master.designer.cs">
+      <DependentUpon>IndexMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SignAgent.aspx.cs">
+      <DependentUpon>SignAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\SignAgent.aspx.designer.cs">
+      <DependentUpon>SignAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SignCust.aspx.cs">
+      <DependentUpon>SignCust.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\SignCust.aspx.designer.cs">
+      <DependentUpon>SignCust.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SignUpOption.aspx.cs">
+      <DependentUpon>SignUpOption.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\SignUpOption.aspx.designer.cs">
+      <DependentUpon>SignUpOption.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
