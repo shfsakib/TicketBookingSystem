@@ -8,16 +8,17 @@ using System.Web.UI.WebControls;
 using BitsMasterClass;
 using TicketBookingSystem.DAL.Gateway;
 using TicketBookingSystem.DAL.Model;
+using TicketBookingSystem;
 
 namespace TicketBookingSystem.Web
 {
-    public partial class SignAgent : System.Web.UI.Page
+    public partial class SignCust : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private RegistrationModel registrationModel;
         private RegistrationGateway registrationGateway;
         Random random = new Random();
-        public SignAgent()
+        public SignCust()
         {
             masterClass = MasterClass.GetInstance();
             registrationModel = RegistrationModel.GetInstance();
@@ -30,6 +31,7 @@ namespace TicketBookingSystem.Web
                 MultiView1.ActiveViewIndex = 0;
             }
         }
+
         private bool EmailExist(string email)
         {
             bool result = false;
@@ -40,15 +42,11 @@ namespace TicketBookingSystem.Web
             }
             return result;
         }
-
         protected void btnNext_OnClick(object sender, EventArgs e)
         {
             if (txtName.Text == "")
             {
                 txtName.Focus();
-            }else if (txtCompanyName.Text=="")
-            {
-                txtCompanyName.Focus();
             }
             else if (txtEmail.Text == "")
             {
@@ -67,6 +65,10 @@ namespace TicketBookingSystem.Web
             else if (ddlGender.Text == "Select")
             {
                 ddlGender.Focus();
+            }
+            else if (txtDob.Text == "")
+            {
+                txtDob.Focus();
             }
             else if (txtAddress.Text == "")
             {
@@ -90,11 +92,11 @@ namespace TicketBookingSystem.Web
                 ViewState["RegId"] = masterClass.GenerateId("Select Max(RegId) FROM Registration");
                 registrationModel.RegId = ViewState["RegId"].ToString();
                 registrationModel.Name = txtName.Text;
-                registrationModel.CompanyName = txtCompanyName.Text;
+                registrationModel.CompanyName = "";
                 registrationModel.Email = txtEmail.Text;
                 registrationModel.ContactNo = txtMobile.Text;
                 registrationModel.Gender = ddlGender.Text;
-                registrationModel.DateofBirth = "";
+                registrationModel.DateofBirth = txtDob.Text;
                 registrationModel.Address = txtAddress.Text;
                 registrationModel.Password = txtNewPass.Text;
                 registrationModel.Picture = "";
@@ -104,7 +106,7 @@ namespace TicketBookingSystem.Web
                 bool a = registrationGateway.Save(registrationModel);
                 if (a)
                 {
-                    MultiView1.ActiveViewIndex = 1;
+                    MultiView1.ActiveViewIndex=1;
                 }
                 else
                 {
@@ -130,7 +132,7 @@ namespace TicketBookingSystem.Web
             bool a = registrationGateway.Update(registrationModel);
             if (a)
             {
-                bool ans = masterClass.SendEmail("myticket995@gmail.com", txtEmail.Text, "Email Verification Code", "<h3>Hello User,</h3><br/>Your verification code is: " + hiddenRandom.Value, "@myticket1");
+                bool ans = masterClass.SendEmail("myticket995@gmail.com", txtEmail.Text, "Email Verification Code", "<h3>Hello Passenger,</h3><br/>Your verification code is: " + hiddenRandom.Value, "@myticket1");
                 if (ans)
                 {
                     MultiView1.ActiveViewIndex = 2;
@@ -150,8 +152,7 @@ namespace TicketBookingSystem.Web
 
         protected void btnConfirm_OnClick(object sender, EventArgs e)
         {
-
-            if (txtCode.Text == "" || txtCode.Text != hiddenRandom.Value)
+            if (txtCode.Text == "" || txtCode.Text!=hiddenRandom.Value)
             {
                 lblCode.Text = "Your code is invalid";
                 lblCode.ForeColor = Color.Red;

@@ -104,7 +104,7 @@
     <Content Include="ReferenceFile\images\DummyPic.png" />
     <Content Include="ReferenceFile\OwnStyle.css" />
     <Content Include="Web\SignAgent.aspx" />
-    <Content Include="Web\SignCust.aspx" />
+    <Content Include="Web\SignPassenger.aspx" />
     <Content Include="Web\SignUpOption.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -284,6 +284,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Gateway\RegistrationGateway.cs" />
+    <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -306,12 +308,12 @@
     <Compile Include="Web\SignAgent.aspx.designer.cs">
       <DependentUpon>SignAgent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web\SignCust.aspx.cs">
-      <DependentUpon>SignCust.aspx</DependentUpon>
+    <Compile Include="Web\SignPassenger.aspx.cs">
+      <DependentUpon>SignPassenger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web\SignCust.aspx.designer.cs">
-      <DependentUpon>SignCust.aspx</DependentUpon>
+    <Compile Include="Web\SignPassenger.aspx.designer.cs">
+      <DependentUpon>SignPassenger.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\SignUpOption.aspx.cs">
       <DependentUpon>SignUpOption.aspx</DependentUpon>
@@ -321,7 +323,9 @@
       <DependentUpon>SignUpOption.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

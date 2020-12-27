@@ -31,5 +31,4 @@ D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.CodeDom.Providers.D
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.csprojResolveAssemblyReference.cache
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.pdb
-D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.pdb

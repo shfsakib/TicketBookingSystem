@@ -10,7 +10,7 @@
 namespace TicketBookingSystem.Web {
     
     
-    public partial class SignAgent {
+    public partial class SignCust {
         
         /// <summary>
         /// form1 control.
@@ -67,15 +67,6 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtCompanyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompanyName;
-        
-        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
+        
+        /// <summary>
+        /// txtDob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDob;
         
         /// <summary>
         /// txtAddress control.
@@ -175,13 +175,13 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// imgAgent control.
+        /// imgUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgAgent;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgUser;
         
         /// <summary>
         /// btnSign control.
