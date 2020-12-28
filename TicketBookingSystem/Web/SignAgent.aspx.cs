@@ -99,7 +99,7 @@ namespace TicketBookingSystem.Web
                 registrationModel.Password = txtNewPass.Text;
                 registrationModel.Picture = "";
                 registrationModel.Status = "A";
-                registrationModel.Type = "P";
+                registrationModel.Type = "A";
                 registrationModel.InTime = masterClass.Date();
                 bool a = registrationGateway.Save(registrationModel);
                 if (a)

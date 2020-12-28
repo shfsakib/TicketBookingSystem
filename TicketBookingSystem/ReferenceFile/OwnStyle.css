@@ -1,9 +1,28 @@
 ﻿.fonts {
     font-family: comic sans ms;
 }
+
 .wd-100 {
     width: 100%;
 }
+
 .color-white {
     color: white;
+}
+
+.myCardBody {
+    background: white;
+    color: black;
+    font-family: Roboto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.myCardHead {
+    padding: 10px;
+    background: white;
+    color: black;
+    font-family: Roboto;
+    font-size: 24px;
+    border-bottom: #a4a4fb;
 }
