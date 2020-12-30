@@ -10,25 +10,16 @@
 namespace TicketBookingSystem.UI {
     
     
-    public partial class UserList {
+    public partial class Bus_Info {
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// ddlType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
         /// txtSearch control.
@@ -40,12 +31,12 @@ namespace TicketBookingSystem.UI {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// gridUser control.
+        /// gridBus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridUser;
+        protected global::System.Web.UI.WebControls.GridView gridBus;
     }
 }

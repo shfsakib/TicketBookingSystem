@@ -78,11 +78,9 @@
                                     <span>
                                         <asp:LinkButton class="btnSign" runat="server" ID="btnLogin" OnClick="btnLogin_OnClick" Style="color: white;"><i class="fas fa-lock-open"></i>&nbsp;Log in</asp:LinkButton>
                                     </span>
-                                    <span id="userImage" runat="server" visible="False">
-                                        <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
+                                <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
 
-                                        <img style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" src='<%=cookies["Picture"].ToString() %>' />
-                                    </span></a>
+                                   <span></span> <img id="userImage" runat="server" visible="False" style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" />
                             </li>
                             <!-- Menu item 6 Docs-->
 

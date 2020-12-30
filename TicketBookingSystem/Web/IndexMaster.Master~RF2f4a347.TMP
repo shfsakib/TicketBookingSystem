@@ -66,7 +66,9 @@
                                 <span id="userName" runat="server" visible="False" class="userName" style="font-size: 16px; color: lightseagreen;">
                                     <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
 
-                                    <%=cookies["Name"].ToString() %></span>
+                                    <%=cookies["Name"].ToString() %> 
+                                    <asp:Image ID="userImage" runat="server" visible="False" style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;"/>
+                                </span>
                             </a>
                             </li>
                             <!-- Menu item 6 Docs-->
@@ -77,13 +79,7 @@
                                 <a class="nav-link" href="/Web/Login.aspx" id="elementsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span>
                                         <asp:LinkButton class="btnSign" runat="server" ID="btnLogin" OnClick="btnLogin_OnClick" Style="color: white;"><i class="fas fa-lock-open"></i>&nbsp;Log in</asp:LinkButton>
-                                    </span>
-                                    <span id="userImage" runat="server" visible="False">
-                                        <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
-
-                                        <img style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" src='<%=cookies["Picture"].ToString() %>' />
-                                    </span></a>
-                            </li>
+                                    </span></li>
                             <!-- Menu item 6 Docs-->
 
                         </ul>

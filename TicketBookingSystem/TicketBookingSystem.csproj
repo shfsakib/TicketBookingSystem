@@ -43,8 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BitsMasterClass">
-      <HintPath>..\BitsMasterClass\BitsMasterClass\bin\BitsMasterClass.dll</HintPath>
+    <Reference Include="BitsMasterClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BitsMaster\BitsMasterClass\bin\BitsMasterClass.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -175,8 +176,15 @@
     <Content Include="ReferenceFile\Admin\vendor\wow\wow.min.js" />
     <Content Include="ReferenceFile\images\DummyPic.png" />
     <Content Include="ReferenceFile\OwnStyle.css" />
+    <Content Include="ReferenceFile\select2.css" />
+    <Content Include="ReferenceFile\select2.js" />
+    <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AgencyList.aspx" />
+    <Content Include="UI\Bus_Info.aspx" />
     <Content Include="UI\PassengerList.aspx" />
+    <Content Include="WebService.asmx" />
+    <Content Include="Web\Index.aspx" />
+    <Content Include="Web\Login.aspx" />
     <Content Include="Web\SignAgent.aspx" />
     <Content Include="Web\SignPassenger.aspx" />
     <Content Include="Web\SignUpOption.aspx" />
@@ -300,7 +308,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web\Index.aspx" />
     <Content Include="Web\IndexMaster.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -472,9 +479,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Gateway\BusGateway.cs" />
     <Compile Include="DAL\Gateway\RegistrationGateway.cs" />
+    <Compile Include="DAL\Model\BusModel.cs" />
     <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AddBus.aspx.cs">
+      <DependentUpon>AddBus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AddBus.aspx.designer.cs">
+      <DependentUpon>AddBus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -489,12 +505,23 @@
     <Compile Include="UI\AgencyList.aspx.designer.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Bus_Info.aspx.cs">
+      <DependentUpon>Bus_Info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Bus_Info.aspx.designer.cs">
+      <DependentUpon>Bus_Info.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\PassengerList.aspx.cs">
       <DependentUpon>PassengerList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\PassengerList.aspx.designer.cs">
       <DependentUpon>PassengerList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService.asmx.cs">
+      <DependentUpon>WebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Web\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -509,6 +536,13 @@
     </Compile>
     <Compile Include="Web\IndexMaster.Master.designer.cs">
       <DependentUpon>IndexMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\SignAgent.aspx.cs">
       <DependentUpon>SignAgent.aspx</DependentUpon>

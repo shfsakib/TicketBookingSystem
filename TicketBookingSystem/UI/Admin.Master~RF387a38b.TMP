@@ -55,7 +55,7 @@
                         <ul class="navbar-mobile__list list-unstyled">
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-user-tie"></i>User List</a>
+                                    <i class="fas fa-user"></i>User List</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="/UI/PassengerList.aspx">Passenger List</a>
@@ -67,7 +67,7 @@
                             </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-bus"></i>Bus Info</a>
+                                    <i class="fas fa-user"></i>Bus Info</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/AddBus.aspx">Add Bus</a>
@@ -94,7 +94,7 @@
                         <ul class="list-unstyled navbar__list">
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-user-tie"></i>User List</a>
+                                    <i class="fas fa-user"></i>User List</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/PassengerList.aspx">Passenger List</a>
@@ -106,7 +106,7 @@
                             </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-bus"></i>Bus Info</a>
+                                    <i class="fas fa-user"></i>Bus Info</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/AddBus.aspx">Add Bus</a>

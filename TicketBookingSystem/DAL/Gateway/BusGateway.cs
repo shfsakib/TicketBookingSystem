@@ -9,28 +9,26 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.DAL.Gateway
 {
-    public class RegistrationGateway
+    public class BusGateway
     {
-
         private MasterClass masterClass;
         private SqlConnection connection;
         private SqlCommand command;
-        private static RegistrationGateway _instance;
-        public static RegistrationGateway GetInstance()
+        private static BusGateway _instance;
+        public static BusGateway GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new RegistrationGateway();
+                _instance = new BusGateway();
             }
             return _instance;
         }
-        public RegistrationGateway()
+        public BusGateway()
         {
             masterClass = MasterClass.GetInstance();
-            connection = new SqlConnection(masterClass.Connection); 
+            connection = new SqlConnection(masterClass.Connection);
         }
-
-        internal bool Save(RegistrationModel model)
+        internal bool AddBus(BusModel model)
         {
             bool result = false;
             SqlTransaction transaction = null;
@@ -39,46 +37,20 @@ namespace TicketBookingSystem.DAL.Gateway
                 if (connection.State != ConnectionState.Open)
                     connection.Open();
                 transaction = connection.BeginTransaction();
-                command = new SqlCommand("INSERT INTO Registration(RegId,Name,CompanyName,Email,ContactNo,Gender,DateofBirth,Address,Password,Picture,Status,Type,InTime) VALUES(@RegId,@Name,@CompanyName,@Email,@ContactNo,@Gender,@DateofBirth,@Address,@Password,@Picture,@Status,@Type,@InTime)", connection);
-                command.Parameters.AddWithValue("@RegId", model.RegId);
-                command.Parameters.AddWithValue("@Name", model.Name);
-                command.Parameters.AddWithValue("@CompanyName", model.CompanyName);
-                command.Parameters.AddWithValue("@Email", model.Email);
-                command.Parameters.AddWithValue("@ContactNo", model.ContactNo);
-                command.Parameters.AddWithValue("@Gender", model.Gender);
-                command.Parameters.AddWithValue("@DateofBirth", model.DateofBirth);
-                command.Parameters.AddWithValue("@Address", model.Address);
-                command.Parameters.AddWithValue("@Password", model.Password);
-                command.Parameters.AddWithValue("@Picture", model.Picture);
+                command = new SqlCommand("INSERT INTO BusInfo(BusName,BusType,BusNo,DistrictFrom,DistrictTo,StartingPoint,EndPoint,DepartureTime,ArrivalTime,TicketPrice,Status,CompanyId,InTime) VALUES(@BusName,@BusType,@BusNo,@DistrictFrom,@DistrictTo,@StartingPoint,@EndPoint,@DepartureTime,@ArrivalTime,@TicketPrice,@Status,@CompanyId,@InTime)", connection);
+                command.Parameters.AddWithValue("@BusName", model.BusName);
+                command.Parameters.AddWithValue("@BusType", model.BusType);
+                command.Parameters.AddWithValue("@BusNo", model.BusNo);
+                command.Parameters.AddWithValue("@DistrictFrom", model.DistrictFrom);
+                command.Parameters.AddWithValue("@DistrictTo", model.DistrictTo);
+                command.Parameters.AddWithValue("@StartingPoint", model.StartingPoint);
+                command.Parameters.AddWithValue("@EndPoint", model.EndPoint);
+                command.Parameters.AddWithValue("@DepartureTime", model.DepartureTime);
+                command.Parameters.AddWithValue("@ArrivalTime", model.ArrivalTime);
+                command.Parameters.AddWithValue("@TicketPrice", model.TicketPrice);
                 command.Parameters.AddWithValue("@Status", model.Status);
-                command.Parameters.AddWithValue("@Type", model.Type);
+                command.Parameters.AddWithValue("@CompanyId", model.CompanyId);
                 command.Parameters.AddWithValue("@InTime", model.InTime);
-
-                command.Transaction = transaction;
-                command.ExecuteNonQuery();
-                transaction.Commit();
-                result = true;
-                if (connection.State != ConnectionState.Closed)
-                    connection.Close();
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-            }
-            return result;
-        }
-        internal bool Update(RegistrationModel model)
-        {
-            bool result = false;
-            SqlTransaction transaction = null;
-            try
-            {
-                if (connection.State != ConnectionState.Open)
-                    connection.Open();
-                transaction = connection.BeginTransaction();
-                command = new SqlCommand("UPDATE Registration SET Picture=@Picture WHERE RegId=@RegId", connection);
-                command.Parameters.AddWithValue("@Picture", model.Picture);
-                command.Parameters.AddWithValue("@RegId", model.RegId);
 
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
@@ -93,7 +65,7 @@ namespace TicketBookingSystem.DAL.Gateway
             }
             return result;
         }
-        internal bool UpdateStatus(RegistrationModel model)
+        internal bool Delete(BusModel model)
         {
             bool result = false;
             SqlTransaction transaction = null;
@@ -102,9 +74,34 @@ namespace TicketBookingSystem.DAL.Gateway
                 if (connection.State != ConnectionState.Open)
                     connection.Open();
                 transaction = connection.BeginTransaction();
-                command = new SqlCommand("UPDATE Registration SET Status=@Status WHERE RegId=@RegId", connection);
-                command.Parameters.AddWithValue("@Status", model.Status);
-                command.Parameters.AddWithValue("@RegId", model.RegId);
+                command = new SqlCommand("DELETE FROM BusInfo WHERE BusId=@BusId", connection);
+                command.Parameters.AddWithValue("@BusId", model.BusId);
+
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (connection.State != ConnectionState.Closed)
+                    connection.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
+        internal bool UpdateStatus(BusModel busModel)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("UPDATE BusInfo SET Status=@Status WHERE BusId=@BusId", connection);
+                command.Parameters.AddWithValue("@Status", busModel.Status);
+                command.Parameters.AddWithValue("@BusId", busModel.BusId);
 
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();

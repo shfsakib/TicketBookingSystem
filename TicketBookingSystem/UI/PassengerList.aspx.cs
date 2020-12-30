@@ -62,17 +62,48 @@ namespace TicketBookingSystem.UI
 
         protected void lnkInactive_OnClick(object sender, EventArgs e)
         {
-
+            LinkButton lnkInactive = (LinkButton)sender;
+            HiddenField regId = (HiddenField)lnkInactive.Parent.FindControl("HiddenField1");
+            registrationModel.RegId = regId.Value;
+            registrationModel.Status = "I";
+            bool a = registrationGateway.UpdateStatus(registrationModel);
+            if (a)
+            {
+                Response.Write("<script language=javascript>alert('Restricted successfully');</script>");
+                Load();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Restrict failed');</script>");
+            }
         }
 
         protected void lbkActive_OnClick(object sender, EventArgs e)
         {
-
+            LinkButton lnkInactive = (LinkButton)sender;
+            HiddenField regId = (HiddenField)lnkInactive.Parent.FindControl("HiddenField1");
+            registrationModel.RegId = regId.Value;
+            registrationModel.Status = "A";
+            bool a = registrationGateway.UpdateStatus(registrationModel);
+            if (a)
+            {
+                Response.Write("<script language=javascript>alert('Activate successfully');</script>");
+                Load();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Activate failed');</script>");
+            }
         }
 
         protected void ddlType_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Load();
+        }
+
+        protected void txtSearch_OnTextChanged(object sender, EventArgs e)
+        {
+            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='p' AND Status='{ddlType.SelectedValue}' AND Name +' | '+ContactNo LIKE '%"+txtSearch.Text+"%' ORDER BY Name ASC");
         }
     }
 }

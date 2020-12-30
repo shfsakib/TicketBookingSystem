@@ -26,3 +26,15 @@
     font-size: 24px;
     border-bottom: #a4a4fb;
 }
+/*Select 2*/
+.select2 {
+    width: 100%;
+}
+.select2-selection {
+    height: 40px;
+    padding: 5px;
+}
+.select2-selection__rendered {
+    width: 400px;
+    height: 45px;
+}

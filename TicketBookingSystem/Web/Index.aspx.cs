@@ -11,6 +11,7 @@ namespace TicketBookingSystem.Web
     public partial class Index : System.Web.UI.Page
     {
         private MasterClass masterClass;
+        HttpCookie cookieIndex = HttpContext.Current.Request.Cookies["Ticket"];
 
         public Index()
         {
@@ -22,7 +23,26 @@ namespace TicketBookingSystem.Web
             {
                 if (Request.QueryString["p"]=="1")
                 {
-                    Response.Write("<script language=javascript>alert('Signed up successfully. Thanks for sign up. :)');</script>");
+                    Response.Write("<script language=javascript>alert('Signed up successfully.Thanks for sign up. :)');</script>");
+                }
+                if (cookieIndex != null)
+                {
+                    if (masterClass.TypeCookie() == "A")
+                    {
+                        Response.Redirect("/UI/AddBus.aspx");
+                    }
+                    else if (masterClass.TypeCookie() == "Ad")
+                    {
+                        Response.Redirect("/UI/PassengerList.aspx");
+                    }
+                    else if(masterClass.TypeCookie() == "P")
+                    {
+                        
+                    }
+                    else
+                    {
+                        Response.Redirect("/Web/Login.aspx");
+                    }
                 }
             }
         }

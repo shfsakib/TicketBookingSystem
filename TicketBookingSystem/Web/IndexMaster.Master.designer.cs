@@ -22,6 +22,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
+        /// btnSign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSign;
+        
+        /// <summary>
         /// userName control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,22 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userName;
         
         /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLogin;
+        
+        /// <summary>
         /// userImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage userImage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userImage;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
