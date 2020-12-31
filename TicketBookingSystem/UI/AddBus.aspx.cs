@@ -31,7 +31,7 @@ namespace TicketBookingSystem.UI
 
         private void Load()
         {
-            masterClass.BindDropDown(ddlDistrictFrom, "Select", "SELECT Name,ID FROM District ORDER By Name ASC");
+            masterClass.BindDropDown(ddlDistrictFrom, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
             masterClass.BindDropDown(ddlDistrictTO, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
         }
 
@@ -68,12 +68,12 @@ namespace TicketBookingSystem.UI
                 Response.Write("<script language=javascript>alert('Bus type is required');</script>");
                 ddlType.Focus();
             }
-            else if (ddlDistrictFrom.Text == "")
+            else if (ddlDistrictFrom.Text == "--SELECT--")
             {
                 Response.Write("<script language=javascript>alert('District from is required');</script>");
                 ddlDistrictFrom.Focus();
             }
-            else if (ddlDistrictTO.Text == "")
+            else if (ddlDistrictTO.Text == "--SELECT--")
             {
                 Response.Write("<script language=javascript>alert('District to is required');</script>");
                 ddlDistrictTO.Focus();

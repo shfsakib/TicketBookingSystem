@@ -5,6 +5,9 @@
 .wd-100 {
     width: 100%;
 }
+.ht-100 {
+    height: 100%;
+}
 
 .color-white {
     color: white;
@@ -29,12 +32,39 @@
 /*Select 2*/
 .select2 {
     width: 100%;
+    outline: none;
 }
 .select2-selection {
     height: 40px;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 .select2-selection__rendered {
-    width: 400px;
+    width: 200px;
     height: 45px;
+}
+/*index design*/
+/*Bus Ticket*/
+.ticketSearchDiv {
+    height: 350px;
+    padding: 130px 100px 130px 100px;
+    background-image: url("/ReferenceFile/images/background.png");
+    background-repeat: no-repeat;
+    background-size: 1365px 350px;
+}
+.ticketSearchBar {
+    width: 100%;
+    height: 80px;
+    padding: 10px 20px 10px 20px;
+    background: white;
+    border-radius: 10px;
+}
+.textbox {
+    border: 1px solid #696969!important;
+    border-radius: 5px!important;
+    padding-left: 30px;
+}
+.txtIcon {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 25px;
 }

@@ -10,7 +10,7 @@
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
             <span>Bus Name</span>
-            <asp:TextBox ID="txtBusName" class="form-control" placeholder="xyz" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtBusName" class="form-control" placeholder="xyz" autocomplete="off" runat="server"></asp:TextBox>
         </div>
         <div class="col-3"></div>
     </div>
@@ -18,7 +18,7 @@
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
             <span>Bus No.</span>
-            <asp:TextBox ID="txtBusNo" class="form-control" placeholder="XX-XXX" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtBusNo" class="form-control" autocomplete="off" placeholder="XX-XXX" runat="server"></asp:TextBox>
         </div>
         <div class="col-3"></div>
     </div>

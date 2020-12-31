@@ -30,12 +30,12 @@
                 <div class="row p-4">
                     <div class="col-12">
                         <span>
-                            <a class="btn btn-dark wd-100" href="">Sign up as Customer</a>
+                            <a class="btn btn-dark wd-100" href="/Web/SignPassenger.aspx" target="_blank">Sign up as Customer</a>
                         </span>
                     </div>
                     <div class="col-12">
                         <span>
-                            <a class="btn btn-success wd-100 color-white" style="color: white !important;" href="">Sign up as Agency</a>
+                            <a class="btn btn-success wd-100 color-white"  href="/Web/SignAgent.aspx" target="_blank" style="color: white !important;" href="">Sign up as Agency</a>
                         </span>
                     </div>
                 </div>

@@ -174,15 +174,16 @@
     <Content Include="ReferenceFile\Admin\vendor\vector-map\jqvmap.min.css" />
     <Content Include="ReferenceFile\Admin\vendor\wow\animate.css" />
     <Content Include="ReferenceFile\Admin\vendor\wow\wow.min.js" />
+    <Content Include="ReferenceFile\images\background.png" />
     <Content Include="ReferenceFile\images\DummyPic.png" />
+    <Content Include="ReferenceFile\Ownjs.js" />
     <Content Include="ReferenceFile\OwnStyle.css" />
-    <Content Include="ReferenceFile\select2.css" />
-    <Content Include="ReferenceFile\select2.js" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AgencyList.aspx" />
-    <Content Include="UI\Bus_Info.aspx" />
+    <Content Include="UI\BusList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="WebService.asmx" />
+    <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
     <Content Include="Web\Login.aspx" />
     <Content Include="Web\SignAgent.aspx" />
@@ -324,21 +325,6 @@
     <Content Include="ReferenceFile\css\slick.css" />
     <Content Include="ReferenceFile\css\style.css" />
     <Content Include="ReferenceFile\css\swiper.min.css" />
-    <Content Include="ReferenceFile\images\01-dark.png" />
-    <Content Include="ReferenceFile\images\01.jpg" />
-    <Content Include="ReferenceFile\images\01.png" />
-    <Content Include="ReferenceFile\images\04.png" />
-    <Content Include="ReferenceFile\images\07.jpg" />
-    <Content Include="ReferenceFile\images\about-1.jpg" />
-    <Content Include="ReferenceFile\images\about-2.jpg" />
-    <Content Include="ReferenceFile\images\apple-touch-icon-114x114.png" />
-    <Content Include="ReferenceFile\images\apple-touch-icon-144x144.png" />
-    <Content Include="ReferenceFile\images\apple-touch-icon-72x72.png" />
-    <Content Include="ReferenceFile\images\apple-touch-icon.png" />
-    <Content Include="ReferenceFile\images\author.jpg" />
-    <Content Include="ReferenceFile\images\b1.jpg" />
-    <Content Include="ReferenceFile\images\b2.jpg" />
-    <Content Include="ReferenceFile\images\b3.jpg" />
     <Content Include="ReferenceFile\images\banner\03.jpg" />
     <Content Include="ReferenceFile\images\banner\10.jpg" />
     <Content Include="ReferenceFile\images\banner\11.jpg" />
@@ -374,7 +360,6 @@
     <Content Include="ReferenceFile\images\clients\07.png" />
     <Content Include="ReferenceFile\images\clients\08-light.png" />
     <Content Include="ReferenceFile\images\clients\08.png" />
-    <Content Include="ReferenceFile\images\cm-bg.jpg" />
     <Content Include="ReferenceFile\images\cruises\1.jpg" />
     <Content Include="ReferenceFile\images\cruises\2.jpg" />
     <Content Include="ReferenceFile\images\cruises\3.jpg" />
@@ -391,8 +376,6 @@
     <Content Include="ReferenceFile\images\cruises\room-details6.jpg" />
     <Content Include="ReferenceFile\images\cruises\room-details7.jpg" />
     <Content Include="ReferenceFile\images\cruises\room-details8.jpg" />
-    <Content Include="ReferenceFile\images\error-bg.jpg" />
-    <Content Include="ReferenceFile\images\favicon.png" />
     <Content Include="ReferenceFile\images\flag\fr.svg" />
     <Content Include="ReferenceFile\images\flag\gr.svg" />
     <Content Include="ReferenceFile\images\flag\sp.svg" />
@@ -418,11 +401,6 @@
     <Content Include="ReferenceFile\images\hotels\room6.jpg" />
     <Content Include="ReferenceFile\images\hotels\room7.jpg" />
     <Content Include="ReferenceFile\images\hotels\room8.jpg" />
-    <Content Include="ReferenceFile\images\img-11.jpg" />
-    <Content Include="ReferenceFile\images\img-22.jpg" />
-    <Content Include="ReferenceFile\images\img-33.jpg" />
-    <Content Include="ReferenceFile\images\logo-footer.png" />
-    <Content Include="ReferenceFile\images\logo-header.png" />
     <Content Include="ReferenceFile\images\photo\1.jpg" />
     <Content Include="ReferenceFile\images\photo\2.jpg" />
     <Content Include="ReferenceFile\images\photo\3.jpg" />
@@ -441,10 +419,6 @@
     <Content Include="ReferenceFile\images\portfolio\10.jpg" />
     <Content Include="ReferenceFile\images\portfolio\11.jpg" />
     <Content Include="ReferenceFile\images\portfolio\12.jpg" />
-    <Content Include="ReferenceFile\images\profile-bg.html" />
-    <Content Include="ReferenceFile\images\quote-2.png" />
-    <Content Include="ReferenceFile\images\restaurant-details.jpg" />
-    <Content Include="ReferenceFile\images\room-details.jpg" />
     <Content Include="ReferenceFile\images\team\01.jpg" />
     <Content Include="ReferenceFile\images\team\02.jpg" />
     <Content Include="ReferenceFile\images\team\03.jpg" />
@@ -457,7 +431,6 @@
     <Content Include="ReferenceFile\images\tour\home2.jpg" />
     <Content Include="ReferenceFile\images\tour\home3.jpg" />
     <Content Include="ReferenceFile\images\tour\home4.jpg" />
-    <Content Include="ReferenceFile\images\why-us.jpg" />
     <Content Include="ReferenceFile\js\bootstrap-datepicker.min.js" />
     <Content Include="ReferenceFile\js\bootstrap.min.js" />
     <Content Include="ReferenceFile\js\functions.js" />
@@ -505,12 +478,12 @@
     <Compile Include="UI\AgencyList.aspx.designer.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Bus_Info.aspx.cs">
-      <DependentUpon>Bus_Info.aspx</DependentUpon>
+    <Compile Include="UI\BusList.aspx.cs">
+      <DependentUpon>BusList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\Bus_Info.aspx.designer.cs">
-      <DependentUpon>Bus_Info.aspx</DependentUpon>
+    <Compile Include="UI\BusList.aspx.designer.cs">
+      <DependentUpon>BusList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PassengerList.aspx.cs">
       <DependentUpon>PassengerList.aspx</DependentUpon>
@@ -522,6 +495,13 @@
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\BusTicket.aspx.cs">
+      <DependentUpon>BusTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\BusTicket.aspx.designer.cs">
+      <DependentUpon>BusTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

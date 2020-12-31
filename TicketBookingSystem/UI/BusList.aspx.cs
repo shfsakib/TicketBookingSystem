@@ -10,13 +10,13 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class BusList : System.Web.UI.Page
+    public partial class Bus_Info : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private BusModel busModel;
         private BusGateway busGateway;
 
-        public BusList()
+        public Bus_Info()
         {
             masterClass = MasterClass.GetInstance();
             busModel = BusModel.GetInstance();
@@ -29,7 +29,6 @@ namespace TicketBookingSystem.UI
                 Load();
             }
         }
-
         private void Load()
         {
             masterClass.LoadGrid(gridBus, $@"
@@ -44,6 +43,22 @@ FROM            BusInfo INNER JOIN
             Load();
         }
 
+        protected void txtSearch_OnTextChangedChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                Load();
+            }
+            else
+            {
+                masterClass.LoadGrid(gridBus, $@"
+SELECT   DISTINCT     BusInfo.BusId, BusInfo.BusName, BusInfo.BusType, BusInfo.BusNo, BusInfo.StartingPoint, BusInfo.EndPoint, BusInfo.DepartureTime, BusInfo.ArrivalTime, BusInfo.TicketPrice, 
+                         BusInfo.Status, BusInfo.CompanyId, BusInfo.InTime, A.Name AS DistrictFrom,B.Name AS DistrictTo
+FROM            BusInfo INNER JOIN
+                         District A ON A.Id=BusInfo.DistrictFrom INNER JOIN 
+						 District B ON B.Id=BusInfo.DistrictTo WHERE BusInfo.Status='{ddlStatus.SelectedValue}' AND BusInfo.BusName='{txtSearch.Text}' ORDER BY BusInfo.BusId DESC");
+            }
+        }
 
         protected void gridBus_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -90,25 +105,7 @@ FROM            BusInfo INNER JOIN
             }
         }
 
-        protected void lnkInactive_OnClick(object sender, EventArgs e)
-        {
-            LinkButton linkButton = (LinkButton)sender;
-            HiddenField busId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
-            busModel.BusId = Convert.ToInt32(busId.Value);
-            busModel.Status = "I";
-            bool a = busGateway.UpdateStatus(busModel);
-            if (a)
-            {
-                Response.Write("<script language=javascript>alert('Bus inactivate successfully');</script>");
-                Load();
-            }
-            else
-            {
-                Response.Write("<script language=javascript>alert('Bus inactive failed');</script>");
-            }
-        }
-
-        protected void lbkActive_OnClick(object sender, EventArgs e)
+        protected void lnkActive_OnClick(object sender, EventArgs e)
         {
             LinkButton linkButton = (LinkButton)sender;
             HiddenField busId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
@@ -127,21 +124,23 @@ FROM            BusInfo INNER JOIN
             }
         }
 
-        protected void txtSearch_OnTextChanged(object sender, EventArgs e)
+        protected void lnkInactive_OnClick(object sender, EventArgs e)
         {
-            if (txtSearch.Text == "")
+            LinkButton linkButton = (LinkButton)sender;
+            HiddenField busId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
+            busModel.BusId = Convert.ToInt32(busId.Value);
+            busModel.Status = "I";
+            bool a = busGateway.UpdateStatus(busModel);
+            if (a)
             {
+                Response.Write("<script language=javascript>alert('Bus inactivate successfully');</script>");
                 Load();
             }
             else
             {
-                masterClass.LoadGrid(gridBus, $@"
-SELECT   DISTINCT     BusInfo.BusId, BusInfo.BusName, BusInfo.BusType, BusInfo.BusNo, BusInfo.StartingPoint, BusInfo.EndPoint, BusInfo.DepartureTime, BusInfo.ArrivalTime, BusInfo.TicketPrice, 
-                         BusInfo.Status, BusInfo.CompanyId, BusInfo.InTime, A.Name AS DistrictFrom,B.Name AS DistrictTo
-FROM            BusInfo INNER JOIN
-                         District A ON A.Id=BusInfo.DistrictFrom INNER JOIN 
-						 District B ON B.Id=BusInfo.DistrictTo WHERE BusInfo.Status='{ddlStatus.SelectedValue}' AND BusInfo.BusName='{txtSearch.Text}' ORDER BY BusInfo.BusId DESC");
+                Response.Write("<script language=javascript>alert('Bus inactive failed');</script>");
             }
+            
         }
     }
 }
