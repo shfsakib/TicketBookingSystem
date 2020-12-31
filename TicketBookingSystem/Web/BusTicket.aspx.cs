@@ -51,6 +51,17 @@ FROM            BusInfo INNER JOIN
 
         }
 
+        public string TimeC(string time)
+        {
+            string cTime = "";
+            if (time!="")
+            {
+               DateTime dateTime=new DateTime();
+                dateTime = Convert.ToDateTime(time);
+                cTime = dateTime.ToString("hh:mm tt");
+            }
+            return cTime;
+        }
         protected void gridBuses_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             

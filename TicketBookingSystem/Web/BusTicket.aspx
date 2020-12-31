@@ -52,11 +52,11 @@
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Departure Time</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label6" class="d-inline-block" runat="server" Text='<%#Eval("DepartureTime") %>'></asp:Label>                                    
+                                    <asp:Label ID="Label6" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("DepartureTime").ToString())%>'></asp:Label>                                    
                                 </div>
                                  <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Arrival Time</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label7" class="d-inline-block" runat="server" Text='<%#Eval("ArrivalTime") %>'></asp:Label>                                    
+                                    <asp:Label ID="Label7" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>                                    
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Seat Available</span><br class="d-none d-lg-block"/>
