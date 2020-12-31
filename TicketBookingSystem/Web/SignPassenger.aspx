@@ -121,7 +121,7 @@
                                     <h3>Enter Verification Code</h3>
                                 </p>
                                 <asp:HiddenField ID="hiddenRandom" runat="server" />
-                                <asp:TextBox ID="txtCode" class="form-control wd-100" runat="server" placeholder="XXXXXX"></asp:TextBox>
+                                <asp:TextBox ID="txtCode" class="form-control wd-100" autocomplete="off" runat="server" placeholder="XXXXXX"></asp:TextBox>
                             </div>
                             <div class="col-3"></div>
                             <div class="col-3"></div>

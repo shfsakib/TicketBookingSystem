@@ -44,12 +44,13 @@ namespace TicketBookingSystem.Web
 
         protected void OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("/Web/SignUpOption.aspx");
+            Response.Write("<script>window.open ('/Web/SignUpOption.aspx','_blank');</script>");
+            //Response.Redirect("");
         }
 
         protected void btnLogin_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("/Web/Login.aspx");
+            Response.Write("<script>window.open ('/Web/Login.aspx','_blank');</script>"); 
         }
     }
 }
