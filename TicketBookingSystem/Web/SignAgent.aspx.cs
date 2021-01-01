@@ -76,6 +76,11 @@ namespace TicketBookingSystem.Web
             {
                 txtNewPass.Focus();
             }
+            else if (txtNewPass.Text.Length < 4)
+            {
+                lblMessage.Text = "Minimum 4 digit password required";
+                lblMessage.ForeColor = Color.Red;
+            }
             else if (txtConfirmPassword.Text == "")
             {
                 txtConfirmPassword.Focus();

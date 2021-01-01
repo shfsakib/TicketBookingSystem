@@ -40,6 +40,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userName;
         
         /// <summary>
+        /// logA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logA;
+        
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.LinkButton btnLogin;
         
         /// <summary>
+        /// logP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logP;
+        
+        /// <summary>
         /// userImage control.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,24 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userImage;
+        
+        /// <summary>
+        /// menuDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuDiv;
+        
+        /// <summary>
+        /// logOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logOut;
         
         /// <summary>
         /// ScriptManager1 control.

@@ -182,11 +182,13 @@
     <Content Include="ReferenceFile\images\DummyPic.png" />
     <Content Include="ReferenceFile\Ownjs.js" />
     <Content Include="ReferenceFile\OwnStyle.css" />
+    <Content Include="ReferenceFile\wheel.png" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AgencyList.aspx" />
     <Content Include="UI\BusList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="WebService.asmx" />
+    <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
     <Content Include="Web\Login.aspx" />
@@ -500,6 +502,13 @@
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\BusSeatBookNAc.aspx.cs">
+      <DependentUpon>BusSeatBookNAc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\BusSeatBookNAc.aspx.designer.cs">
+      <DependentUpon>BusSeatBookNAc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\BusTicket.aspx.cs">
       <DependentUpon>BusTicket.aspx</DependentUpon>

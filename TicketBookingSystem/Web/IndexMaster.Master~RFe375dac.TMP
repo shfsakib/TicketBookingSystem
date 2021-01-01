@@ -76,17 +76,17 @@
                             &nbsp;
                             <!-- Menu item 5 Elements-->
                             <li class="nav-item dropdown megamenu">
-                                <a class="nav-link" href="#" id="logA" runat="server" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="#" id="elementsMenu" runat="server" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span>
                                         <asp:LinkButton class="btnSign" runat="server" ID="btnLogin" OnClick="btnLogin_OnClick" Style="color: white;"><i class="fas fa-lock-open"></i>&nbsp;Log in</asp:LinkButton>
                                     </span></a>
-                                <a class="nav-link" href="#" id="logP" runat="server" visible="False" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span id="userImage" runat="server" >
+                                <a class="nav-link" href="#" id="elementsMenu" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span id="userImage" runat="server" visible="False">
                                         <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
 
                                         <img style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" src='<%=cookies["Picture"].ToString() %>' />
                                     </span></a>
-                                <div class="dropdown-menu userMenu" aria-labelledby="dropdownMenuLink" runat="server" id="menuDiv" Visible="False">
+                                <div class="dropdown-menu userMenu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" runat="server" id="logOut" onserverclick="logOut_OnServerClick" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Log out</a>
                                 </div>
                                 <style>

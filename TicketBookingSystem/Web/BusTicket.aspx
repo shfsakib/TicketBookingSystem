@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-6 col-lg-2  mt-1 mt-lg-0">
                             <span class="spanDate">Bus Type</span>
-                            <asp:DropDownList ID="ddlType" class="form-control wd-100 textbox" Style="height: 60px;" runat="server">
+                            <asp:DropDownList ID="ddlType" class="form-control wd-100 textbox" AutoPostBack="True" OnSelectedIndexChanged="ddlType_OnSelectedIndexChanged" Style="height: 60px;" runat="server">
                                 <asp:ListItem>Non Ac</asp:ListItem>
                                 <asp:ListItem>Ac</asp:ListItem>
                             </asp:DropDownList>
@@ -41,7 +41,8 @@
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("BusId")%>' />
+                            <asp:HiddenField ID="HiddenField2" runat="server" Value='<%#Eval("BusId")%>' />
+                            <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("CompanyId")%>' />
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" style="font-size: 18px;font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
@@ -63,10 +64,10 @@
                                     <asp:Label ID="Label8" class="d-inline-block" runat="server" Text="25"></asp:Label>                                    
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
-                                    <asp:Label ID="Label9" class="d-inline-block pt-2" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    
+                                    <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    
                                 </div>
                                  <div class="col-12 col-lg-2 text-lg-center">
-                                     <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-3" runat="server">View Seats</asp:LinkButton>                            
+                                     <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>                            
                                 </div>
                             </div>
 
