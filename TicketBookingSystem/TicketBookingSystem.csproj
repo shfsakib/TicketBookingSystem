@@ -459,8 +459,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoComplete.cs" />
+    <Compile Include="DAL\Gateway\BookTicketGateway.cs" />
     <Compile Include="DAL\Gateway\BusGateway.cs" />
     <Compile Include="DAL\Gateway\RegistrationGateway.cs" />
+    <Compile Include="DAL\Model\BookTicketModal.cs" />
     <Compile Include="DAL\Model\BusModel.cs" />
     <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

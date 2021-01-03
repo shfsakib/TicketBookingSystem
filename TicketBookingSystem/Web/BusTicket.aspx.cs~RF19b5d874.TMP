@@ -176,7 +176,7 @@ FROM            BusInfo INNER JOIN
                 string countSeat =
                     masterClass.IsExist(
                         $"SELECT COUNT(SeatName) FROM BookTicket WHERE BusId='{busId}' AND JourneyDate='{txtJourneyDate.Text}'");
-                int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
+                int totalSeat = Convert.ToInt32(lblSeat) - Convert.ToInt32(countSeat);
                 lblSeat.Text = totalSeat.ToString();
             }
         }

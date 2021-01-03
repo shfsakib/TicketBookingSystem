@@ -37,7 +37,7 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-             <asp:GridView ID="gridBuses" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBuses_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="30" runat="server">
+             <asp:GridView ID="gridBuses" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBuses_OnPageIndexChanging" OnRowDataBound="gridBuses_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -46,7 +46,7 @@
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" style="font-size: 18px;font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
-                                   <span class="d-block"><asp:Label ID="Label2"  runat="server"  style="font-size: 16px;" Text='<%#Eval("BusName") %>'></asp:Label>&nbsp;<asp:Label ID="Label3" style="font-size: 14px;font-weight: bold" runat="server" Text='<%#Eval("BusType") %>'></asp:Label></span>
+                                   <span class="d-block"><asp:Label ID="Label2"  runat="server"  style="font-size: 16px;" Text='<%#Eval("BusName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" style="font-size: 14px;font-weight: bold" runat="server" Text='<%#Eval("BusType") %>'></asp:Label></span>
                                     <span class="d-inline-block">Starting Point: </span><asp:Label ID="Label5" class="d-inline-block" style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("StartingPoint") %>'></asp:Label><br/>
                                     <span class="d-inline-block">End Point: </span><asp:Label ID="Label4" class="d-inline-block" style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("EndPoint") %>'></asp:Label>
                                 
@@ -60,8 +60,8 @@
                                     <asp:Label ID="Label7" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>                                    
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <span>Seat Available</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label8" class="d-inline-block" runat="server" Text="25"></asp:Label>                                    
+                                    <span>Seat Capacity</span><br class="d-none d-lg-block"/>
+                                    <asp:Label ID="lblSeat" class="d-inline-block" runat="server" Text="36"></asp:Label>                                    
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    

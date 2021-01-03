@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BitsMasterClass;
+using TicketBookingSystem.DAL.Gateway;
+using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.Web
 {
@@ -17,14 +20,23 @@ namespace TicketBookingSystem.Web
         private DataRow dataRow;
         string fare = "";
         private int count = 0;
+        Random _random = new Random();
+        private BookTicketModal bookTicketModal;
+        private BookTicketGateway bookTicketGateway;
         public BusSeatBook()
         {
             masterClass = MasterClass.GetInstance();
+            bookTicketModal = BookTicketModal.GetInstance();
+            bookTicketGateway = BookTicketGateway.GetInstance();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Request.QueryString["cId"] == "")
+                {
+                    Response.Redirect("/Web/BusSeatBookNAc.aspx");
+                }
                 Session["Grid"] = null;
                 LoadSession();
                 LoadSeatGrid();
@@ -33,12 +45,30 @@ namespace TicketBookingSystem.Web
                 btnS.BackColor = Color.GreenYellow;
                 btnB.BackColor = Color.Purple;
                 ColorButton();
+                CheckSeat();
+                lblRandom.Text = RandomString(8, false);
+                number.InnerText =
+                    masterClass.IsExist($"SELECT ContactNo FROM Registration WHERE RegId='{Request.QueryString["cId"]}'");
+
             }
         }
         private void LoadSeatGrid()
         {
             gridTicket.DataSource = Session["Grid"];
             gridTicket.DataBind();
+            if (lblGrandTotal.Text != "0")
+            {
+                if (gridTicket.Rows.Count <= 3)
+                {
+                    lblServiceCharge.Text = "50";
+                }
+                else
+                {
+                    lblServiceCharge.Text = "100";
+                }
+            }
+
+
         }
         private void LoadSession()
         {
@@ -68,9 +98,16 @@ namespace TicketBookingSystem.Web
                     break;
                 }
             }
+            if (gridTicket.Rows.Count <= 3)
+            {
+                lblServiceCharge.Text = "50";
+            }
+            else
+            {
+                lblServiceCharge.Text = "100";
+            }
             return ans;
         }
-
         private void CalculateSum()
         {
             double total = 0.00, gTotal = 100;
@@ -91,7 +128,11 @@ namespace TicketBookingSystem.Web
             {
                 lblSubTotal.Text = lblGrandTotal.Text = lblServiceCharge.Text = "0";
             }
+            if (gridTicket.Rows.Count >= 0)
+            {
+                paymentPercentage.InnerText = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
 
+            }
         }
 
 
@@ -113,7 +154,14 @@ namespace TicketBookingSystem.Web
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
 
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnA1.BackColor = Color.GreenYellow;
                 }
             }
@@ -146,7 +194,14 @@ namespace TicketBookingSystem.Web
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
 
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnA2.BackColor = Color.GreenYellow;
                 }
             }
@@ -179,7 +234,14 @@ namespace TicketBookingSystem.Web
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
 
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnA3.BackColor = Color.GreenYellow;
                 }
             }
@@ -212,7 +274,14 @@ namespace TicketBookingSystem.Web
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
 
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnA4.BackColor = Color.GreenYellow;
                 }
             }
@@ -245,7 +314,14 @@ namespace TicketBookingSystem.Web
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
 
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnB1.BackColor = Color.GreenYellow;
                 }
             }
@@ -277,8 +353,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnB2.BackColor = Color.GreenYellow;
                 }
             }
@@ -309,8 +391,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnB3.BackColor = Color.GreenYellow;
                 }
             }
@@ -341,8 +429,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnB4.BackColor = Color.GreenYellow;
                 }
             }
@@ -373,8 +467,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnc1.BackColor = Color.GreenYellow;
                 }
             }
@@ -405,8 +505,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnC2.BackColor = Color.GreenYellow;
                 }
             }
@@ -437,8 +543,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnC3.BackColor = Color.GreenYellow;
                 }
             }
@@ -469,8 +581,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnC4.BackColor = Color.GreenYellow;
                 }
             }
@@ -501,8 +619,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnD1.BackColor = Color.GreenYellow;
                 }
             }
@@ -533,8 +657,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnD2.BackColor = Color.GreenYellow;
                 }
             }
@@ -565,8 +695,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnD3.BackColor = Color.GreenYellow;
                 }
             }
@@ -597,8 +733,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnD4.BackColor = Color.GreenYellow;
                 }
             }
@@ -629,8 +771,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnE1.BackColor = Color.GreenYellow;
                 }
             }
@@ -661,8 +809,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnE2.BackColor = Color.GreenYellow;
                 }
             }
@@ -693,8 +847,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnE3.BackColor = Color.GreenYellow;
                 }
             }
@@ -725,8 +885,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnE4.BackColor = Color.GreenYellow;
                 }
             }
@@ -757,8 +923,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnF1.BackColor = Color.GreenYellow;
                 }
             }
@@ -789,8 +961,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnF2.BackColor = Color.GreenYellow;
                 }
             }
@@ -821,8 +999,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnF3.BackColor = Color.GreenYellow;
                 }
             }
@@ -853,8 +1037,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnF4.BackColor = Color.GreenYellow;
                 }
             }
@@ -885,8 +1075,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnG1.BackColor = Color.GreenYellow;
                 }
             }
@@ -916,8 +1112,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnG2.BackColor = Color.GreenYellow;
                 }
             }
@@ -948,8 +1150,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnG3.BackColor = Color.GreenYellow;
                 }
             }
@@ -979,8 +1187,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnG4.BackColor = Color.GreenYellow;
                 }
             }
@@ -1011,8 +1225,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnH1.BackColor = Color.GreenYellow;
                 }
             }
@@ -1043,8 +1263,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnH2.BackColor = Color.GreenYellow;
                 }
             }
@@ -1075,8 +1301,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnH3.BackColor = Color.GreenYellow;
                 }
             }
@@ -1106,8 +1338,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnH4.BackColor = Color.GreenYellow;
                 }
             }
@@ -1138,8 +1376,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnI1.BackColor = Color.GreenYellow;
                 }
             }
@@ -1169,8 +1413,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnI2.BackColor = Color.GreenYellow;
                 }
             }
@@ -1201,8 +1451,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnI3.BackColor = Color.GreenYellow;
                 }
             }
@@ -1233,8 +1489,14 @@ namespace TicketBookingSystem.Web
                     dataRow["Fare"] = Request.QueryString["p"].ToString();
                     dataTable.Rows.Add(dataRow);
                     Session["Grid"] = dataTable;
-
-                    lblServiceCharge.Text = "100";
+                    if (gridTicket.Rows.Count < 3)
+                    {
+                        lblServiceCharge.Text = "50";
+                    }
+                    else
+                    {
+                        lblServiceCharge.Text = "100";
+                    }
                     btnI4.BackColor = Color.GreenYellow;
                 }
             }
@@ -1268,5 +1530,164 @@ namespace TicketBookingSystem.Web
                                                                             btnI3.BackColor =
                                                                                 btnI4.BackColor = Color.PowderBlue;
         }
+        public string RandomString(int size, bool lowerCase = false)
+        {
+            var builder = new StringBuilder(size);
+
+            // Unicode/ASCII Letters are divided into two blocks
+            // (Letters 65–90 / 97–122):
+            // The first group containing the uppercase letters and
+            // the second group containing the lowercase.  
+
+            // char is a single Unicode character  
+            char offset = lowerCase ? 'a' : 'A';
+            const int lettersOffset = 26; // A...Z or a..z: length=26  
+
+            for (var i = 0; i < size; i++)
+            {
+                var @char = (char)_random.Next(offset, offset + lettersOffset);
+                builder.Append(@char);
+            }
+
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+
+        protected void btnBuy_OnClick(object sender, EventArgs e)
+        {
+            if (gridTicket.Rows.Count < 0)
+            {
+                Response.Write("<script language=javascript>alert('Please choose your seat first');</script>");
+            }
+            else if (txtBkashNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Bkash no is required');</script>");
+                txtBkashNo.Focus();
+            }
+            else if (txtTransNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Transaction no is required');</script>");
+                txtTransNo.Focus();
+            }
+            else if (txtAmount.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Please enter transaction amount');</script>");
+                txtAmount.Focus();
+            }
+            else if (Convert.ToDouble(txtAmount.Text) < Convert.ToDouble(paymentPercentage.InnerText))
+            {
+                Response.Write("<script language=javascript>alert('Please pay full advance or your booking will be cancelled');</script>");
+                txtAmount.Focus();
+            }
+            else
+            {
+                bookTicketModal.CompanyId = Convert.ToInt32(Request.QueryString["cId"]);
+                bookTicketModal.BusId = Convert.ToInt32(Request.QueryString["bId"]);
+                bookTicketModal.FromLocation = Convert.ToInt32(Request.QueryString["from"]);
+                bookTicketModal.ToLocation = Convert.ToInt32(Request.QueryString["to"]);
+                bookTicketModal.JourneyDate = Request.QueryString["dt"];
+                bookTicketModal.BusType = Request.QueryString["t"];
+                bookTicketModal.SubTotal = Convert.ToDouble(lblSubTotal.Text);
+                bookTicketModal.ServiceCharge = Convert.ToDouble(lblServiceCharge.Text);
+                bookTicketModal.Advance = Convert.ToDouble(paymentPercentage.InnerText);
+                bookTicketModal.GrandTotal = Convert.ToDouble(lblGrandTotal.Text);
+                bookTicketModal.TokenId = lblRandom.Text;
+                bookTicketModal.BkashNo = txtBkashNo.Text;
+                bookTicketModal.TransactionNo = txtTransNo.Text;
+                bookTicketModal.Amount = txtAmount.Text;
+                bookTicketModal.BookTime = masterClass.Date();
+                bookTicketModal.Status = "A";
+                bool ans = false;
+                foreach (GridViewRow row in gridTicket.Rows)
+                {
+                    bookTicketModal.SeatName = ((Label)row.FindControl("lblSeat")).Text;
+                    bookTicketModal.Fare = Convert.ToInt32(((Label)row.FindControl("lblFare")).Text);
+                    ans = bookTicketGateway.BookTicket(bookTicketModal);
+                }
+                if (ans)
+                {
+                    Response.Redirect("/Web/BusTicket.aspx?b=1");
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Ticket booking failed');</script>");
+                }
+            }
+        }
+
+        private bool CheckSeatExist(string seatName)
+        {
+            bool a = false;
+            string ans = masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE CompanyId='{Request.QueryString["cId"].ToString()}' AND BusId='{Request.QueryString["bId"].ToString()}' AND FromLocation='{Request.QueryString["from"].ToString()}' AND JourneyDate='{Request.QueryString["dt"].ToString()}' AND SeatName='{seatName}' AND Status='A'");
+            if (ans != "")
+            {
+                a = true;
+            }
+            return a;
+        }
+        private void CheckSeat()
+        {
+            if (CheckSeatExist("A1"))
+            {
+                btnA1.Enabled = false;
+                btnA1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("A2"))
+            {
+                btnA2.Enabled = false;
+                btnA2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("A3"))
+            {
+                btnA3.Enabled = false;
+                btnA3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("A4"))
+            {
+                btnA4.Enabled = false;
+                btnA4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("B1"))
+            {
+                btnB1.Enabled = false;
+                btnB1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("B2"))
+            {
+                btnB2.Enabled = false;
+                btnB2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("B3"))
+            {
+                btnB3.Enabled = false;
+                btnB3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("B4"))
+            {
+                btnB4.Enabled = false;
+                btnB4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("C1"))
+            {
+                btnc1.Enabled = false;
+                btnc1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("C2"))
+            {
+                btnC2.Enabled = false;
+                btnC2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("C3"))
+            {
+                btnC3.Enabled = false;
+                btnC3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("C4"))
+            {
+                btnC4.Enabled = false;
+                btnC4.BackColor = Color.Purple;
+            }
+
+        }
+
     }
 }
