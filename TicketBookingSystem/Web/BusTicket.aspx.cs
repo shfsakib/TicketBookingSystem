@@ -22,7 +22,7 @@ namespace TicketBookingSystem.Web
             {
                 if (Request.QueryString["b"] == "1")
                 {
-                    Response.Write("<script language=javascript>alert('Ticket booked successfully.You can check it on book history. Please collect your ticket by pay full payment on journey date from starting point.');</script>");
+                    Response.Write("<script language=javascript>alert('Ticket booked successfully.You can print your ticket from print ticket. Please collect your ticket by pay full payment on journey date from starting point.');</script>");
                 }
                 txtDisFrom.Focus();
                 Load();

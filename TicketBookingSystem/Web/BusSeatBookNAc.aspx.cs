@@ -1606,6 +1606,9 @@ namespace TicketBookingSystem.Web
                 if (ans)
                 {
                     Response.Redirect("/Web/BusTicket.aspx?b=1");
+                    string email =
+                        masterClass.IsExist($"SELECT Email FROM Registration WHERE RegId='{masterClass.UserIdCookie()}'");
+                    masterClass.SendEmail("myticket995@gmail.com", email, "Token", "<h3>Hello Passenger,</h3><br/>Your Token id is: '<b>" + lblRandom.Text + "</b>'.Use this token to print your ticket.", "@myticket1");
                 }
                 else
                 {

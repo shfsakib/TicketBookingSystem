@@ -180,6 +180,7 @@
     <Content Include="ReferenceFile\Admin\vendor\wow\wow.min.js" />
     <Content Include="ReferenceFile\images\background.png" />
     <Content Include="ReferenceFile\images\DummyPic.png" />
+    <Content Include="ReferenceFile\logo.png" />
     <Content Include="ReferenceFile\Ownjs.js" />
     <Content Include="ReferenceFile\OwnStyle.css" />
     <Content Include="ReferenceFile\wheel.png" />
@@ -192,6 +193,7 @@
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
     <Content Include="Web\Login.aspx" />
+    <Content Include="Web\PrintTicket.aspx" />
     <Content Include="Web\SignAgent.aspx" />
     <Content Include="Web\SignPassenger.aspx" />
     <Content Include="Web\SignUpOption.aspx" />
@@ -539,6 +541,13 @@
     </Compile>
     <Compile Include="Web\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\PrintTicket.aspx.cs">
+      <DependentUpon>PrintTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\PrintTicket.aspx.designer.cs">
+      <DependentUpon>PrintTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\SignAgent.aspx.cs">
       <DependentUpon>SignAgent.aspx</DependentUpon>

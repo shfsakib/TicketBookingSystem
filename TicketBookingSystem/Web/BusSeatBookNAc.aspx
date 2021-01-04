@@ -273,7 +273,7 @@
              <div class="row">
                 <div class="col-12">
                     <span>Transaction no.</span>
-                    <asp:TextBox ID="txtTransNo" runat="server" placeholder="XXXXXXXXXX" class="form-control wd-100"></asp:TextBox>
+                    <asp:TextBox ID="txtTransNo" autocomplete="off" runat="server" placeholder="XXXXXXXXXX" class="form-control wd-100"></asp:TextBox>
                 </div>
             </div>
              <div class="row">

@@ -33,7 +33,6 @@ namespace TicketBookingSystem.Web
                 {
                     logA.Visible = btnSign.Visible= false;
                     userName.Visible = logP.Visible= menuDiv.Visible = true;
-                    
                 }
                 else
                 {

@@ -85,6 +85,33 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuDiv;
         
         /// <summary>
+        /// btnTicketList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnTicketList;
+        
+        /// <summary>
+        /// btnCancelReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCancelReq;
+        
+        /// <summary>
+        /// btnPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnPayment;
+        
+        /// <summary>
         /// logOut control.
         /// </summary>
         /// <remarks>

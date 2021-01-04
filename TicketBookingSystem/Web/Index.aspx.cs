@@ -25,25 +25,7 @@ namespace TicketBookingSystem.Web
                 {
                     Response.Write("<script language=javascript>alert('Signed up successfully.Thanks for sign up. :)');</script>");
                 }
-                if (cookieIndex != null)
-                {
-                    if (masterClass.TypeCookie() == "A")
-                    {
-                        Response.Redirect("/UI/AddBus.aspx");
-                    }
-                    else if (masterClass.TypeCookie() == "Ad")
-                    {
-                        Response.Redirect("/UI/PassengerList.aspx");
-                    }
-                    else if(masterClass.TypeCookie() == "P")
-                    {
-                        
-                    }
-                    else
-                    {
-                        Response.Redirect("/Web/Login.aspx");
-                    }
-                }
+                
             }
         }
     }
