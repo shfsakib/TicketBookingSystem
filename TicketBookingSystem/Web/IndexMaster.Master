@@ -87,8 +87,8 @@
                                         <img style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" src='<%=cookies["Picture"].ToString() %>' />
                                     </span></a>
                                 <div class="dropdown-menu userMenu" aria-labelledby="dropdownMenuLink" runat="server" id="menuDiv" Visible="False">
-                                    <a class="dropdown-item" runat="server" id="btnTicketList" href="#">Print Ticket</a>
-                                    <a class="dropdown-item" runat="server" id="btnCancelReq" href="#">Cancel Request</a>
+                                    <a class="dropdown-item" runat="server" id="btnTicketList" href="/Web/PrintTicket.aspx">Print Ticket</a>
+                                    <a class="dropdown-item" runat="server" id="btnCancelReq" href="/Web/BookingHistory.aspx">Booking History</a>
                                     <a class="dropdown-item" runat="server" id="btnPayment" href="#">Payment List</a>
                                     
                                     <a class="dropdown-item" runat="server" id="logOut" onserverclick="logOut_OnServerClick" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Log out</a>

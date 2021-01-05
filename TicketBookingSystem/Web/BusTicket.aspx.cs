@@ -160,8 +160,17 @@ FROM            BusInfo INNER JOIN
                 HiddenField companyId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
                 HiddenField busId = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
+                Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
                 string p = price.Text.Substring(1, price.Text.Length - 4);
-                Response.Write("<script>window.open ('/Web/BusSeatBookNAc.aspx?cId=" + companyId.Value + "&bId=" + busId.Value + "&from=" + ViewState["from"].ToString() + "&to=" + ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&t=" + ddlType.Text + "','_blank');</script>");
+                if (lblSeat.Text != "0")
+                {
+                    Response.Write("<script>window.open ('/Web/BusSeatBookNAc.aspx?cId=" + companyId.Value + "&bId=" + busId.Value + "&from=" + ViewState["from"].ToString() + "&to=" + ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&t=" + ddlType.Text + "','_blank');</script>");
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Seat not available');</script>");
+
+                }
 
                 // Response.Redirect("/Web/BusSeatBook.aspx?cId=" + companyId.Value + "&bId=" + busId.Value + "&from=" + ViewState["from"].ToString() + "&to=" + ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "");
             }
@@ -169,10 +178,10 @@ FROM            BusInfo INNER JOIN
 
         protected void gridBuses_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType==DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                int busId = Convert.ToInt32(((HiddenField) e.Row.FindControl("HiddenField2")).Value);
-                Label lblSeat = (Label) e.Row.FindControl("lblSeat");
+                int busId = Convert.ToInt32(((HiddenField)e.Row.FindControl("HiddenField2")).Value);
+                Label lblSeat = (Label)e.Row.FindControl("lblSeat");
                 string countSeat =
                     masterClass.IsExist(
                         $"SELECT COUNT(SeatName) FROM BookTicket WHERE BusId='{busId}' AND JourneyDate='{txtJourneyDate.Text}'");

@@ -37,7 +37,7 @@ namespace TicketBookingSystem.DAL.Gateway
                 if (connection.State != ConnectionState.Open)
                     connection.Open();
                 transaction = connection.BeginTransaction();
-                command = new SqlCommand("INSERT INTO BookTicket(CompanyId,BusId,FromLocation,ToLocation,JourneyDate,Fare,SeatName,BusType,SubTotal,ServiceCharge,Advance,GrandTotal,TokenId,BkashNo,TransactionNo,Amount,BookTime,Status) VALUES(@CompanyId,@BusId,@FromLocation,@ToLocation,@JourneyDate,@Fare,@SeatName,@BusType,@SubTotal,@ServiceCharge,@Advance,@GrandTotal,@TokenId,@BkashNo,@TransactionNo,@Amount,@BookTime,@Status)", connection);
+                command = new SqlCommand("INSERT INTO BookTicket(CompanyId,BusId,FromLocation,ToLocation,JourneyDate,Fare,SeatName,BusType,SubTotal,ServiceCharge,Advance,GrandTotal,TokenId,BkashNo,TransactionNo,Amount,BookTime,Status,UserId) VALUES(@CompanyId,@BusId,@FromLocation,@ToLocation,@JourneyDate,@Fare,@SeatName,@BusType,@SubTotal,@ServiceCharge,@Advance,@GrandTotal,@TokenId,@BkashNo,@TransactionNo,@Amount,@BookTime,@Status,@UserId)", connection);
                 command.Parameters.AddWithValue("@CompanyId", modal.CompanyId);
                 command.Parameters.AddWithValue("@BusId", modal.BusId);
                 command.Parameters.AddWithValue("@FromLocation", modal.FromLocation);
@@ -56,6 +56,7 @@ namespace TicketBookingSystem.DAL.Gateway
                 command.Parameters.AddWithValue("@Amount", modal.Amount);
                 command.Parameters.AddWithValue("@BookTime", modal.BookTime);
                 command.Parameters.AddWithValue("@Status", modal.Status);
+                command.Parameters.AddWithValue("@UserId", modal.UserId);
 
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();

@@ -72,7 +72,7 @@
                     <asp:Label ID="lblToken" runat="server" Text="TokenId"></asp:Label>
                 </div>
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Bus Coach: </span>
+                    <span class="font-weight-bold">Coach: </span>
                     <asp:Label ID="lblCompany" runat="server" Text="Coach"></asp:Label>
                 </div>
             </div>

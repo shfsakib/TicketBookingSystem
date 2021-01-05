@@ -186,9 +186,11 @@
     <Content Include="ReferenceFile\wheel.png" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AgencyList.aspx" />
+    <Content Include="UI\BusBookingList.aspx" />
     <Content Include="UI\BusList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="WebService.asmx" />
+    <Content Include="Web\BookingHistory.aspx" />
     <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
@@ -489,6 +491,13 @@
     <Compile Include="UI\AgencyList.aspx.designer.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\BusBookingList.aspx.cs">
+      <DependentUpon>BusBookingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BusBookingList.aspx.designer.cs">
+      <DependentUpon>BusBookingList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\BusList.aspx.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -506,6 +515,13 @@
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\BookingHistory.aspx.cs">
+      <DependentUpon>BookingHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\BookingHistory.aspx.designer.cs">
+      <DependentUpon>BookingHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\BusSeatBookNAc.aspx.cs">
       <DependentUpon>BusSeatBookNAc.aspx</DependentUpon>

@@ -72,7 +72,7 @@ FROM            BookTicket Inner JOIN
         private bool IsTokenExist()
         {
             bool a = false;
-            string token = masterClass.IsExist($"SELECT TokenId FROM BookTicket WHERE TokenId='{txtToken.Text}'");
+            string token = masterClass.IsExist($"SELECT TokenId FROM BookTicket WHERE TokenId='{txtToken.Text}' AND UserId='{masterClass.UserIdCookie()}'");
             if (token != "")
             {
                 ViewState["TokenId"] = token;

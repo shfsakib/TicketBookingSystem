@@ -1596,6 +1596,7 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.Amount = txtAmount.Text;
                 bookTicketModal.BookTime = masterClass.Date();
                 bookTicketModal.Status = "A";
+                bookTicketModal.UserId = masterClass.UserIdCookie();
                 bool ans = false;
                 foreach (GridViewRow row in gridTicket.Rows)
                 {
