@@ -1,31 +1,30 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AddBus.aspx.cs" Inherits="TicketBookingSystem.UI.AddBus" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" CodeBehind="AddLaunch.aspx.cs" EnableEventValidation="false" Inherits="TicketBookingSystem.UI.AddLaunch" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Add Bus</h2>
+        <h2>Add Launch</h2>
     </div>
     <div class="row">
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
-            <span>Bus Name</span>
-            <asp:TextBox ID="txtCoachName" class="form-control" placeholder="xyz" autocomplete="off" runat="server"></asp:TextBox>
+            <span>Launch Name</span>
+            <asp:TextBox ID="txtName" class="form-control" placeholder="xyz" autocomplete="off" runat="server"></asp:TextBox>
         </div>
         <div class="col-3"></div>
     </div>
     <div class="row">
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
-            <span>Bus No.</span>
-            <asp:TextBox ID="txtCoachNo" class="form-control" autocomplete="off" placeholder="XX-XXX" runat="server"></asp:TextBox>
+            <span>Launch No.</span>
+            <asp:TextBox ID="txtLaunchNo" class="form-control" autocomplete="off" placeholder="XXX-XXX" runat="server"></asp:TextBox>
         </div>
         <div class="col-3"></div>
     </div>
     <div class="row">
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
-            <span>Bus Type</span>
+            <span>Launch Type</span>
             <asp:DropDownList ID="ddlType" runat="server" class="form-control">
                 <asp:ListItem>Select</asp:ListItem>
                 <asp:ListItem>Ac</asp:ListItem>
@@ -89,6 +88,27 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
+            <span>Seat Type</span>
+            <asp:DropDownList ID="ddlSeatType" runat="server" class="form-control">
+                <asp:ListItem>Select</asp:ListItem>
+                <asp:ListItem>B Class</asp:ListItem>
+                <asp:ListItem>E Class</asp:ListItem>
+
+            </asp:DropDownList>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-12 col-lg-6">
+            <span>Seat Capacity</span>
+            <asp:TextBox ID="txtSeatCapa" class="form-control" TextMode="Number" min="50" runat="server"></asp:TextBox>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-12 col-lg-6">
             <span>Ticket Price</span>
             <asp:TextBox ID="txtTPrice" class="form-control" placeholder="BDT XXX" TextMode="Number" min="0" runat="server"></asp:TextBox>
         </div>
@@ -109,7 +129,7 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-12 col-lg-6 p-3">
-            <asp:Button ID="btnAdd" class="btn btn-primary wd-100" OnClick="btnAdd_OnClick"  runat="server" Text="Add Bus" />
+            <asp:Button ID="btnAdd" class="btn btn-primary wd-100" OnClick="btnAdd_OnClick"  runat="server" Text="Add Launch" />
         </div>
         <div class="col-3"></div>
     </div>

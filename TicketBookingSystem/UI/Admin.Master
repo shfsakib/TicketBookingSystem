@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs"  Inherits="TicketBookingSystem.UI.Admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="TicketBookingSystem.UI.Admin" %>
 
 <!DOCTYPE html>
 
@@ -77,6 +77,27 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-ship"></i>Launch Info</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/AddLaunch.aspx">Add Launch</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/LaunchList.aspx">Launch List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-book"></i>Booking List</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/BusBookingList.aspx">Bus Booking List</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -146,7 +167,7 @@
                                             </div>
                                             <div class="account-dropdown js-dropdown" style="min-width: 100px!important;">
                                                 <div class="account-dropdown__footer">
-                                                    <a href="#" runat="server" OnServerClick="OnServerClick">
+                                                    <a href="#" runat="server" onserverclick="OnServerClick">
                                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                                 </div>
                                             </div>
@@ -224,7 +245,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.min.js" integrity="sha512-zEQoqfKfcrv7/Yedd5AvIMN3Y+ecqNKJdDqDnBW2C7/TevxmW1myCKlSU2meW+bcF5m3OhpPL4lFsKVWjbyFGg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.all.min.js" integrity="sha512-8IAW5sOZRkubYGtDUS3aDaKdAmG0Hye5XnY/ZiJOCAmTsHGLP0GUUoCGHQjIpbUHAk4v6vnwCRGK2+gYsmQHeg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.css" integrity="sha512-i++eR2u4MtevO3tOPI55hNUccQVQ0+hf9cpevM2q/GmdM+UZMtzHn5pSxFmVuUK1kikm5qUiZB1ef6rWqLXb3Q==" crossorigin="anonymous" />
-    <%--select 2--%> 
+    <%--select 2--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
     <link href="../ReferenceFile/OwnStyle.css" rel="stylesheet" />
@@ -233,7 +254,7 @@
         $(function () {
             $(".select2").select2({
                 placeholder: "Select",
-               //allowClear: true,
+                //allowClear: true,
                 dropdownAutoWidth: true,
                 selectOnClose: true,
                 width: '100%',

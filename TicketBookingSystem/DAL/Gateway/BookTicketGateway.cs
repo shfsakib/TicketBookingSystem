@@ -37,15 +37,15 @@ namespace TicketBookingSystem.DAL.Gateway
                 if (connection.State != ConnectionState.Open)
                     connection.Open();
                 transaction = connection.BeginTransaction();
-                command = new SqlCommand("INSERT INTO BookTicket(CompanyId,BusId,FromLocation,ToLocation,JourneyDate,Fare,SeatName,BusType,SubTotal,ServiceCharge,Advance,GrandTotal,TokenId,BkashNo,TransactionNo,Amount,BookTime,Status,UserId) VALUES(@CompanyId,@BusId,@FromLocation,@ToLocation,@JourneyDate,@Fare,@SeatName,@BusType,@SubTotal,@ServiceCharge,@Advance,@GrandTotal,@TokenId,@BkashNo,@TransactionNo,@Amount,@BookTime,@Status,@UserId)", connection);
+                command = new SqlCommand("INSERT INTO BookTicket(CompanyId,CoachId,FromLocation,ToLocation,JourneyDate,Fare,SeatName,CoachType,SubTotal,ServiceCharge,Advance,GrandTotal,TokenId,BkashNo,TransactionNo,Amount,BookTime,Status,UserId) VALUES(@CompanyId,@CoachId,@FromLocation,@ToLocation,@JourneyDate,@Fare,@SeatName,@CoachType,@SubTotal,@ServiceCharge,@Advance,@GrandTotal,@TokenId,@BkashNo,@TransactionNo,@Amount,@BookTime,@Status,@UserId)", connection);
                 command.Parameters.AddWithValue("@CompanyId", modal.CompanyId);
-                command.Parameters.AddWithValue("@BusId", modal.BusId);
+                command.Parameters.AddWithValue("@CoachId", modal.CoachId);
                 command.Parameters.AddWithValue("@FromLocation", modal.FromLocation);
                 command.Parameters.AddWithValue("@ToLocation", modal.ToLocation);
                 command.Parameters.AddWithValue("@JourneyDate", modal.JourneyDate);
                 command.Parameters.AddWithValue("@Fare", modal.Fare);
                 command.Parameters.AddWithValue("@SeatName", modal.SeatName);
-                command.Parameters.AddWithValue("@BusType", modal.BusType);
+                command.Parameters.AddWithValue("@CoachType", modal.CoachType);
                 command.Parameters.AddWithValue("@SubTotal", modal.SubTotal);
                 command.Parameters.AddWithValue("@ServiceCharge", modal.ServiceCharge);
                 command.Parameters.AddWithValue("@Advance", modal.Advance);

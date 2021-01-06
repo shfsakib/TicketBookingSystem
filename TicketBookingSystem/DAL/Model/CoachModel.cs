@@ -5,22 +5,22 @@ using System.Web;
 
 namespace TicketBookingSystem.DAL.Model
 {
-    public class BusModel
+    public class CoachModel
     {
-        private static BusModel _instance;
-        public static BusModel GetInstance()
+        private static CoachModel _instance;
+        public static CoachModel GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new BusModel();
+                _instance = new CoachModel();
             }
             return _instance;
         }
 
-        public int BusId { get; set; }
-        public string BusName { get; set; }
-        public string BusType { get; set; }
-        public string BusNo { get; set; }
+        public int CoachId { get; set; }
+        public string CoachName { get; set; }
+        public string CoachType { get; set; }
+        public string CoachNo { get; set; }
         public int DistrictFrom { get; set; }
         public int DistrictTo { get; set; }
         public string StartingPoint { get; set; }
@@ -31,5 +31,8 @@ namespace TicketBookingSystem.DAL.Model
         public string Status { get; set; }
         public string CompanyId { get; set; }
         public string InTime { get; set; }
+        public string SeatType { get; set; }
+        public string CoachStatus { get; set; }
+        public string SeatCapacity { get; set; }
     }
 }

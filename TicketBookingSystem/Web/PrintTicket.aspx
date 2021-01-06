@@ -13,7 +13,7 @@
         <div class="col-lg-3"></div>
         <div class="col-12 col-lg-4">
             <span>Token Id</span>
-            <asp:TextBox ID="txtToken" autocomplete="off" placeholder="XXXXXXXX" class="form-control wd-100" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtToken" autocomplete="off" placeholder="XXXXXXXX" autofocus class="form-control wd-100" runat="server" style="text-transform:uppercase"></asp:TextBox>
         </div>
         <div class="col-12 col-lg-2">
             <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" runat="server" class="btn btn-success mt-4" Text="Find Ticket" />

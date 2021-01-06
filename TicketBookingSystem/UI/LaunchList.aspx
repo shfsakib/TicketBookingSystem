@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="BusList.aspx.cs" Inherits="TicketBookingSystem.UI.Bus_Info" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LaunchList.aspx.cs" Inherits="TicketBookingSystem.UI.LaunchList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Bus List</h2>
+        <h2>Launch List</h2>
     </div>
     <div class="row pt-4" style="z-index: 900;">
         <div class="col-4">
@@ -14,13 +14,13 @@
         </div>
 
         <div class="col-4">
-            <asp:TextBox ID="txtSearch" AutoPostBack="True" OnTextChanged="txtSearch_OnTextChangedChanged" class="form-control wd-100" placeholder="Search by bus name" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" AutoPostBack="True" OnTextChanged="txtSearch_OnTextChanged" class="form-control wd-100" placeholder="Search by bus name" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row p-4"></div>
     <div class="row">
         <div class="col-12 mt-2 table-responsive">
-            <asp:GridView ID="gridBus" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridBus_OnRowDataBound" OnPageIndexChanging="gridBus_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="15" runat="server">
+            <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridLaunch_OnRowDataBound" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="15" runat="server">
                 <Columns>
                     <asp:TemplateField HeaderText="Bus_Name">
                         <ItemTemplate>
@@ -68,6 +68,11 @@
                             <asp:Label ID="Label110" runat="server" Text='<%#Eval("ArrivalTime")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                       <asp:TemplateField HeaderText="Seat_Type">
+                        <ItemTemplate>
+                            <asp:Label ID="Label190" runat="server" Text='<%#Eval("SeatType")%>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Ticket_Price">
                         <ItemTemplate>
                             <asp:Label ID="Label101" runat="server" Text='<%#Eval("TicketPrice")%>'></asp:Label>
@@ -89,7 +94,7 @@
             $("#<%=txtSearch.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: "/WebService.asmx/GetBus",
+                        url: "/WebService.asmx/GetLaunch",
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",

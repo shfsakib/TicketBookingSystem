@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web/IndexMaster.Master" AutoEventWireup="true" CodeBehind="BusTicket.aspx.cs" Inherits="TicketBookingSystem.Web.BusTicket" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web/IndexMaster.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LaunchTicket.aspx.cs" Inherits="TicketBookingSystem.Web.LaunchTicket" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -16,19 +15,12 @@
                             <i class="fas fa-map-marker-alt fa-lg txtIcon"></i>
                             <asp:TextBox ID="txtDisTo"  AutoPostBack="True" OnTextChanged="txtDisTo_OnTextChanged"  class="form-control wd-100 textbox" Style="height: 60px;text-transform:uppercase" placeholder="TO" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-6 col-lg-2 mp mt-1 mt-lg-0">
+                        <div class="col-12 col-lg-3 mp mt-1 mt-lg-0">
                             <span class="spanDate">Journey Date</span>
                             <asp:TextBox ID="txtJourneyDate" class="form-control wd-100 textbox" placeholder="Journey date" Style="height: 60px;"  TextMode="Date" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-6 col-lg-2  mt-1 mt-lg-0">
-                            <span class="spanDate">Bus Type</span>
-                            <asp:DropDownList ID="ddlType" class="form-control wd-100 textbox" AutoPostBack="True" OnSelectedIndexChanged="ddlType_OnSelectedIndexChanged" Style="height: 60px;" runat="server">
-                                <asp:ListItem>Non Ac</asp:ListItem>
-                                <asp:ListItem>Ac</asp:ListItem>
-                            </asp:DropDownList>
-                             </div>
-                        <div class="col-12 col-lg-2 mt-1 mt-lg-0">
-                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-bus fa-lg"></i>&nbsp;&nbsp;Search Buses</asp:LinkButton>
+                        <div class="col-12 col-lg-3  mt-1 mt-lg-0">
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-bus fa-lg"></i>&nbsp;&nbsp;Search Launches</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -37,7 +29,7 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-             <asp:GridView ID="gridBuses" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBuses_OnPageIndexChanging" OnRowDataBound="gridBuses_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="30" runat="server">
+             <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -47,6 +39,8 @@
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" style="font-size: 18px;font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
                                    <span class="d-block"><asp:Label ID="Label2"  runat="server"  style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" style="font-size: 14px;font-weight: bold" runat="server" Text='<%#Eval("CoachType") %>'></asp:Label></span>
+                                   <span class="d-block"><asp:Label ID="Label3"  runat="server"  style="font-size: 14px; font-weight: 600;" Text='<%#Eval("SeatType") %>'></asp:Label></span>
+                                    
                                     <span class="d-inline-block">Starting Point: </span><asp:Label ID="Label5" class="d-inline-block" style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("StartingPoint") %>'></asp:Label><br/>
                                     <span class="d-inline-block">End Point: </span><asp:Label ID="Label4" class="d-inline-block" style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("EndPoint") %>'></asp:Label>
                                 
@@ -59,15 +53,15 @@
                                     <span>Arrival Time</span><br class="d-none d-lg-block"/>
                                     <asp:Label ID="Label7" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>                                    
                                 </div>
-                                <div class="col-12 col-lg-2 text-lg-center">
+                                  <div class="col-12 col-lg-1 text-lg-center">
                                     <span>Seat Capacity</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="lblSeat" class="d-inline-block" runat="server" Text="36"></asp:Label>                                    
+                                    <asp:Label ID="Label8" class="d-inline-block" runat="server" Text='<%#Eval("SeatCapacity") %>'></asp:Label>                                    
                                 </div>
-                                <div class="col-12 col-lg-1 text-lg-center">
+                                <div class="col-12 col-lg-2 text-lg-center">
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    
                                 </div>
                                  <div class="col-12 col-lg-2 text-lg-center">
-                                     <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>                            
+                                     <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>                            
                                 </div>
                             </div>
 

@@ -25,7 +25,7 @@
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
                                     <span class="d-block">
-                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("BusName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("BusType") %>'></asp:Label></span>
+                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("CoachType") %>'></asp:Label></span>
                                     <span class="d-inline-block">Travel Location: </span>
                                     <asp:Label ID="Label5" class="d-inline-block" Style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#"From "+Eval("FromLocation")+" to " +Eval("ToLocation") %>'></asp:Label><br />
 

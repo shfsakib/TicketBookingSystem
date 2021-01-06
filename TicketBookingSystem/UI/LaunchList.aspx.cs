@@ -10,13 +10,13 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class Bus_Info : System.Web.UI.Page
+    public partial class LaunchList : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private CoachModel coachModel;
         private CoachGateway coachGateway;
 
-        public Bus_Info()
+        public LaunchList()
         {
             masterClass = MasterClass.GetInstance();
             coachModel = CoachModel.GetInstance();
@@ -31,19 +31,19 @@ namespace TicketBookingSystem.UI
         }
         private void Load()
         {
-            masterClass.LoadGrid(gridBus, $@"
-SELECT   DISTINCT     CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
-                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, A.Name AS DistrictFrom,B.Name AS DistrictTo
+            masterClass.LoadGrid(gridLaunch, $@"SELECT   DISTINCT     CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+                         CoachInfo.Status, CoachInfo.CompanyId,CoachInfo.SeatType, CoachInfo.InTime, A.Name AS DistrictFrom,B.Name AS DistrictTo
 FROM            CoachInfo INNER JOIN
                          District A ON A.Id=CoachInfo.DistrictFrom INNER JOIN 
-						 District B ON B.Id=CoachInfo.DistrictTo WHERE CoachInfo.Status='{ddlStatus.SelectedValue}' AND CoachStatus='Bus' ORDER BY CoachInfo.CoachId DESC");
+						 District B ON B.Id=CoachInfo.DistrictTo WHERE CoachInfo.Status='{ddlStatus.SelectedValue}'  AND CoachStatus='Launch' ORDER BY CoachInfo.CoachId DESC");
         }
         protected void ddlStatus_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Load();
+
         }
 
-        protected void txtSearch_OnTextChangedChanged(object sender, EventArgs e)
+        protected void txtSearch_OnTextChanged(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
             {
@@ -51,16 +51,16 @@ FROM            CoachInfo INNER JOIN
             }
             else
             {
-                masterClass.LoadGrid(gridBus, $@"
+                masterClass.LoadGrid(gridLaunch, $@"
 SELECT   DISTINCT     CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
                          CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, A.Name AS DistrictFrom,B.Name AS DistrictTo
 FROM            CoachInfo INNER JOIN
                          District A ON A.Id=CoachInfo.DistrictFrom INNER JOIN 
-						 District B ON B.Id=CoachInfo.DistrictTo WHERE CoachInfo.Status='{ddlStatus.SelectedValue}'  AND CoachStatus='Bus' AND CoachInfo.CoachName='{txtSearch.Text}' ORDER BY CoachInfo.CoachId DESC");
+						 District B ON B.Id=CoachInfo.DistrictTo WHERE CoachInfo.Status='{ddlStatus.SelectedValue}'  AND CoachStatus='Launch' AND CoachInfo.CoachName='{txtSearch.Text}' ORDER BY CoachInfo.CoachId DESC");
             }
         }
 
-        protected void gridBus_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        protected void gridLaunch_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -80,9 +80,9 @@ FROM            CoachInfo INNER JOIN
             }
         }
 
-        protected void gridBus_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gridLaunch_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gridBus.PageIndex = e.NewPageIndex;
+            gridLaunch.PageIndex = e.NewPageIndex;
             Load();
         }
 
@@ -96,12 +96,30 @@ FROM            CoachInfo INNER JOIN
             bool a = coachGateway.UpdateStatus(coachModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Bus removed successfully');</script>");
+                Response.Write("<script language=javascript>alert('Launch removed successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Bus removed failed');</script>");
+                Response.Write("<script language=javascript>alert('Launch removed failed');</script>");
+            }
+        }
+
+        protected void lnkInactive_OnClick(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+            HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
+            coachModel.CoachId = Convert.ToInt32(CoachId.Value);
+            coachModel.Status = "I";
+            bool a = coachGateway.UpdateStatus(coachModel);
+            if (a)
+            {
+                Response.Write("<script language=javascript>alert('Launch inactivate successfully');</script>");
+                Load();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Launch inactive failed');</script>");
             }
         }
 
@@ -115,32 +133,13 @@ FROM            CoachInfo INNER JOIN
             bool a = coachGateway.UpdateStatus(coachModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Bus activate successfully');</script>");
+                Response.Write("<script language=javascript>alert('Launch activate successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Bus active failed');</script>");
+                Response.Write("<script language=javascript>alert('Launch active failed');</script>");
             }
-        }
-
-        protected void lnkInactive_OnClick(object sender, EventArgs e)
-        {
-            LinkButton linkButton = (LinkButton)sender;
-            HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
-            coachModel.CoachId = Convert.ToInt32(CoachId.Value);
-            coachModel.Status = "I";
-            bool a = coachGateway.UpdateStatus(coachModel);
-            if (a)
-            {
-                Response.Write("<script language=javascript>alert('Bus inactivate successfully');</script>");
-                Load();
-            }
-            else
-            {
-                Response.Write("<script language=javascript>alert('Bus inactive failed');</script>");
-            }
-            
         }
     }
 }

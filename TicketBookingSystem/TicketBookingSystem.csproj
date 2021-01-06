@@ -185,15 +185,18 @@
     <Content Include="ReferenceFile\OwnStyle.css" />
     <Content Include="ReferenceFile\wheel.png" />
     <Content Include="UI\AddBus.aspx" />
+    <Content Include="UI\AddLaunch.aspx" />
     <Content Include="UI\AgencyList.aspx" />
     <Content Include="UI\BusBookingList.aspx" />
     <Content Include="UI\BusList.aspx" />
+    <Content Include="UI\LaunchList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="WebService.asmx" />
     <Content Include="Web\BookingHistory.aspx" />
     <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
+    <Content Include="Web\LaunchTicket.aspx" />
     <Content Include="Web\Login.aspx" />
     <Content Include="Web\PrintTicket.aspx" />
     <Content Include="Web\SignAgent.aspx" />
@@ -464,10 +467,10 @@
   <ItemGroup>
     <Compile Include="AutoComplete.cs" />
     <Compile Include="DAL\Gateway\BookTicketGateway.cs" />
-    <Compile Include="DAL\Gateway\BusGateway.cs" />
+    <Compile Include="DAL\Gateway\CoachGateway.cs" />
     <Compile Include="DAL\Gateway\RegistrationGateway.cs" />
     <Compile Include="DAL\Model\BookTicketModal.cs" />
-    <Compile Include="DAL\Model\BusModel.cs" />
+    <Compile Include="DAL\Model\CoachModel.cs" />
     <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\AddBus.aspx.cs">
@@ -476,6 +479,13 @@
     </Compile>
     <Compile Include="UI\AddBus.aspx.designer.cs">
       <DependentUpon>AddBus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AddLaunch.aspx.cs">
+      <DependentUpon>AddLaunch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AddLaunch.aspx.designer.cs">
+      <DependentUpon>AddLaunch.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -504,6 +514,13 @@
     </Compile>
     <Compile Include="UI\BusList.aspx.designer.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LaunchList.aspx.cs">
+      <DependentUpon>LaunchList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\LaunchList.aspx.designer.cs">
+      <DependentUpon>LaunchList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PassengerList.aspx.cs">
       <DependentUpon>PassengerList.aspx</DependentUpon>
@@ -550,6 +567,13 @@
     </Compile>
     <Compile Include="Web\IndexMaster.Master.designer.cs">
       <DependentUpon>IndexMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Web\LaunchTicket.aspx.cs">
+      <DependentUpon>LaunchTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\LaunchTicket.aspx.designer.cs">
+      <DependentUpon>LaunchTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

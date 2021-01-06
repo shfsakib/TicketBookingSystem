@@ -10,25 +10,25 @@
 namespace TicketBookingSystem.UI {
     
     
-    public partial class AddBus {
+    public partial class AddLaunch {
         
         /// <summary>
-        /// txtCoachName control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCoachName;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtCoachNo control.
+        /// txtLaunchNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCoachNo;
+        protected global::System.Web.UI.WebControls.TextBox txtLaunchNo;
         
         /// <summary>
         /// ddlType control.
@@ -92,6 +92,24 @@ namespace TicketBookingSystem.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtArrivalTime;
+        
+        /// <summary>
+        /// ddlSeatType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSeatType;
+        
+        /// <summary>
+        /// txtSeatCapa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSeatCapa;
         
         /// <summary>
         /// txtTPrice control.

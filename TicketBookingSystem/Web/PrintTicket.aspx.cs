@@ -38,15 +38,15 @@ FROM            BookTicket Inner JOIN
             lblCompany.Text = masterClass.IsExist($"SELECT CompanyName FROM Registration WHERE RegId='{ViewState["CompanyId"].ToString()}'");
             lblBookTime.Text = masterClass.IsExist($"SELECT BookTime FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
             lblJourney.Text = masterClass.IsExist($"SELECT JourneyDate FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
-           string busId= masterClass.IsExist($"SELECT BusId FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
+           string CoachId= masterClass.IsExist($"SELECT CoachId FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
             DateTime date=new DateTime();
-            date = Convert.ToDateTime(masterClass.IsExist($"SELECT DepartureTime FROM BusInfo WHERE BusId='{busId}'"));
+            date = Convert.ToDateTime(masterClass.IsExist($"SELECT DepartureTime FROM CoachInfo WHERE CoachId='{CoachId}'"));
             lblDeparture.Text= date.ToString("hh:mm tt");
             lblSeat.Text =
                 masterClass.IsExist(
                     $"SELECT COUNT(SeatName) FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
-            lblStart.Text = masterClass.IsExist($"SELECT StartingPoint FROM BusInfo WHERE BusId='{busId}'");
-            lblEnd.Text = masterClass.IsExist($"SELECT EndPoint FROM BusInfo WHERE BusId='{busId}'");
+            lblStart.Text = masterClass.IsExist($"SELECT StartingPoint FROM CoachInfo WHERE CoachId='{CoachId}'");
+            lblEnd.Text = masterClass.IsExist($"SELECT EndPoint FROM CoachInfo WHERE CoachId='{CoachId}'");
             lblName.Text = masterClass.NameCookie();
             lblEmail.Text = masterClass.EmailCookie();
             lblSeatFare.Text= masterClass.IsExist(

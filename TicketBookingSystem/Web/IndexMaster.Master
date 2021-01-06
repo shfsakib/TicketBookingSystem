@@ -51,7 +51,7 @@
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link" href="/Web/BusTicket.aspx" id="bus">🚎&nbsp;Bus</a>
                             </li>
-                            <li class="nav-item dropdown"><a class="nav-link" href="#" id="launch">⛴&nbsp;Launch</a>
+                            <li class="nav-item dropdown"><a class="nav-link" href="/Web/LaunchTicket.aspx" id="launch">⛴&nbsp;Launch</a>
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link" href="#" id="air">🛫&nbsp;Air</a>
                             </li>

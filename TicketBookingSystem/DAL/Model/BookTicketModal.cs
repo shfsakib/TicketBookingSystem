@@ -17,15 +17,15 @@ namespace TicketBookingSystem.DAL.Model
             return _instance;
         }
 
-        public int BookBusId { get; set; }
+        public int BookId { get; set; }
         public int CompanyId { get; set; }
-        public int BusId { get; set; }
+        public int CoachId { get; set; }
         public int FromLocation { get; set; }
         public int ToLocation { get; set; }
         public string JourneyDate { get; set; }
         public double Fare { get; set; }
         public string SeatName { get; set; }
-        public string BusType { get; set; }
+        public string CoachType { get; set; }
         public double SubTotal { get; set; }
         public double ServiceCharge { get; set; }
         public double Advance { get; set; }

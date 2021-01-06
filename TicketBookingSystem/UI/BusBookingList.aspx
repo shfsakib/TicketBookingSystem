@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Bus List</h2>
+        <h2>Bus Booking List</h2>
     </div>
     <div class="row">
         <div class="col-12 table-responsive p-3">
@@ -18,7 +18,7 @@
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
                                     <asp:Label ID="Label11" class="d-block" Style="font-size: 16px; " runat="server" Text='<%#Eval("Email") %>'></asp:Label>
                                     <span class="d-block">
-                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("BusName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("BusType") %>'></asp:Label></span>
+                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("CoachType") %>'></asp:Label></span>
                              <asp:Label ID="Label5" class="d-inline-block" Style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#"From "+Eval("FromLocation")+" to " +Eval("ToLocation") %>'></asp:Label><br />
 
                                 </div>

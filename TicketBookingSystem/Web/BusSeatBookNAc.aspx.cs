@@ -1581,11 +1581,11 @@ namespace TicketBookingSystem.Web
             else
             {
                 bookTicketModal.CompanyId = Convert.ToInt32(Request.QueryString["cId"]);
-                bookTicketModal.BusId = Convert.ToInt32(Request.QueryString["bId"]);
+                bookTicketModal.CoachId = Convert.ToInt32(Request.QueryString["bId"]);
                 bookTicketModal.FromLocation = Convert.ToInt32(Request.QueryString["from"]);
                 bookTicketModal.ToLocation = Convert.ToInt32(Request.QueryString["to"]);
                 bookTicketModal.JourneyDate = Request.QueryString["dt"];
-                bookTicketModal.BusType = Request.QueryString["t"];
+                bookTicketModal.CoachType = Request.QueryString["t"];
                 bookTicketModal.SubTotal = Convert.ToDouble(lblSubTotal.Text);
                 bookTicketModal.ServiceCharge = Convert.ToDouble(lblServiceCharge.Text);
                 bookTicketModal.Advance = Convert.ToDouble(paymentPercentage.InnerText);
@@ -1606,10 +1606,14 @@ namespace TicketBookingSystem.Web
                 }
                 if (ans)
                 {
-                    Response.Redirect("/Web/BusTicket.aspx?b=1");
+
                     string email =
                         masterClass.IsExist($"SELECT Email FROM Registration WHERE RegId='{masterClass.UserIdCookie()}'");
-                    masterClass.SendEmail("myticket995@gmail.com", email, "Token", "<h3>Hello Passenger,</h3><br/>Your Token id is: '<b>" + lblRandom.Text + "</b>'.Use this token to print your ticket.", "@myticket1");
+                    bool a = masterClass.SendEmail("myticket995@gmail.com", email, "Token", "<h3>Hello Passenger,</h3><br/>Your Token id is: '<b>" + lblRandom.Text + "</b>'.Use this token to print your ticket.", "@myticket1");
+                    if (a)
+                    {
+                        Response.Redirect("/Web/BusTicket.aspx?b=1");
+                    }
                 }
                 else
                 {
@@ -1621,7 +1625,7 @@ namespace TicketBookingSystem.Web
         private bool CheckSeatExist(string seatName)
         {
             bool a = false;
-            string ans = masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE CompanyId='{Request.QueryString["cId"].ToString()}' AND BusId='{Request.QueryString["bId"].ToString()}' AND FromLocation='{Request.QueryString["from"].ToString()}' AND JourneyDate='{Request.QueryString["dt"].ToString()}' AND SeatName='{seatName}' AND Status='A'");
+            string ans = masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE CompanyId='{Request.QueryString["cId"].ToString()}' AND CoachId='{Request.QueryString["bId"].ToString()}' AND FromLocation='{Request.QueryString["from"].ToString()}' AND JourneyDate='{Request.QueryString["dt"].ToString()}' AND SeatName='{seatName}' AND Status='A'");
             if (ans != "")
             {
                 a = true;
