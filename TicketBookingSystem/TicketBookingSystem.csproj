@@ -183,6 +183,7 @@
     <Content Include="ReferenceFile\logo.png" />
     <Content Include="ReferenceFile\Ownjs.js" />
     <Content Include="ReferenceFile\OwnStyle.css" />
+    <Content Include="ReferenceFile\select2.css" />
     <Content Include="ReferenceFile\wheel.png" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AddLaunch.aspx" />
@@ -196,6 +197,7 @@
     <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\Index.aspx" />
+    <Content Include="Web\LaunchBook.aspx" />
     <Content Include="Web\LaunchTicket.aspx" />
     <Content Include="Web\Login.aspx" />
     <Content Include="Web\PrintTicket.aspx" />
@@ -567,6 +569,13 @@
     </Compile>
     <Compile Include="Web\IndexMaster.Master.designer.cs">
       <DependentUpon>IndexMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Web\LaunchBook.aspx.cs">
+      <DependentUpon>LaunchBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\LaunchBook.aspx.designer.cs">
+      <DependentUpon>LaunchBook.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\LaunchTicket.aspx.cs">
       <DependentUpon>LaunchTicket.aspx</DependentUpon>

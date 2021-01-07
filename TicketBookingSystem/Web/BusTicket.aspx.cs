@@ -31,17 +31,17 @@ namespace TicketBookingSystem.Web
 
         private void Load()
         {
-//            if (txtDisFrom.Text != "" && txtDisTo.Text != "" || txtJourneyDate.Text != "")
-//            {
-//                masterClass.LoadGrid(gridBuses, @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
-//                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
-//FROM            CoachInfo INNER JOIN
-//                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE CoachInfo.CoachType='" + ddlType.Text + "' AND CoachStatus='Bus' ORDER By CompanyId ASC");
-//            }
-//            else
-//            {
-                gridBuses.DataSource = null;
-                gridBuses.DataBind();
+            //            if (txtDisFrom.Text != "" && txtDisTo.Text != "" || txtJourneyDate.Text != "")
+            //            {
+            //                masterClass.LoadGrid(gridBuses, @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+            //                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
+            //FROM            CoachInfo INNER JOIN
+            //                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE CoachInfo.CoachType='" + ddlType.Text + "' AND CoachStatus='Bus' ORDER By CompanyId ASC");
+            //            }
+            //            else
+            //            {
+            gridBuses.DataSource = null;
+            gridBuses.DataBind();
             //}
         }
         protected void txtDisFrom_OnTextChanged(object sender, EventArgs e)
@@ -168,8 +168,7 @@ FROM            CoachInfo INNER JOIN
                 }
                 else
                 {
-                    Response.Write("<script language=javascript>alert('Seat not available');</script>");
-
+                    linkButton.Enabled = false;
                 }
 
                 // Response.Redirect("/Web/BusSeatBook.aspx?cId=" + companyId.Value + "&bId=" + CoachId.Value + "&from=" + ViewState["from"].ToString() + "&to=" + ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "");

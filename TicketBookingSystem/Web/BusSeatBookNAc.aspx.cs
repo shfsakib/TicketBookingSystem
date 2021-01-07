@@ -131,7 +131,7 @@ namespace TicketBookingSystem.Web
             if (gridTicket.Rows.Count >= 0)
             {
                 paymentPercentage.InnerText = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
-
+                txtAmount.Text= (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
             }
         }
 

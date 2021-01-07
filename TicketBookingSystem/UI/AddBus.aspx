@@ -26,7 +26,7 @@
         <div class="col-3"></div>
         <div class="col-12 col-lg-6">
             <span>Bus Type</span>
-            <asp:DropDownList ID="ddlType" runat="server" class="form-control">
+            <asp:DropDownList ID="ddlType" runat="server" class="form-control wd-100">
                 <asp:ListItem>Select</asp:ListItem>
                 <asp:ListItem>Ac</asp:ListItem>
                 <asp:ListItem>Non Ac</asp:ListItem>

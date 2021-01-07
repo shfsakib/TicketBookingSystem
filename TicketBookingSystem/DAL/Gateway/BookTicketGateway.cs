@@ -65,7 +65,7 @@ namespace TicketBookingSystem.DAL.Gateway
                 if (connection.State != ConnectionState.Closed)
                     connection.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 transaction.Rollback();
             }

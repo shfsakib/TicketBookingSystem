@@ -133,11 +133,19 @@ FROM            CoachInfo INNER JOIN
                 HiddenField companyId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
                 HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
+                Label lblType = (Label)linkButton.Parent.FindControl("lblType");
                 Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
                 string p = price.Text.Substring(1, price.Text.Length - 4);
-                //Response.Write("<script>window.open ('/Web/BusSeatBookNAc.aspx?cId=" + companyId.Value + "&LId=" +
-                //                   CoachId.Value + "&from=" + ViewState["from"].ToString() + "&to=" +
-                //                   ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "','_blank');</script>");
+                if (lblSeat.Text != "0")
+                {
+                    Response.Write("<script>window.open ('/Web/LaunchBook.aspx?cId=" + companyId.Value + "&LId=" +
+                                       CoachId.Value + "&from=" + ViewState["from"].ToString() + "&to=" +
+                                       ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&S="+ lblSeat.Text + "&t="+ lblType.Text + "','_blank');</script>");
+                }
+                else
+                {
+                    linkButton.Enabled = false;
+                }
             }
         }
 
@@ -147,5 +155,18 @@ FROM            CoachInfo INNER JOIN
             Load();
         }
 
+        protected void gridLaunch_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int CoachId = Convert.ToInt32(((HiddenField)e.Row.FindControl("HiddenField2")).Value);
+                Label lblSeat = (Label)e.Row.FindControl("lblSeat");
+                string countSeat =
+                    masterClass.IsExist(
+                        $"SELECT Count(Fare) FROM BookTicket WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
+                lblSeat.Text = totalSeat.ToString();
+            }
+        }
     }
 }

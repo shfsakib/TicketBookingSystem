@@ -29,7 +29,7 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-             <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
+             <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" OnRowDataBound="gridLaunch_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -47,18 +47,18 @@
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Departure Time</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label6" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("DepartureTime").ToString())%>'></asp:Label>                                    
+                                    <asp:Label ID="Label6" class="d-inline-block font-weight-bold" runat="server" Text='<%#TimeC(Eval("DepartureTime").ToString())%>'></asp:Label>                                    
                                 </div>
                                  <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Arrival Time</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label7" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>                                    
+                                    <asp:Label ID="Label7" class="d-inline-block  font-weight-bold" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>                                    
                                 </div>
                                   <div class="col-12 col-lg-1 text-lg-center">
                                     <span>Seat Capacity</span><br class="d-none d-lg-block"/>
-                                    <asp:Label ID="Label8" class="d-inline-block" runat="server" Text='<%#Eval("SeatCapacity") %>'></asp:Label>                                    
+                                    <asp:Label ID="lblSeat" class="d-inline-block  font-weight-bold" runat="server" Text='<%#Eval("SeatCapacity") %>'></asp:Label>                                    
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    
+                                    <asp:Label ID="lblPrice" class="d-inline-block pt-2 mt-4" runat="server" style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>                                    
                                 </div>
                                  <div class="col-12 col-lg-2 text-lg-center">
                                      <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>                            
