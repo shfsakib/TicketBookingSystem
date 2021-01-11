@@ -42,9 +42,18 @@ FROM            BookTicket Inner JOIN
             DateTime date=new DateTime();
             date = Convert.ToDateTime(masterClass.IsExist($"SELECT DepartureTime FROM CoachInfo WHERE CoachId='{CoachId}'"));
             lblDeparture.Text= date.ToString("hh:mm tt");
-            lblSeat.Text =
+            string type= masterClass.IsExist($"SELECT CoachStatus FROM CoachInfo WHERE CoachId='{CoachId}'");
+            if (type=="Bus")
+            {
+                lblSeat.Text =
                 masterClass.IsExist(
                     $"SELECT COUNT(SeatName) FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
+            }
+            else if(type== "Launch")
+            {
+                lblSeat.Text =masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
+
+            }
             lblStart.Text = masterClass.IsExist($"SELECT StartingPoint FROM CoachInfo WHERE CoachId='{CoachId}'");
             lblEnd.Text = masterClass.IsExist($"SELECT EndPoint FROM CoachInfo WHERE CoachId='{CoachId}'");
             lblName.Text = masterClass.NameCookie();

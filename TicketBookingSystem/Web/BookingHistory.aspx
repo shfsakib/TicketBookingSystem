@@ -21,6 +21,8 @@
                         <ItemTemplate>
                             <asp:HiddenField ID="HiddenField2" runat="server" Value='<%#Eval("TokenId")%>' />
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("CompanyId")%>' />
+                            <asp:HiddenField ID="HiddenField3" runat="server" Value='<%#Eval("Status")%>' />
+
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
@@ -65,6 +67,7 @@
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" Style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"Total: ৳"+SubValue(Eval("GrandTotal").ToString())%>'></asp:Label>
+                                    <asp:Label ID="lblStatus" class="d-block" style="font-size: 18px; font-weight: bold;" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                         </ItemTemplate>

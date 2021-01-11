@@ -94,7 +94,10 @@
                                     <i class="fas fa-book"></i>Booking List</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="/UI/BusBookingList.aspx">Bus Booking List</a>
+                                        <a href="/UI/BookedBusList.aspx">Bus Booking List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/LaunchBookingList.aspx">Launch Booking List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -154,7 +157,10 @@
                                     <i class="fas fa-book"></i>Booking List</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="/UI/BusBookingList.aspx">Bus Booking List</a>
+                                        <a href="/UI/BookedBusList.aspx">Bus Booking List</a>
+                                    </li>
+                                     <li>
+                                        <a href="/UI/LaunchBookingList.aspx">Launch Booking List</a>
                                     </li>
                                 </ul>
                             </li>

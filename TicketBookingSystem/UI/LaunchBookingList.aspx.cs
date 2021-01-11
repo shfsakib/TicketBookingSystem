@@ -10,13 +10,12 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class BusBookingList : System.Web.UI.Page
+    public partial class LaunchBookingList : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private BookTicketModal bookTicketModal;
         private BookTicketGateway bookTicketGateway;
-
-        public BusBookingList()
+        public LaunchBookingList()
         {
             masterClass = MasterClass.GetInstance();
             bookTicketModal = BookTicketModal.GetInstance();
@@ -27,18 +26,19 @@ namespace TicketBookingSystem.UI
             if (!IsPostBack)
             {
                 Load();
+
             }
         }
         private void Load()
         {
-            masterClass.LoadGrid(gridBooking, @"SELECT    DISTINCT  BookTicket.UserId,BookTicket.CompanyId, BookTicket.CoachId,  BookTicket.JourneyDate, BookTicket.Fare, BookTicket.CoachType, BookTicket.SubTotal, 
+            masterClass.LoadGrid(gridBooking, @"SELECT    DISTINCT  BookTicket.UserId,BookTicket.CompanyId, BookTicket.CoachId,  BookTicket.JourneyDate, BookTicket.Fare,BookTicket.SeatName, BookTicket.CoachType, BookTicket.SubTotal, 
                          BookTicket.ServiceCharge, BookTicket.Advance, BookTicket.GrandTotal, BookTicket.TokenId, BookTicket.BkashNo, BookTicket.TransactionNo, BookTicket.Amount, BookTicket.BookTime, BookTicket.Status, 
-                         Registration.Name,Registration.Email, CoachInfo.CoachName,CoachInfo.CoachStatus, A.Name FromLocation, B.Name AS ToLocation, CoachInfo.DepartureTime,(SELECT COUNT(SeatName) Seat FROM BookTicket WHERE TokenId=BookTicket.TokenId) Seat
+                         Registration.Name,Registration.Email, CoachInfo.CoachName,CoachInfo.CoachStatus, A.Name FromLocation, B.Name AS ToLocation, CoachInfo.DepartureTime
 FROM    BookTicket   INNER JOIN  Registration ON
  BookTicket.UserId=Registration.RegId  INNER JOIN 
   District A ON A.Id=BookTicket.FromLocation INNER JOIN
   District B ON B.Id=BookTicket.ToLocation INNER JOIN
-                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId WHERE BookTicket.CompanyId='" + masterClass.UserIdCookie() + "' AND CoachInfo.CoachStatus='Bus'  ORDER BY BookTicket.BookTime DESC");
+                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId WHERE BookTicket.CompanyId='" + masterClass.UserIdCookie() + "' AND CoachInfo.CoachStatus='Launch' ORDER BY BookTicket.BookTime DESC");
         }
         protected void gridBooking_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -46,17 +46,17 @@ FROM    BookTicket   INNER JOIN  Registration ON
             Load();
         }
 
-        protected void gridBooking_OnRowDataBound_(object sender, GridViewRowEventArgs e)
+        protected void gridBooking_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                HiddenField tokenId = (HiddenField)e.Row.FindControl("HiddenField2");
-                DataList DataListSeat = (DataList)e.Row.FindControl("DataListSeat");
-                masterClass.LoadDataList(DataListSeat, @"SELECT SeatName FROM BookTicket WHERE TokenId='" + tokenId.Value + "'");
-                //
                 HiddenField HiddenField3 = (HiddenField)e.Row.FindControl("HiddenField3");
                 LinkButton lnkDel = (LinkButton)e.Row.FindControl("lnkDel");
-                if (HiddenField3.Value == "A")
+                if (HiddenField3.Value == "P")
+                {
+                    lnkDel.Visible = true;
+                }
+                else if (HiddenField3.Value == "R" || HiddenField3.Value == "A")
                 {
                     lnkDel.Visible = false;
                 }
@@ -82,17 +82,17 @@ FROM    BookTicket   INNER JOIN  Registration ON
             return value;
         }
 
-        protected void lblRem_OnClick(object sender, EventArgs e)
+        protected void lnkDel_OnClick(object sender, EventArgs e)
         {
-            //LinkButton linkButton = (LinkButton)sender;
-            //HiddenField HiddenField2 = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
-            //bookTicketModal.TokenId = HiddenField2.Value;
-            //bookTicketModal.Status = "R";
-            //bool ans = bookTicketGateway.UpdateStatus(bookTicketModal);
-            //if (ans)
-            //{
-            //    Load();
-            //}
+            LinkButton linkButton = (LinkButton)sender;
+            HiddenField HiddenField2 = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
+            bookTicketModal.TokenId = HiddenField2.Value;
+            bookTicketModal.Status = "R";
+            bool ans = bookTicketGateway.UpdateStatus(bookTicketModal);
+            if (ans)
+            {
+                Load();
+            }
         }
     }
 }

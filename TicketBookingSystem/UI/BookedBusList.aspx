@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="BusBookingList.aspx.cs" Inherits="TicketBookingSystem.UI.BusBookingList" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="BookedBusList.aspx.cs" Inherits="TicketBookingSystem.UI.BookedBusList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -8,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-12 table-responsive p-3">
-            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound_" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Bus Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>

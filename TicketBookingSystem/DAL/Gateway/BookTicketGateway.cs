@@ -71,5 +71,31 @@ namespace TicketBookingSystem.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateStatus(BookTicketModal modal)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("UPDATE BookTicket SET Status=@Status WHERE TokenId=@TokenId", connection);
+                command.Parameters.AddWithValue("@Status", modal.Status);
+                command.Parameters.AddWithValue("@TokenId", modal.TokenId);
+
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (connection.State != ConnectionState.Closed)
+                    connection.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

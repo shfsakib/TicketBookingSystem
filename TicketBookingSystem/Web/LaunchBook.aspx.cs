@@ -118,10 +118,10 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.TokenId = lblRandom.Text;
                 bookTicketModal.BkashNo = txtBkashNo.Text;
                 bookTicketModal.TransactionNo = txtTransNo.Text;
-                bookTicketModal.SeatName = "N/A";
+                bookTicketModal.SeatName = txtSeatNo.Text;
                 bookTicketModal.Amount = txtAmount.Text;
                 bookTicketModal.BookTime = masterClass.Date();
-                bookTicketModal.Status = "A";
+                bookTicketModal.Status = "P";
                 bookTicketModal.Fare= Convert.ToDouble(Request.QueryString["p"]);
                 bookTicketModal.UserId = masterClass.UserIdCookie();
                 bool ans = bookTicketGateway.BookTicket(bookTicketModal);

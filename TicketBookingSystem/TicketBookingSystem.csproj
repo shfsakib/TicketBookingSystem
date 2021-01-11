@@ -188,8 +188,9 @@
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AddLaunch.aspx" />
     <Content Include="UI\AgencyList.aspx" />
-    <Content Include="UI\BusBookingList.aspx" />
+    <Content Include="UI\BookedBusList.aspx" />
     <Content Include="UI\BusList.aspx" />
+    <Content Include="UI\LaunchBookingList.aspx" />
     <Content Include="UI\LaunchList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="WebService.asmx" />
@@ -503,12 +504,12 @@
     <Compile Include="UI\AgencyList.aspx.designer.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\BusBookingList.aspx.cs">
-      <DependentUpon>BusBookingList.aspx</DependentUpon>
+    <Compile Include="UI\BookedBusList.aspx.cs">
+      <DependentUpon>BookedBusList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\BusBookingList.aspx.designer.cs">
-      <DependentUpon>BusBookingList.aspx</DependentUpon>
+    <Compile Include="UI\BookedBusList.aspx.designer.cs">
+      <DependentUpon>BookedBusList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\BusList.aspx.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
@@ -516,6 +517,13 @@
     </Compile>
     <Compile Include="UI\BusList.aspx.designer.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LaunchBookingList.aspx.cs">
+      <DependentUpon>LaunchBookingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\LaunchBookingList.aspx.designer.cs">
+      <DependentUpon>LaunchBookingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\LaunchList.aspx.cs">
       <DependentUpon>LaunchList.aspx</DependentUpon>

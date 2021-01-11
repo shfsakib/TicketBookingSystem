@@ -14,6 +14,8 @@ D:\Git\TicketBookingSystem\TicketBookingSystem\bin\roslyn\VBCSCompiler.exe.confi
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\TicketBookingSystem.dll.config
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\TicketBookingSystem.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\TicketBookingSystem.pdb
+D:\Git\TicketBookingSystem\TicketBookingSystem\bin\AjaxControlToolkit.dll
+D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.DependencyCollector.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -22,15 +24,12 @@ D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.Web.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.WindowsServer.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.ApplicationInsights.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.pdb
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.DependencyCollector.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.Web.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.WindowsServer.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.ApplicationInsights.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.csprojResolveAssemblyReference.cache
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.pdb
-D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.pdb
-D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.dll
-D:\Git\TicketBookingSystem\TicketBookingSystem\bin\AjaxControlToolkit.dll
