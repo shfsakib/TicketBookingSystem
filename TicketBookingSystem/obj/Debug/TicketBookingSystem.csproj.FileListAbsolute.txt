@@ -33,3 +33,4 @@ D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.ApplicationInsights
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.pdb
+D:\Git\TicketBookingSystem\TicketBookingSystem\obj\Debug\TicketBookingSystem.csprojResolveAssemblyReference.cache

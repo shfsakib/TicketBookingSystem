@@ -52,11 +52,11 @@ FROM    BookTicket   INNER JOIN  Registration ON
             {
                 HiddenField HiddenField3 = (HiddenField)e.Row.FindControl("HiddenField3");
                 LinkButton lnkDel = (LinkButton)e.Row.FindControl("lnkDel");
-                if (HiddenField3.Value == "P")
+                if (HiddenField3.Value == "A")
                 {
                     lnkDel.Visible = true;
                 }
-                else if (HiddenField3.Value == "R" || HiddenField3.Value == "A")
+                else if (HiddenField3.Value == "R")
                 {
                     lnkDel.Visible = false;
                 }

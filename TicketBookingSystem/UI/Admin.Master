@@ -91,6 +91,18 @@
                             </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
+                                    <i class="fas fa-ship"></i>Air Info</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/AddAir.aspx">Add Air</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/AirList.aspx">Air List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
                                     <i class="fas fa-book"></i>Booking List</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
@@ -149,6 +161,18 @@
                                     </li>
                                     <li>
                                         <a href="/UI/LaunchList.aspx">Launch List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li class="active has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-ship"></i>Air Info</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/AddAir.aspx">Add Air</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/AirList.aspx">Air List</a>
                                     </li>
                                 </ul>
                             </li>

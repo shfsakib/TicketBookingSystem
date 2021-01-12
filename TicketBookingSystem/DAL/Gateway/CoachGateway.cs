@@ -120,5 +120,37 @@ namespace TicketBookingSystem.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateAir(CoachModel model)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("UPDATE CoachInfo SET CoachName=@CoachName,DistrictFrom=@DistrictFrom,DistrictTo=@DistrictTo,DepartureTime=@DepartureTime,ArrivalTime=@ArrivalTime,TicketPrice=@TicketPrice,SeatCapacity=@SeatCapacity WHERE CoachId=@CoachId", connection);
+                command.Parameters.AddWithValue("@CoachName", model.CoachName);
+                command.Parameters.AddWithValue("@DistrictFrom", model.DistrictFrom);
+                command.Parameters.AddWithValue("@DistrictTo", model.DistrictTo);
+                command.Parameters.AddWithValue("@DepartureTime", model.DepartureTime);
+                command.Parameters.AddWithValue("@ArrivalTime", model.ArrivalTime);
+                command.Parameters.AddWithValue("@TicketPrice", model.TicketPrice);
+                command.Parameters.AddWithValue("@SeatCapacity", model.SeatCapacity);
+                command.Parameters.AddWithValue("@CoachId", model.CoachId);
+
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (connection.State != ConnectionState.Closed)
+                    connection.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

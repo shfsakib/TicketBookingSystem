@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web/IndexMaster.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LaunchTicket.aspx.cs" Inherits="TicketBookingSystem.Web.LaunchTicket" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web/IndexMaster.Master" AutoEventWireup="true" CodeBehind="AirTicket.aspx.cs" Inherits="TicketBookingSystem.Web.AirTicket" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -21,7 +21,7 @@
                             <asp:TextBox ID="txtJourneyDate" class="form-control wd-100 textbox" placeholder="Journey date" Style="height: 60px;" TextMode="Date" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-12 col-lg-3  mt-1 mt-lg-0">
-                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-bus fa-lg"></i>&nbsp;&nbsp;Search Launches</asp:LinkButton>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-bus fa-lg"></i>&nbsp;&nbsp;Search Air</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-            <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" OnRowDataBound="gridLaunch_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridAir" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridAir_OnPageIndexChanging" OnRowDataBound="gridAir_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -40,22 +40,14 @@
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
                                     <span class="d-block">
-                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("CoachType") %>'></asp:Label></span>
-                                    <span class="d-block">
-                                        <asp:Label ID="Label3" runat="server" Style="font-size: 14px; font-weight: 600;" Text='<%#Eval("SeatType") %>'></asp:Label></span>
-
-                                    <span class="d-inline-block">Starting Point: </span>
-                                    <asp:Label ID="Label5" class="d-inline-block" Style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("StartingPoint") %>'></asp:Label><br />
-                                    <span class="d-inline-block">End Point: </span>
-                                    <asp:Label ID="Label4" class="d-inline-block" Style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("EndPoint") %>'></asp:Label>
-
+                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label></span>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
                                     <span>Departure Time</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label6" class="d-inline-block font-weight-bold" runat="server" Text='<%#TimeC(Eval("DepartureTime").ToString())%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <span>Arrival Time</span><br class="d-none d-lg-block" />
+                                    <span>Quickest Time</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label7" class="d-inline-block  font-weight-bold" runat="server" Text='<%#TimeC(Eval("ArrivalTime").ToString()) %>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
@@ -69,7 +61,6 @@
                                     <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>
                                 </div>
                             </div>
-
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -86,29 +77,29 @@
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         data: "{ 'txt' : '" + $("#<%=txtDisTo.ClientID %>").val() + "'}",
-                       dataFilter: function (data) { return data; },
-                       success: function (data) {
-                           response($.map(data.d, function (item) {
-                               return {
-                                   label: item,
-                                   value: item
-                               };
-                           }));
-                       },
-                       error: function (result) {
-                           Swal.fire({
-                               position: 'center',
-                               icon: 'warning',
-                               title: 'Ticket not found',
-                               showConfirmButton: true,
-                               timer: 6000
-                           });
-                       }
-                   });
-               },
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item,
+                                    value: item
+                                };
+                            }));
+                        },
+                        error: function (result) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'warning',
+                                title: 'Ticket not found',
+                                showConfirmButton: true,
+                                timer: 6000
+                            });
+                        }
+                    });
+                },
                 minLength: 1,
             });
-           $("#<%=txtDisFrom.ClientID %>").autocomplete({
+            $("#<%=txtDisFrom.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: "/WebService.asmx/GetLocation",
@@ -116,28 +107,28 @@
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         data: "{ 'txt' : '" + $("#<%=txtDisFrom.ClientID %>").val() + "'}",
-                       dataFilter: function (data) { return data; },
-                       success: function (data) {
-                           response($.map(data.d, function (item) {
-                               return {
-                                   label: item,
-                                   value: item
-                               };
-                           }));
-                       },
-                       error: function (result) {
-                           Swal.fire({
-                               position: 'center',
-                               icon: 'warning',
-                               title: 'Ticket not found',
-                               showConfirmButton: true,
-                               timer: 6000
-                           });
-                       }
-                   });
-               },
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item,
+                                    value: item
+                                };
+                            }));
+                        },
+                        error: function (result) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'warning',
+                                title: 'Ticket not found',
+                                showConfirmButton: true,
+                                timer: 6000
+                            });
+                        }
+                    });
+                },
                 minLength: 1,
             });
-       };
+        };
     </script>
 </asp:Content>

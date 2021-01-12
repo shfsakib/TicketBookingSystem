@@ -121,6 +121,28 @@ namespace TicketBookingSystem
             return result;
         }
         [WebMethod]
+        public List<string> GetAir(string txt)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                string query = @"SELECT CoachName txt FROM CoachInfo WHERE CoachName LIKE '%" + txt + "%' AND CoachStatus='Air'";
+                using (cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != System.Data.ConnectionState.Open) con.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(reader["txt"].ToString().TrimEnd());
+                    }
+                }
+            }
+            catch (Exception ex) { }
+            return result;
+        }
+        [WebMethod]
         public List<string> GetLocation(string txt)
         {
             List<string> result = new List<string>();

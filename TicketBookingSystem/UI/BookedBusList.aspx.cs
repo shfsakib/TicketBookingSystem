@@ -59,6 +59,10 @@ FROM    BookTicket   INNER JOIN  Registration ON
                 LinkButton lnkDel = (LinkButton)e.Row.FindControl("lnkDel");
                 if (HiddenField3.Value == "A")
                 {
+                    lnkDel.Visible = true;
+                }
+                else if (HiddenField3.Value == "R")
+                {
                     lnkDel.Visible = false;
                 }
             }
@@ -83,7 +87,8 @@ FROM    BookTicket   INNER JOIN  Registration ON
             return value;
         }
 
-        protected void lblRem_OnClick(object sender, EventArgs e)
+   
+        protected void lnkDel_OnClick(object sender, EventArgs e)
         {
             LinkButton linkButton = (LinkButton)sender;
             HiddenField HiddenField2 = (HiddenField)linkButton.Parent.FindControl("HiddenField2");

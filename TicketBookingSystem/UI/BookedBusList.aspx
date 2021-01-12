@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="BookedBusList.aspx.cs" Inherits="TicketBookingSystem.UI.BookedBusList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,6 +14,8 @@
                         <ItemTemplate>
                             <asp:HiddenField ID="HiddenField2" runat="server" Value='<%#Eval("TokenId")%>' />
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("UserId")%>' />
+                            <asp:HiddenField ID="HiddenField3" runat="server" Value='<%#Eval("Status")%>' />
+
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
@@ -27,7 +30,7 @@
                                     <asp:Label ID="Label6" class="d-inline-block" runat="server" Text='<%#TimeC(Eval("DepartureTime").ToString())%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <span class="font-weight-bold">Seat Name</span><br class="d-none d-lg-block" />
+                                    <span class="font-weight-bold">Passengers</span><br class="d-none d-lg-block" />
                                     <span class="d-block m-auto">
                                         <asp:DataList ID="DataListSeat" Width="100%" runat="server" RepeatDirection="Horizontal" RepeatColumns="2">
                                             <ItemTemplate>
@@ -36,8 +39,6 @@
                                         </asp:DataList></span>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <span class="font-weight-bold">Passengers:</span><br class="d-none d-lg-block" />
-                                    <asp:Label ID="lblSeat" class="d-inline-block" runat="server" Text='<%#Eval("Seat") %>'></asp:Label>
                                     <span class="font-weight-bold d-block">Journey Date:</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label8" class="d-inline-block" runat="server" Text='<%#Eval("JourneyDate") %>'></asp:Label>
                                 </div>
@@ -57,7 +58,7 @@
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2" runat="server" Style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"Total: ৳"+SubValue(Eval("GrandTotal").ToString())%>'></asp:Label>
-                                    <asp:LinkButton ID="lblRem" OnClick="lblRem_OnClick" class="btn btn-danger wd-100 d-block" runat="server" title="Cancel"><i class="fas fa-trash-alt"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="lnkDel" OnClick="lnkDel_OnClick" class="btn btn-danger wd-100 d-block" runat="server" title="Cancel"><i class="fas fa-trash-alt"></i></asp:LinkButton>
                                 </div>
                             </div>
                         </ItemTemplate>

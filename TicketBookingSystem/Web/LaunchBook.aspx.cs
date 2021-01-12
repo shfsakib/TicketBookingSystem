@@ -121,7 +121,7 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.SeatName = txtSeatNo.Text;
                 bookTicketModal.Amount = txtAmount.Text;
                 bookTicketModal.BookTime = masterClass.Date();
-                bookTicketModal.Status = "P";
+                bookTicketModal.Status = "A";
                 bookTicketModal.Fare= Convert.ToDouble(Request.QueryString["p"]);
                 bookTicketModal.UserId = masterClass.UserIdCookie();
                 bool ans = bookTicketGateway.BookTicket(bookTicketModal);

@@ -10,12 +10,12 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class AddBus : System.Web.UI.Page
+    public partial class AddAir : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private CoachModel coachModel;
         private CoachGateway coachGateway;
-        public AddBus()
+        public AddAir()
         {
             masterClass = MasterClass.GetInstance();
             coachModel = CoachModel.GetInstance();
@@ -23,25 +23,24 @@ namespace TicketBookingSystem.UI
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 Load();
             }
         }
-
         private void Load()
         {
             masterClass.BindDropDown(ddlDistrictFrom, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
             masterClass.BindDropDown(ddlDistrictTO, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
         }
-
-        private bool BusExist(string CoachNo)
+        private bool AirExist(string CoachNo)
         {
             bool ans = false;
             string s =
                 masterClass.IsExist(
                     $"SELECT CoachNo FROM CoachInfo WHERE CoachNo='{CoachNo}' AND CompanyId='{masterClass.UserIdCookie()}' AND Status!='R'");
-            if (s!="")
+            if (s != "")
             {
                 ans = true;
             }
@@ -49,24 +48,14 @@ namespace TicketBookingSystem.UI
         }
         protected void btnAdd_OnClick(object sender, EventArgs e)
         {
-            if (txtCoachName.Text == "")
+            if (txtFlightNo.Text == "")
             {
-                Response.Write("<script language=javascript>alert('Bus name is required');</script>");
-                txtCoachName.Focus();
+                Response.Write("<script language=javascript>alert('Flight no is required');</script>");
+                txtFlightNo.Focus();
             }
-            else if (txtCoachNo.Text == "")
+            else if (AirExist(txtFlightNo.Text))
             {
-                Response.Write("<script language=javascript>alert('Bus no is required');</script>");
-                txtCoachNo.Focus();
-            }
-            else if (BusExist(txtCoachNo.Text))
-            {
-                Response.Write("<script language=javascript>alert('Bus no already exist');</script>");
-            }
-            else if (ddlType.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('Bus type is required');</script>");
-                ddlType.Focus();
+                Response.Write("<script language=javascript>alert('Flight no already exist');</script>");
             }
             else if (ddlDistrictFrom.Text == "--SELECT--")
             {
@@ -78,25 +67,15 @@ namespace TicketBookingSystem.UI
                 Response.Write("<script language=javascript>alert('District to is required');</script>");
                 ddlDistrictTO.Focus();
             }
-            else if (txtStartPoint.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('Start point is required');</script>");
-                txtStartPoint.Focus();
-            }
-            else if (txtEndPoint.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('End point is required');</script>");
-                txtEndPoint.Focus();
-            }
             else if (txtDepartureTime.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Departure time is required');</script>");
                 txtDepartureTime.Focus();
             }
-            else if (txtArrivalTime.Text == "")
+            else if (txtQuickestTime.Text == "")
             {
-                Response.Write("<script language=javascript>alert('Arrival time is required');</script>");
-                txtArrivalTime.Focus();
+                Response.Write("<script language=javascript>alert('Quickest time is required');</script>");
+                txtQuickestTime.Focus();
             }
             else if (txtTPrice.Text == "")
             {
@@ -105,49 +84,44 @@ namespace TicketBookingSystem.UI
             }
             else if (ddlStatus.Text == "")
             {
-                Response.Write("<script language=javascript>alert('Bus status is required');</script>");
+                Response.Write("<script language=javascript>alert('Air status is required');</script>");
                 ddlStatus.Focus();
             }
             else
             {
-                coachModel.CoachName = txtCoachName.Text;
-                coachModel.CoachType = ddlType.Text;
-                coachModel.CoachNo = txtCoachNo.Text;
+                coachModel.CoachName = txtFlightNo.Text;
+                coachModel.CoachType = "N/A";
+                coachModel.CoachNo = txtFlightNo.Text;
                 coachModel.DistrictFrom = Convert.ToInt32(ddlDistrictFrom.SelectedValue);
                 coachModel.DistrictTo = Convert.ToInt32(ddlDistrictTO.SelectedValue);
-                coachModel.StartingPoint = txtStartPoint.Text;
-                coachModel.EndPoint = txtEndPoint.Text;
+                coachModel.StartingPoint = "N/A";
+                coachModel.EndPoint = "N/A";
                 coachModel.DepartureTime = txtDepartureTime.Text;
-                coachModel.ArrivalTime = txtArrivalTime.Text;
+                coachModel.ArrivalTime = txtQuickestTime.Text;
                 coachModel.TicketPrice = Convert.ToDouble(txtTPrice.Text);
                 coachModel.Status = ddlStatus.SelectedValue;
                 coachModel.CompanyId = masterClass.UserIdCookie();
-                coachModel.CoachStatus = "Bus";
-                coachModel.SeatCapacity = "";
+                coachModel.CoachStatus = "Air";
+                coachModel.SeatCapacity = txtSeatCap.Text;
                 coachModel.SeatType = "";
                 coachModel.InTime = masterClass.Date();
                 bool a = coachGateway.AddBus(coachModel);
                 if (a)
                 {
-                    Response.Write("<script language=javascript>alert('Bus added successfully');</script>");
+                    Response.Write("<script language=javascript>alert('Air added successfully');</script>");
                     Refresh();
                 }
                 else
                 {
-                    Response.Write("<script language=javascript>alert('Bus added failed');</script>");
+                    Response.Write("<script language=javascript>alert('Air added failed');</script>");
 
                 }
             }
         }
-
         private void Refresh()
         {
-            txtCoachName.Text =
-                txtCoachNo.Text =
-                    txtStartPoint.Text =
-                        txtEndPoint.Text = txtDepartureTime.Text = txtArrivalTime.Text = txtTPrice.Text = "";
-            ddlType.SelectedIndex =
-                ddlDistrictFrom.SelectedIndex = ddlDistrictTO.SelectedIndex = ddlStatus.SelectedIndex = -1;
+            txtFlightNo.Text =txtDepartureTime.Text = txtQuickestTime.Text = txtTPrice.Text=txtSeatCap.Text = "";
+           ddlDistrictFrom.SelectedIndex = ddlDistrictTO.SelectedIndex = ddlStatus.SelectedIndex =  -1;
         }
     }
 }

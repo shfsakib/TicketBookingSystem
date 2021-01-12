@@ -38,7 +38,7 @@ namespace TicketBookingSystem.UI
             bool ans = false;
             string s =
                 masterClass.IsExist(
-                    $"SELECT CoachNo FROM CoachInfo WHERE CoachNo='{CoachNo}'");
+                    $"SELECT CoachNo FROM CoachInfo WHERE CoachNo='{CoachNo}' AND CompanyId='{masterClass.UserIdCookie()}' AND Status!='R'");
             if (s != "")
             {
                 ans = true;
@@ -147,7 +147,7 @@ namespace TicketBookingSystem.UI
             txtName.Text =
                 txtLaunchNo.Text =
                     txtStartPoint.Text =
-                        txtEndPoint.Text = txtDepartureTime.Text = txtArrivalTime.Text = txtTPrice.Text = "";
+                        txtEndPoint.Text = txtDepartureTime.Text = txtArrivalTime.Text =txtSeatCapa.Text= txtTPrice.Text = "";
             ddlType.SelectedIndex =
                 ddlDistrictFrom.SelectedIndex = ddlDistrictTO.SelectedIndex = ddlStatus.SelectedIndex = ddlSeatType.SelectedIndex = -1;
         }

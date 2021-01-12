@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LaunchList.aspx.cs" Inherits="TicketBookingSystem.UI.LaunchList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AirList.aspx.cs" Inherits="TicketBookingSystem.UI.AirList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Launch List</h2>
+        <h2>Air List</h2>
     </div>
     <div class="row pt-4" style="z-index: 900;">
         <div class="col-4">
@@ -14,28 +14,18 @@
         </div>
 
         <div class="col-4">
-            <asp:TextBox ID="txtSearch" AutoPostBack="True" OnTextChanged="txtSearch_OnTextChanged" class="form-control wd-100" placeholder="Search by bus name" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" AutoPostBack="True" OnTextChanged="txtSearch_OnTextChanged" class="form-control wd-100" placeholder="Search by flight no." runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row p-4"></div>
     <div class="row">
         <div class="col-12 mt-2 table-responsive">
-            <asp:GridView ID="gridLaunch" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridLaunch_OnRowDataBound" OnPageIndexChanging="gridLaunch_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="15" runat="server">
+            <asp:GridView ID="gridAir" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridAir_OnRowDataBound" OnPageIndexChanging="gridAir_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="15" runat="server">
                 <Columns>
-                    <asp:TemplateField HeaderText="Bus_Name">
+                    <asp:TemplateField HeaderText="Flight_no">
                         <ItemTemplate>
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("CoachId")%>' />
                             <asp:Label ID="Label1" runat="server" Text='<%#Eval("CoachName")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Bus_Type">
-                        <ItemTemplate>
-                            <asp:Label ID="Label21" runat="server" Text='<%#Eval("CoachType")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Bus_No">
-                        <ItemTemplate>
-                            <asp:Label ID="Labelw21" runat="server" Text='<%#Eval("CoachNo")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="District_From">
@@ -48,41 +38,28 @@
                             <asp:Label ID="Label41" runat="server" Text='<%#Eval("DistrictTo")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Starting_Point">
-                        <ItemTemplate>
-                            <asp:Label ID="Label51" runat="server" Text='<%#Eval("StartingPoint")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="End_Point">
-                        <ItemTemplate>
-                            <asp:Label ID="Label10" runat="server" Text='<%#Eval("EndPoint")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Departure_Time (24 hr.)">
+                   <asp:TemplateField HeaderText="Departure_Time (24 hr.)">
                         <ItemTemplate>
                             <asp:Label ID="Labelw51" runat="server" Text='<%#Eval("DepartureTime")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Arrival_Time (24 hr.)">
+                    <asp:TemplateField HeaderText="Quickest_Time (24 hr.)">
                         <ItemTemplate>
                             <asp:Label ID="Label110" runat="server" Text='<%#Eval("ArrivalTime")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                       <asp:TemplateField HeaderText="Seat_Type">
-                        <ItemTemplate>
-                            <asp:Label ID="Label190" runat="server" Text='<%#Eval("SeatType")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Ticket_Price">
+                      <asp:TemplateField HeaderText="Ticket_Price">
                         <ItemTemplate>
                             <asp:Label ID="Label101" runat="server" Text='<%#Eval("TicketPrice")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Action">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbkRemove" class="btn btn-danger" OnClick="lbkRemove_OnClick" runat="server"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;Remove</asp:LinkButton>
-                            <asp:LinkButton ID="lnkInactive"  class="btn btn-danger mt-1" OnClick="lnkInactive_OnClick" runat="server"><i class="fas fa-times fa-lg"></i>&nbsp;Inactive</asp:LinkButton>
-                            <asp:LinkButton ID="lnkActive" class="btn btn-primary mt-1" OnClick="lnkActive_OnClick" Visible="False" runat="server"><i class="fas fa-check fa-lg"></i>&nbsp;Active</asp:LinkButton>
+                            <asp:LinkButton ID="lnkInactive"  class="btn btn-danger mt-1" OnClick="lnkInactive_OnClick" runat="server" title="Inactive"><i class="fas fa-times fa-lg"></i></asp:LinkButton>
+                          
+                            <asp:LinkButton ID="lnkUpdate" class="btn btn-primary mt-1" OnClick="lnkUpdate_OnClick" runat="server" title="Update"><i class="fas fa-edit fa-lg"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkRemove" class="btn btn-danger mt-1" OnClick="lnkRemove_OnClick" runat="server" title="Remove"><i class="fas fa-trash-alt fa-lg"></i></asp:LinkButton>
+                              <asp:LinkButton ID="lnkActive" class="btn btn-success mt-1" OnClick="lnkActive_OnClick" Visible="False" runat="server" title="Active"><i class="fas fa-check fa-lg"></i></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -94,7 +71,7 @@
             $("#<%=txtSearch.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: "/WebService.asmx/GetLaunch",
+                        url: "/WebService.asmx/GetAir",
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
@@ -112,7 +89,7 @@
                             Swal.fire({
                                 position: 'center',
                                 icon: 'warning',
-                                title: 'Launch not found',
+                                title: 'Air not found',
                                 showConfirmButton: true,
                                 timer: 6000
                             });
