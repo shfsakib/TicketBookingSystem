@@ -88,7 +88,7 @@
             </div>
             <div class="row ">
                 <div class="col-12 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Seat Name: </span>
+                    <asp:Label id="seatname" runat="server" class="font-weight-bold">Seat Name: </asp:Label>
                     <asp:Label ID="lblSeatName" runat="server" Text="seat"></asp:Label>
                 </div>
 
@@ -106,11 +106,11 @@
 
             <div class="row ">
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Starting Point: </span>
+                    <asp:Label id="startP" runat="server" class="font-weight-bold">Starting Point: </asp:Label>
                     <asp:Label ID="lblStart" runat="server" Text="start"></asp:Label>
                 </div>
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">End Point: </span>
+                    <asp:Label id="endP" runat="server" class="font-weight-bold">End Point: </asp:Label>
                     <asp:Label ID="lblEnd" runat="server" Text="End"></asp:Label>
                 </div>
             </div>

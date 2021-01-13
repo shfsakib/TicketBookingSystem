@@ -21,7 +21,7 @@
                             <asp:TextBox ID="txtJourneyDate" class="form-control wd-100 textbox" placeholder="Journey date" Style="height: 60px;" TextMode="Date" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-12 col-lg-3  mt-1 mt-lg-0">
-                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-bus fa-lg"></i>&nbsp;&nbsp;Search Air</asp:LinkButton>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-plane fa-lg"></i>&nbsp;&nbsp;Search Air</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -30,14 +30,17 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-            <asp:GridView ID="gridAir" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridAir_OnPageIndexChanging" OnRowDataBound="gridAir_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridAir" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridAir_OnPageIndexChanging" OnRowDataBound="gridAir_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Air Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HiddenField ID="HiddenField2" runat="server" Value='<%#Eval("CoachId")%>' />
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("CompanyId")%>' />
                             <div class="row">
-                                <div class="col-12 col-lg-3">
+                                <div class="col-6 col-lg-2 text-center">
+                                    <asp:Image ID="Image1" runat="server" style="width: 75px; height: 75px;" src='<%#Eval("Picture") %>'/>
+                                </div>
+                                <div class="col-6 col-lg-1">
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("CompanyName") %>'></asp:Label>
                                     <span class="d-block">
                                         <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("CoachName") %>'></asp:Label></span>
@@ -58,7 +61,7 @@
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2 mt-4" runat="server" Style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>
+                                    <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">Book Ticket</asp:LinkButton>
                                 </div>
                             </div>
                         </ItemTemplate>
@@ -120,7 +123,7 @@
                             Swal.fire({
                                 position: 'center',
                                 icon: 'warning',
-                                title: 'Ticket not found',
+                                title: 'Location not found',
                                 showConfirmButton: true,
                                 timer: 6000
                             });

@@ -7,117 +7,126 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TicketBookingSystem.Web {
+namespace TicketBookingSystem.UI {
     
     
-    public partial class AirBook {
+    public partial class AddMovie {
         
         /// <summary>
-        /// txtSeatAvailable control.
+        /// txtMovieName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSeatAvailable;
+        protected global::System.Web.UI.WebControls.TextBox txtMovieName;
         
         /// <summary>
-        /// txtSeatNo control.
+        /// txtAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSeatNo;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// txtSubTotal control.
+        /// ddlDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubTotal;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
         
         /// <summary>
-        /// txtService control.
+        /// txtStartTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtService;
+        protected global::System.Web.UI.WebControls.TextBox txtStartTime;
         
         /// <summary>
-        /// txtTotal control.
+        /// txtEndTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotal;
+        protected global::System.Web.UI.WebControls.TextBox txtEndTime;
         
         /// <summary>
-        /// paymentPercentage control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paymentPercentage;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// number control.
+        /// ddlSeatType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl number;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSeatType;
         
         /// <summary>
-        /// lblRandom control.
+        /// txtSeatCapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRandom;
+        protected global::System.Web.UI.WebControls.TextBox txtSeatCapa;
         
         /// <summary>
-        /// txtBkashNo control.
+        /// txtTPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBkashNo;
+        protected global::System.Web.UI.WebControls.TextBox txtTPrice;
         
         /// <summary>
-        /// txtTransNo control.
+        /// fileMovie control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTransNo;
+        protected global::System.Web.UI.WebControls.FileUpload fileMovie;
         
         /// <summary>
-        /// txtAmount control.
+        /// imgPre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAmount;
+        protected global::System.Web.UI.WebControls.Image imgPre;
         
         /// <summary>
-        /// btnBuy control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
     }
 }

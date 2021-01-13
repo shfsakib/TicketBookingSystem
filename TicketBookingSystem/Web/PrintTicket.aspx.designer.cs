@@ -94,6 +94,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.Label lblJourney;
         
         /// <summary>
+        /// seatname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label seatname;
+        
+        /// <summary>
         /// lblSeatName control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.Label lblSeat;
         
         /// <summary>
+        /// startP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label startP;
+        
+        /// <summary>
         /// lblStart control.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStart;
+        
+        /// <summary>
+        /// endP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label endP;
         
         /// <summary>
         /// lblEnd control.

@@ -188,12 +188,15 @@
     <Content Include="UI\AddAir.aspx" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AddLaunch.aspx" />
+    <Content Include="UI\AddMovie.aspx" />
     <Content Include="UI\AgencyList.aspx" />
+    <Content Include="UI\AirBookingList.aspx" />
     <Content Include="UI\AirList.aspx" />
     <Content Include="UI\BookedBusList.aspx" />
     <Content Include="UI\BusList.aspx" />
     <Content Include="UI\LaunchBookingList.aspx" />
     <Content Include="UI\LaunchList.aspx" />
+    <Content Include="UI\MovieList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="UI\UpdateAir.aspx" />
     <Content Include="WebService.asmx" />
@@ -476,9 +479,11 @@
     <Compile Include="AutoComplete.cs" />
     <Compile Include="DAL\Gateway\BookTicketGateway.cs" />
     <Compile Include="DAL\Gateway\CoachGateway.cs" />
+    <Compile Include="DAL\Gateway\EventGateway.cs" />
     <Compile Include="DAL\Gateway\RegistrationGateway.cs" />
     <Compile Include="DAL\Model\BookTicketModal.cs" />
     <Compile Include="DAL\Model\CoachModel.cs" />
+    <Compile Include="DAL\Model\EventModel.cs" />
     <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\AddAir.aspx.cs">
@@ -502,6 +507,13 @@
     <Compile Include="UI\AddLaunch.aspx.designer.cs">
       <DependentUpon>AddLaunch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\AddMovie.aspx.cs">
+      <DependentUpon>AddMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AddMovie.aspx.designer.cs">
+      <DependentUpon>AddMovie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -515,6 +527,13 @@
     </Compile>
     <Compile Include="UI\AgencyList.aspx.designer.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AirBookingList.aspx.cs">
+      <DependentUpon>AirBookingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AirBookingList.aspx.designer.cs">
+      <DependentUpon>AirBookingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\AirList.aspx.cs">
       <DependentUpon>AirList.aspx</DependentUpon>
@@ -550,6 +569,13 @@
     </Compile>
     <Compile Include="UI\LaunchList.aspx.designer.cs">
       <DependentUpon>LaunchList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MovieList.aspx.cs">
+      <DependentUpon>MovieList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\MovieList.aspx.designer.cs">
+      <DependentUpon>MovieList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PassengerList.aspx.cs">
       <DependentUpon>PassengerList.aspx</DependentUpon>

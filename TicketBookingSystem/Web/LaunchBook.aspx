@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <span>Sub Total</span>
-                    <asp:TextBox ID="txtSubTotal" class="form-control" placeholder="Seat Available" ReadOnly="True" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtSubTotal" class="form-control" placeholder="Sub Total" ReadOnly="True" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-12 col-lg-6">
                     <span>Service Charge</span>

@@ -1,14 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LaunchBookingList.aspx.cs" Inherits="TicketBookingSystem.UI.LaunchBookingList" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AirBookingList.aspx.cs" Inherits="TicketBookingSystem.UI.AirBookingList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Launch Booking List</h2>
+        <h2>Air Booking List</h2>
     </div>
     <div class="row">
         <div class="col-12 table-responsive p-3">
-            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Launch Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Air Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>

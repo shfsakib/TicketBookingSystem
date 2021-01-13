@@ -35,7 +35,7 @@ namespace TicketBookingSystem.Web
             {
                 if (Request.QueryString["cId"] == "")
                 {
-                    Response.Redirect("/Web/BusSeatBookNAc.aspx");
+                    Response.Redirect("/Web/BusTicket.aspx");
                 }
                 Session["Grid"] = null;
                 LoadSession();

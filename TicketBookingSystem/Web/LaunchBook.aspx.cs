@@ -30,7 +30,7 @@ namespace TicketBookingSystem.Web
             {
                 if (Request.QueryString["cId"] == "")
                 {
-                    Response.Redirect("/Web/BusSeatBookNAc.aspx");
+                    Response.Redirect("/Web/LaunchTicket.aspx");
                 }
                 txtSeatAvailable.Text = Request.QueryString["S"];
                 lblRandom.Text = RandomString(8, false);

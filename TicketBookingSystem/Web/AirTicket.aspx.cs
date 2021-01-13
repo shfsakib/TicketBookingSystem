@@ -88,7 +88,7 @@ namespace TicketBookingSystem.Web
                 string to = ViewState["to"].ToString();
                 masterClass.LoadGrid(gridAir,
                     @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName,CoachInfo.SeatType, CoachInfo.CoachType, CoachInfo.CoachNo,  CoachInfo.SeatCapacity, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
-                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
+                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName,Registration.Picture
 FROM            CoachInfo INNER JOIN
                          Registration ON CoachInfo.CompanyId=Registration.RegId WHERE  CoachStatus='Air' AND CoachInfo.DistrictFrom='" +
                     from + "' And CoachInfo.DistrictTo='" + to + "' ORDER By CompanyId ASC");
@@ -119,14 +119,13 @@ FROM            CoachInfo INNER JOIN
                 HiddenField companyId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
                 HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
-                Label lblType = (Label)linkButton.Parent.FindControl("lblType");
-                Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
+               Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
                 string p = price.Text.Substring(1, price.Text.Length - 4);
                 if (lblSeat.Text != "0")
                 {
-                    Response.Write("<script>window.open ('/Web/LaunchBook.aspx?cId=" + companyId.Value + "&LId=" +
+                    Response.Write("<script>window.open ('/Web/AirBook.aspx?cId=" + companyId.Value + "&AId=" +
                                        CoachId.Value + "&from=" + ViewState["from"].ToString() + "&to=" +
-                                       ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&S=" + lblSeat.Text + "&t=" + lblType.Text + "','_blank');</script>");
+                                       ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
                 }
                 else
                 {

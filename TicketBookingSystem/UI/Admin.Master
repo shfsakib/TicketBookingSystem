@@ -91,13 +91,25 @@
                             </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-ship"></i>Air Info</a>
+                                    <i class="fas fa-plane"></i>Air Info</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/AddAir.aspx">Add Air</a>
                                     </li>
                                     <li>
                                         <a href="/UI/AirList.aspx">Air List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-film"></i>Movie Info</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/AddMovie.aspx">Add Movie</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/MovieList.aspx">Movie List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -110,6 +122,9 @@
                                     </li>
                                     <li>
                                         <a href="/UI/LaunchBookingList.aspx">Launch Booking List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/AirBookingList.aspx">Air Booking List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -164,9 +179,9 @@
                                     </li>
                                 </ul>
                             </li>
-                             <li class="active has-sub">
+                            <li class="active has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-ship"></i>Air Info</a>
+                                    <i class="fas fa-plane"></i>Air Info</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/AddAir.aspx">Add Air</a>
@@ -178,13 +193,28 @@
                             </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
+                                    <i class="fas fa-film"></i>Movie Info</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="/UI/AddMovie.aspx">Add Movie</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/MovieList.aspx">Movie List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
                                     <i class="fas fa-book"></i>Booking List</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="/UI/BookedBusList.aspx">Bus Booking List</a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="/UI/LaunchBookingList.aspx">Launch Booking List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/UI/AirBookingList.aspx">Air Booking List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -297,10 +327,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.all.min.js" integrity="sha512-8IAW5sOZRkubYGtDUS3aDaKdAmG0Hye5XnY/ZiJOCAmTsHGLP0GUUoCGHQjIpbUHAk4v6vnwCRGK2+gYsmQHeg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.css" integrity="sha512-i++eR2u4MtevO3tOPI55hNUccQVQ0+hf9cpevM2q/GmdM+UZMtzHn5pSxFmVuUK1kikm5qUiZB1ef6rWqLXb3Q==" crossorigin="anonymous" />
     <%--select 2--%>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-     <link href="../ReferenceFile/OwnStyle.css" rel="stylesheet" />
+    <link href="../ReferenceFile/OwnStyle.css" rel="stylesheet" />
     <link href="../ReferenceFile/select2.css" rel="stylesheet" />
+   
     <script type="text/javascript">
         $(function () {
             $('.select2').select2({

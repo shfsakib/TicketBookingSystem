@@ -53,7 +53,7 @@
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link" href="/Web/LaunchTicket.aspx" id="launch">⛴&nbsp;Launch</a>
                             </li>
-                            <li class="nav-item dropdown"><a class="nav-link" href="#" id="air">🛫&nbsp;Air</a>
+                            <li class="nav-item dropdown"><a class="nav-link" href="/Web/AirTicket.aspx" id="air">🛫&nbsp;Air</a>
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link" href="#" id="movie">🎥&nbsp;Movie </a>
                             </li>

@@ -52,7 +52,11 @@ FROM            BookTicket Inner JOIN
             else if(type== "Launch")
             {
                 lblSeat.Text =masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
-
+                seatname.Visible = lblSeatName.Visible = false;
+            }else if (type == "Air")
+            {
+                lblSeat.Text =masterClass.IsExist($"SELECT SeatName FROM BookTicket WHERE TokenId='{ViewState["TokenId"].ToString()}'");
+                seatname.Visible = lblSeatName.Visible = startP.Visible=lblStart.Visible=lblEnd.Visible = endP.Visible = false;
             }
             lblStart.Text = masterClass.IsExist($"SELECT StartingPoint FROM CoachInfo WHERE CoachId='{CoachId}'");
             lblEnd.Text = masterClass.IsExist($"SELECT EndPoint FROM CoachInfo WHERE CoachId='{CoachId}'");

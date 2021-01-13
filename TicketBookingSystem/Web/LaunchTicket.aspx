@@ -99,7 +99,7 @@
                            Swal.fire({
                                position: 'center',
                                icon: 'warning',
-                               title: 'Ticket not found',
+                               title: 'Location not found',
                                showConfirmButton: true,
                                timer: 6000
                            });
@@ -129,7 +129,7 @@
                            Swal.fire({
                                position: 'center',
                                icon: 'warning',
-                               title: 'Ticket not found',
+                               title: 'Location not found',
                                showConfirmButton: true,
                                timer: 6000
                            });
