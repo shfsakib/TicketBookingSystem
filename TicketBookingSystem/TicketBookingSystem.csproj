@@ -199,6 +199,7 @@
     <Content Include="UI\MovieList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="UI\UpdateAir.aspx" />
+    <Content Include="UI\UpdateMovie.aspx" />
     <Content Include="WebService.asmx" />
     <Content Include="Web\AirBook.aspx" />
     <Content Include="Web\AirTicket.aspx" />
@@ -209,6 +210,8 @@
     <Content Include="Web\LaunchBook.aspx" />
     <Content Include="Web\LaunchTicket.aspx" />
     <Content Include="Web\Login.aspx" />
+    <Content Include="Web\MovieTicket.aspx" />
+    <Content Include="Web\MovieTicketBook.aspx" />
     <Content Include="Web\PrintTicket.aspx" />
     <Content Include="Web\SignAgent.aspx" />
     <Content Include="Web\SignPassenger.aspx" />
@@ -591,6 +594,13 @@
     <Compile Include="UI\UpdateAir.aspx.designer.cs">
       <DependentUpon>UpdateAir.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\UpdateMovie.aspx.cs">
+      <DependentUpon>UpdateMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateMovie.aspx.designer.cs">
+      <DependentUpon>UpdateMovie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -664,6 +674,20 @@
     </Compile>
     <Compile Include="Web\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\MovieTicket.aspx.cs">
+      <DependentUpon>MovieTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\MovieTicket.aspx.designer.cs">
+      <DependentUpon>MovieTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\MovieTicketBook.aspx.cs">
+      <DependentUpon>MovieTicketBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\MovieTicketBook.aspx.designer.cs">
+      <DependentUpon>MovieTicketBook.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\PrintTicket.aspx.cs">
       <DependentUpon>PrintTicket.aspx</DependentUpon>

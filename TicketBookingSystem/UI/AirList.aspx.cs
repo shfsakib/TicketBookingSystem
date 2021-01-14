@@ -26,6 +26,11 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
+                if (Request.QueryString["b"]=="1")
+                {
+                    Response.Write("<script language=javascript>alert('Air updated successfully');</script>");
+
+                }
                 Load();
             }
         }
@@ -121,12 +126,12 @@ FROM            CoachInfo INNER JOIN
             bool a = coachGateway.UpdateStatus(coachModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Launch inactivate successfully');</script>");
+                Response.Write("<script language=javascript>alert('Air inactivate successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Launch inactive failed');</script>");
+                Response.Write("<script language=javascript>alert('Air inactive failed');</script>");
             }
         }
 
@@ -140,12 +145,12 @@ FROM            CoachInfo INNER JOIN
             bool a = coachGateway.UpdateStatus(coachModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Launch activate successfully');</script>");
+                Response.Write("<script language=javascript>alert('Air activate successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Launch active failed');</script>");
+                Response.Write("<script language=javascript>alert('Air active failed');</script>");
             }
         }
     }

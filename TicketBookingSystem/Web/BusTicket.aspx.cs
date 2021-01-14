@@ -103,7 +103,15 @@ FROM            CoachInfo INNER JOIN
             //  Response.Write("<script language=javascript>alert('Activate failed');</script>");
 
         }
-
+        private void LoadPage()
+        {
+            string from = ViewState["from"].ToString();
+            string to = ViewState["to"].ToString();
+            masterClass.LoadGrid(gridBuses, @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
+FROM            CoachInfo INNER JOIN
+                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE CoachInfo.CoachType='" + ddlType.Text + "' AND CoachStatus='Bus' AND CoachInfo.DistrictFrom='" + from + "' And CoachInfo.DistrictTo='" + to + "' ORDER By CompanyId ASC");
+        }
         public string TimeC(string time)
         {
             string cTime = "";
@@ -118,7 +126,7 @@ FROM            CoachInfo INNER JOIN
         protected void gridBuses_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridBuses.PageIndex = e.NewPageIndex;
-            Load();
+            LoadPage();
         }
 
         protected void ddlType_OnSelectedIndexChanged(object sender, EventArgs e)

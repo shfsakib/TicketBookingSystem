@@ -97,6 +97,18 @@ FROM            CoachInfo INNER JOIN
             }
         }
 
+        private void LoadPage()
+        {
+            string from = ViewState["from"].ToString();
+            string to = ViewState["to"].ToString();
+            masterClass.LoadGrid(gridLaunch,
+                 @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName,CoachInfo.SeatType, CoachInfo.CoachType, CoachInfo.CoachNo,  CoachInfo.SeatCapacity, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
+FROM            CoachInfo INNER JOIN
+                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE  CoachStatus='Launch' AND CoachInfo.DistrictFrom='" +
+                 from + "' And CoachInfo.DistrictTo='" + to + "' ORDER By CompanyId ASC");
+
+        }
         public string TimeC(string time)
         {
             string cTime = "";
@@ -152,7 +164,7 @@ FROM            CoachInfo INNER JOIN
         protected void gridLaunch_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridLaunch.PageIndex = e.NewPageIndex;
-            Load();
+            LoadPage();
         }
 
         protected void gridLaunch_OnRowDataBound(object sender, GridViewRowEventArgs e)

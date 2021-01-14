@@ -94,7 +94,18 @@ FROM            CoachInfo INNER JOIN
                     from + "' And CoachInfo.DistrictTo='" + to + "' ORDER By CompanyId ASC");
             }
         }
+        private void LoadPage()
+        {
+            string from = ViewState["from"].ToString();
+            string to = ViewState["to"].ToString();
+            masterClass.LoadGrid(gridAir,
+                    @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName,CoachInfo.SeatType, CoachInfo.CoachType, CoachInfo.CoachNo,  CoachInfo.SeatCapacity, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName,Registration.Picture
+FROM            CoachInfo INNER JOIN
+                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE  CoachStatus='Air' AND CoachInfo.DistrictFrom='" +
+                    from + "' And CoachInfo.DistrictTo='" + to + "' ORDER By CompanyId ASC");
 
+        }
         protected void lnkView_OnClick(object sender, EventArgs e)
         {
             if (cookieData == null)
@@ -119,7 +130,7 @@ FROM            CoachInfo INNER JOIN
                 HiddenField companyId = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
                 HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
-               Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
+                Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
                 string p = price.Text.Substring(1, price.Text.Length - 4);
                 if (lblSeat.Text != "0")
                 {
@@ -148,7 +159,7 @@ FROM            CoachInfo INNER JOIN
         protected void gridAir_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridAir.PageIndex = e.NewPageIndex;
-            Load();
+            LoadPage();
         }
 
         protected void gridAir_OnRowDataBound(object sender, GridViewRowEventArgs e)

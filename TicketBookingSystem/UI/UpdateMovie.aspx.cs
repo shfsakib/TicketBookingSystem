@@ -10,12 +10,12 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class AddMovie : System.Web.UI.Page
+    public partial class UpdateMovie : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private EventModel eventModel;
         private EventGateway eventGateway;
-        public AddMovie()
+        public UpdateMovie()
         {
             masterClass = MasterClass.GetInstance();
             eventModel = EventModel.GetInstance();
@@ -25,24 +25,37 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
-
+                if (Request.QueryString["MId"] == "")
+                {
+                    Response.Redirect("/UI/MovieList.aspx");
+                }
                 masterClass.BindDropDown(ddlDistrict, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
+                LoadData();
+            }
+        }
 
-            }
-        }
-        private bool MoiveExist(string movieName, string start, string end, string date)
+        private void LoadData()
         {
-            bool ans = false;
-            string s =
-                masterClass.IsExist(
-                    $"SELECT MovieName FROM EventInfo WHERE MovieName='{movieName}' AND CompanyId='{masterClass.UserIdCookie()}' StartTime='{start}' AND EndTime='{end}' AND EventDate='{date}' AND Status!='R'");
-            if (s != "")
+            string movieId = Request.QueryString["MId"];
+            txtMovieName.Text = masterClass.IsExist(@"SELECT EventName FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtAddress.Text = masterClass.IsExist(@"SELECT EventAddress FROm EventInfo WHERE EventId='" + movieId + "'");
+            ddlDistrict.SelectedValue = masterClass.IsExist(@"SELECT EventLocation FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtStartTime.Text = masterClass.IsExist(@"SELECT StartTime FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtEndTime.Text = masterClass.IsExist(@"SELECT EndTime FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtDate.Text = masterClass.IsExist(@"SELECT EventDate FROm EventInfo WHERE EventId='" + movieId + "'");
+            ddlSeatType.SelectedValue = masterClass.IsExist(@"SELECT SeatType FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtSeatCapa.Text = masterClass.IsExist(@"SELECT SeatCapacity FROm EventInfo WHERE EventId='" + movieId + "'");
+            txtTPrice.Text = masterClass.IsExist(@"SELECT Fare FROm EventInfo WHERE EventId='" + movieId + "'");
+            ViewState["img"] = masterClass.IsExist(@"SELECT Picture FROm EventInfo WHERE EventId='" + movieId + "'");
+            if (ViewState["img"].ToString() == "")
             {
-                ans = true;
+                imgPre.ImageUrl = "../ReferenceFile/images/DummyPic.png";
             }
-            return ans;
+            else
+                imgPre.ImageUrl = ViewState["img"].ToString();
+            ddlStatus.SelectedValue = masterClass.IsExist(@"SELECT Status FROm EventInfo WHERE EventId='" + movieId + "'");
         }
-        protected void btnAdd_OnClick(object sender, EventArgs e)
+        protected void btnUpdate_OnClick(object sender, EventArgs e)
         {
             if (txtMovieName.Text == "")
             {
@@ -89,10 +102,6 @@ namespace TicketBookingSystem.UI
                 Response.Write("<script language=javascript>alert('Ticket price is required');</script>");
                 txtTPrice.Focus();
             }
-            else if (MoiveExist(txtMovieName.Text, txtStartTime.Text, txtEndTime.Text, txtDate.Text))
-            {
-                Response.Write("<script language=javascript>alert('Movie already exist');</script>");
-            }
             else if (ddlStatus.Text == "Select")
             {
                 Response.Write("<script language=javascript>alert('Movie status is required');</script>");
@@ -100,6 +109,7 @@ namespace TicketBookingSystem.UI
             }
             else
             {
+                eventModel.EventId= Convert.ToInt32(Request.QueryString["MId"]);
                 eventModel.EventName = txtMovieName.Text;
                 eventModel.EventAddress = txtAddress.Text;
                 eventModel.EventLocation = Convert.ToInt32(ddlDistrict.SelectedValue);
@@ -109,33 +119,31 @@ namespace TicketBookingSystem.UI
                 eventModel.SeatType = ddlSeatType.SelectedValue;
                 eventModel.SeatCapacity = Convert.ToInt32(txtSeatCapa.Text);
                 eventModel.Fare = Convert.ToDouble(txtTPrice.Text);
-                eventModel.Type = "Movie";
                 if (fileMovie.HasFile)
                 {
                     string imagePath = Server.MapPath("/Files/") + fileMovie.FileName;
                     fileMovie.PostedFile.SaveAs(imagePath);
-                    eventModel.Picture = "/Files/" +  fileMovie.FileName;
+                    eventModel.Picture = "/Files/" + fileMovie.FileName;
                 }
                 else
                 {
-                    eventModel.Picture = "";
+                    eventModel.Picture = ViewState["img"].ToString();
                 }
                 eventModel.CompanyId = Convert.ToInt32(masterClass.UserIdCookie());
                 eventModel.Status = ddlStatus.SelectedValue;
                 eventModel.InTime = masterClass.Date();
-                bool ans =eventGateway.InsertEvent(eventModel);
+                bool ans = eventGateway.UpdateEvent(eventModel);
                 if (ans)
                 {
-                    Response.Write("<script language=javascript>alert('Movie added successfully');</script>");
+                    Response.Redirect("/UI/MovieList.aspx?b=1");
                     Refresh();
                 }
                 else
                 {
-                    Response.Write("<script language=javascript>alert('Movie added failed');</script>");
+                    Response.Write("<script language=javascript>alert('Movie updated failed');</script>");
                 }
             }
         }
-
         private void Refresh()
         {
             txtMovieName.Text =

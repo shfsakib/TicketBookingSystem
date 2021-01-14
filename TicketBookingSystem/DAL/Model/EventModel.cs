@@ -30,6 +30,7 @@ namespace TicketBookingSystem.DAL.Model
         public string EventDate { get; set; }
         public int CompanyId { get; set; }
         public string Status { get; set; }
+        public string Type { get; set; }
         public string InTime { get; set; }
     }
 }

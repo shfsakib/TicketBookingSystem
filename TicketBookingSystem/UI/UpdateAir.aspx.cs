@@ -119,7 +119,7 @@ namespace TicketBookingSystem.UI
                 bool ans = coachGateway.UpdateAir(coachModel);
                 if (ans)
                 {
-                    Response.Redirect("/UI/AirList.aspx");
+                    Response.Redirect("/UI/AirList.aspx?b=1");
                 }
                 else
                 {

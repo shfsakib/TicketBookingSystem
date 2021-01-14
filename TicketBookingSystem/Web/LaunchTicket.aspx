@@ -66,7 +66,7 @@
                                     <asp:Label ID="lblPrice" class="d-inline-block pt-2 mt-4" runat="server" Style="font-size: 18px; font-weight: bold; color: green;" Text='<%#"৳"+Eval("TicketPrice")%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">View Seats</asp:LinkButton>
+                                    <asp:LinkButton ID="lnkView" class="btn btn-success wd-100 pt-1 mt-4" OnClick="lnkView_OnClick" runat="server">Book Tickets</asp:LinkButton>
                                 </div>
                             </div>
 
