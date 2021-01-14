@@ -28,7 +28,7 @@ namespace TicketBookingSystem.Web
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["cId"] == "")
+                if (Request.QueryString["cId"] ==null)
                 {
                     Response.Redirect("/Web/AirTicket.aspx");
                 }

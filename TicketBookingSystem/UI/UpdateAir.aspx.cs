@@ -25,7 +25,7 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["CoachId"] == "")
+                if (Request.QueryString["CoachId"] ==null)
                 {
                     Response.Redirect("/UI/AddAir.aspx");
                 }

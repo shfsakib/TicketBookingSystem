@@ -25,7 +25,7 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["MId"] == "")
+                if (Request.QueryString["MId"] == null)
                 {
                     Response.Redirect("/UI/MovieList.aspx");
                 }
