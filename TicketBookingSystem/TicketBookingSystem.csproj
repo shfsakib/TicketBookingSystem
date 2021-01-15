@@ -187,18 +187,22 @@
     <Content Include="ReferenceFile\wheel.png" />
     <Content Include="UI\AddAir.aspx" />
     <Content Include="UI\AddBus.aspx" />
+    <Content Include="UI\AddEvent.aspx" />
     <Content Include="UI\AddLaunch.aspx" />
     <Content Include="UI\AddMovie.aspx" />
     <Content Include="UI\AgencyList.aspx" />
     <Content Include="UI\AirBookingList.aspx" />
     <Content Include="UI\AirList.aspx" />
     <Content Include="UI\BookedBusList.aspx" />
+    <Content Include="UI\BookMovieList.aspx" />
     <Content Include="UI\BusList.aspx" />
+    <Content Include="UI\EventList.aspx" />
     <Content Include="UI\LaunchBookingList.aspx" />
     <Content Include="UI\LaunchList.aspx" />
     <Content Include="UI\MovieList.aspx" />
     <Content Include="UI\PassengerList.aspx" />
     <Content Include="UI\UpdateAir.aspx" />
+    <Content Include="UI\UpdateEvent.aspx" />
     <Content Include="UI\UpdateMovie.aspx" />
     <Content Include="WebService.asmx" />
     <Content Include="Web\AirBook.aspx" />
@@ -206,6 +210,8 @@
     <Content Include="Web\BookingHistory.aspx" />
     <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
+    <Content Include="Web\EventTicket.aspx" />
+    <Content Include="Web\EventTicketBook.aspx" />
     <Content Include="Web\Index.aspx" />
     <Content Include="Web\LaunchBook.aspx" />
     <Content Include="Web\LaunchTicket.aspx" />
@@ -503,6 +509,13 @@
     <Compile Include="UI\AddBus.aspx.designer.cs">
       <DependentUpon>AddBus.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\AddEvent.aspx.cs">
+      <DependentUpon>AddEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AddEvent.aspx.designer.cs">
+      <DependentUpon>AddEvent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\AddLaunch.aspx.cs">
       <DependentUpon>AddLaunch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -552,12 +565,26 @@
     <Compile Include="UI\BookedBusList.aspx.designer.cs">
       <DependentUpon>BookedBusList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\BookMovieList.aspx.cs">
+      <DependentUpon>BookMovieList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BookMovieList.aspx.designer.cs">
+      <DependentUpon>BookMovieList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\BusList.aspx.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\BusList.aspx.designer.cs">
       <DependentUpon>BusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EventList.aspx.cs">
+      <DependentUpon>EventList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\EventList.aspx.designer.cs">
+      <DependentUpon>EventList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\LaunchBookingList.aspx.cs">
       <DependentUpon>LaunchBookingList.aspx</DependentUpon>
@@ -593,6 +620,13 @@
     </Compile>
     <Compile Include="UI\UpdateAir.aspx.designer.cs">
       <DependentUpon>UpdateAir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateEvent.aspx.cs">
+      <DependentUpon>UpdateEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateEvent.aspx.designer.cs">
+      <DependentUpon>UpdateEvent.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\UpdateMovie.aspx.cs">
       <DependentUpon>UpdateMovie.aspx</DependentUpon>
@@ -639,6 +673,20 @@
     </Compile>
     <Compile Include="Web\BusTicket.aspx.designer.cs">
       <DependentUpon>BusTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\EventTicket.aspx.cs">
+      <DependentUpon>EventTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\EventTicket.aspx.designer.cs">
+      <DependentUpon>EventTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\EventTicketBook.aspx.cs">
+      <DependentUpon>EventTicketBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\EventTicketBook.aspx.designer.cs">
+      <DependentUpon>EventTicketBook.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

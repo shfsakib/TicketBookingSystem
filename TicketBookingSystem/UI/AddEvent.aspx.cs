@@ -10,12 +10,12 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class AddMovie : System.Web.UI.Page
+    public partial class AddEvent : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private EventModel eventModel;
         private EventGateway eventGateway;
-        public AddMovie()
+        public AddEvent()
         {
             masterClass = MasterClass.GetInstance();
             eventModel = EventModel.GetInstance();
@@ -25,17 +25,15 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
-
                 masterClass.BindDropDown(ddlDistrict, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
-
             }
         }
-        private bool MoiveExist(string movieName, string start, string end, string date)
+        private bool EventExist(string movieName, string start, string end, string date)
         {
             bool ans = false;
             string s =
                 masterClass.IsExist(
-                    $"SELECT EventName FROM EventInfo WHERE EventName='{movieName}' AND CompanyId='{masterClass.UserIdCookie()}' StartTime='{start}' AND EndTime='{end}' AND EventDate='{date}' AND SeatType='{ddlSeatType.Text}' AND Status!='R'");
+                    $"SELECT EventName FROM EventInfo WHERE EventName='{movieName}' AND CompanyId='{masterClass.UserIdCookie()}' StartTime='{start}' AND EndTime='{end}' AND EventDate='{date}' AND  Status!='R'");
             if (s != "")
             {
                 ans = true;
@@ -44,10 +42,10 @@ namespace TicketBookingSystem.UI
         }
         protected void btnAdd_OnClick(object sender, EventArgs e)
         {
-            if (txtMovieName.Text == "")
+            if (txtEventName.Text == "")
             {
-                Response.Write("<script language=javascript>alert('Movie name is required');</script>");
-                txtMovieName.Focus();
+                Response.Write("<script language=javascript>alert('Event name is required');</script>");
+                txtEventName.Focus();
             }
             else if (txtAddress.Text == "")
             {
@@ -74,11 +72,6 @@ namespace TicketBookingSystem.UI
                 Response.Write("<script language=javascript>alert('Premier date is required');</script>");
                 txtDate.Focus();
             }
-            else if (ddlSeatType.Text == "Select")
-            {
-                Response.Write("<script language=javascript>alert('Seat type is required');</script>");
-                ddlSeatType.Focus();
-            }
             else if (txtSeatCapa.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Minimum 30 seats is required');</script>");
@@ -89,7 +82,7 @@ namespace TicketBookingSystem.UI
                 Response.Write("<script language=javascript>alert('Ticket price is required');</script>");
                 txtTPrice.Focus();
             }
-            else if (MoiveExist(txtMovieName.Text, txtStartTime.Text, txtEndTime.Text, txtDate.Text))
+            else if (EventExist(txtEventName.Text, txtStartTime.Text, txtEndTime.Text, txtDate.Text))
             {
                 Response.Write("<script language=javascript>alert('Movie already exist');</script>");
             }
@@ -100,21 +93,21 @@ namespace TicketBookingSystem.UI
             }
             else
             {
-                eventModel.EventName = txtMovieName.Text;
+                eventModel.EventName = txtEventName.Text;
                 eventModel.EventAddress = txtAddress.Text;
                 eventModel.EventLocation = Convert.ToInt32(ddlDistrict.SelectedValue);
                 eventModel.StartTime = txtStartTime.Text;
                 eventModel.EndTime = txtEndTime.Text;
                 eventModel.EventDate = txtDate.Text;
-                eventModel.SeatType = ddlSeatType.SelectedValue;
+                eventModel.SeatType = "N/A";
                 eventModel.SeatCapacity = Convert.ToInt32(txtSeatCapa.Text);
                 eventModel.Fare = Convert.ToDouble(txtTPrice.Text);
-                eventModel.Type = "Movie";
+                eventModel.Type = "Event";
                 if (fileMovie.HasFile)
                 {
                     string imagePath = Server.MapPath("/Files/") + fileMovie.FileName;
                     fileMovie.PostedFile.SaveAs(imagePath);
-                    eventModel.Picture = "/Files/" +  fileMovie.FileName;
+                    eventModel.Picture = "/Files/" + fileMovie.FileName;
                 }
                 else
                 {
@@ -123,25 +116,25 @@ namespace TicketBookingSystem.UI
                 eventModel.CompanyId = Convert.ToInt32(masterClass.UserIdCookie());
                 eventModel.Status = ddlStatus.SelectedValue;
                 eventModel.InTime = masterClass.Date();
-                bool ans =eventGateway.InsertEvent(eventModel);
+                bool ans = eventGateway.InsertEvent(eventModel);
                 if (ans)
                 {
-                    Response.Write("<script language=javascript>alert('Movie added successfully');</script>");
+                    Response.Write("<script language=javascript>alert('Event added successfully');</script>");
                     Refresh();
                 }
                 else
                 {
-                    Response.Write("<script language=javascript>alert('Movie added failed');</script>");
+                    Response.Write("<script language=javascript>alert('Event added failed');</script>");
                 }
             }
         }
 
         private void Refresh()
         {
-            txtMovieName.Text =
+            txtEventName.Text =
                 txtAddress.Text =
                     txtStartTime.Text = txtEndTime.Text = txtDate.Text = txtSeatCapa.Text = txtTPrice.Text = "";
-            ddlDistrict.SelectedIndex = ddlStatus.SelectedIndex = ddlSeatType.SelectedIndex = -1;
+            ddlDistrict.SelectedIndex = ddlStatus.SelectedIndex = -1;
             imgPre.ImageUrl = "../ReferenceFile/images/DummyPic.png";
 
         }

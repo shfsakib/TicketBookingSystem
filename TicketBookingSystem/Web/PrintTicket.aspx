@@ -56,10 +56,12 @@
         </div>
         <div class="row p-3">
             <div class="col-12 text-center">
-                <h3 class="">
+                <h3 class="" runat="server" id="headLocation">
                     <asp:Label ID="lblFrom" runat="server" Text="From"></asp:Label>
                     to
                     <asp:Label ID="lblTo" runat="server" Text="To"></asp:Label></h3>
+                  <h3 class="" runat="server" Visible="False" id="MovieName">
+                    <asp:Label ID="lblMovieName" runat="server" Text="name"></asp:Label></h3>
             </div>
         </div>
         <div class="row">
@@ -72,7 +74,7 @@
                     <asp:Label ID="lblToken" runat="server" Text="TokenId"></asp:Label>
                 </div>
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Coach: </span>
+                    <span class="font-weight-bold" id="CoachName" runat="server">Coach: </span>
                     <asp:Label ID="lblCompany" runat="server" Text="Coach"></asp:Label>
                 </div>
             </div>
@@ -82,7 +84,7 @@
                     <asp:Label ID="lblBookTime" runat="server" Text="Time"></asp:Label>
                 </div>
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Journey Date: </span>
+                    <span class="font-weight-bold" runat="server" id="PreDate">Journey Date: </span>
                     <asp:Label ID="lblJourney" runat="server" Text="date"></asp:Label>
                 </div>
             </div>
@@ -95,16 +97,16 @@
             </div>
             <div class="row ">
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Departure: </span>
+                    <span class="font-weight-bold" runat="server" id="timeHead">Departure: </span>
                     <asp:Label ID="lblDeparture" runat="server" Text="Time"></asp:Label>
                 </div>
                 <div class="col-6 text-left" style="font-size: 18px;">
-                    <span class="font-weight-bold">Passenger/Seat: </span>
+                    <span class="font-weight-bold" runat="server" id="seatTitle">Passenger/Seat: </span>
                     <asp:Label ID="lblSeat" runat="server" Text="Time"></asp:Label>
                 </div>
             </div>
 
-            <div class="row ">
+            <div class="row" >
                 <div class="col-6 text-left" style="font-size: 18px;">
                     <asp:Label id="startP" runat="server" class="font-weight-bold">Starting Point: </asp:Label>
                     <asp:Label ID="lblStart" runat="server" Text="start"></asp:Label>

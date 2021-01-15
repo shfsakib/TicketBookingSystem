@@ -40,6 +40,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl printDiv;
         
         /// <summary>
+        /// headLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headLocation;
+        
+        /// <summary>
         /// lblFrom control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,24 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.Label lblTo;
         
         /// <summary>
+        /// MovieName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MovieName;
+        
+        /// <summary>
+        /// lblMovieName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMovieName;
+        
+        /// <summary>
         /// lblToken control.
         /// </summary>
         /// <remarks>
@@ -65,6 +92,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblToken;
+        
+        /// <summary>
+        /// CoachName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CoachName;
         
         /// <summary>
         /// lblCompany control.
@@ -83,6 +119,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBookTime;
+        
+        /// <summary>
+        /// PreDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PreDate;
         
         /// <summary>
         /// lblJourney control.
@@ -112,6 +157,15 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.Label lblSeatName;
         
         /// <summary>
+        /// timeHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl timeHead;
+        
+        /// <summary>
         /// lblDeparture control.
         /// </summary>
         /// <remarks>
@@ -119,6 +173,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDeparture;
+        
+        /// <summary>
+        /// seatTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seatTitle;
         
         /// <summary>
         /// lblSeat control.

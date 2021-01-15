@@ -57,7 +57,7 @@
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link" href="/Web/MovieTicket.aspx" id="movie">🎥&nbsp;Movie </a>
                             </li>
-                            <li class="nav-item dropdown"><a class="nav-link" href="#" id="event">🗓&nbsp;Events</a>
+                            <li class="nav-item dropdown"><a class="nav-link" href="/Web/EventTicket.aspx" id="event">🗓&nbsp;Events</a>
                             </li>
 
                             <!-- Menu item 5 Elements-->

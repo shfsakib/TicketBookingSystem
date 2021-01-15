@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="MovieList.aspx.cs" Inherits="TicketBookingSystem.UI.MovieList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="EventList.aspx.cs" Inherits="TicketBookingSystem.UI.EventList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Movie List</h2>
+        <h2>Event List</h2>
     </div>
     <div class="row pt-4" style="z-index: 900;">
         <div class="col-4">
@@ -21,7 +21,7 @@
     <div class="row p-4"></div>
     <div class="row">
         <div class="col-12 mt-2 table-responsive">
-            <asp:GridView ID="gridMovie" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridMovie_OnRowDataBound" OnPageIndexChanging="gridMovie_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Movie Found" AllowPaging="True" PageSize="15" runat="server">
+            <asp:GridView ID="gridMovie" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridMovie_OnRowDataBound" OnPageIndexChanging="gridMovie_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Event Found" AllowPaging="True" PageSize="15" runat="server">
                 <Columns>
                     <asp:TemplateField HeaderText="Movie_Name">
                         <ItemTemplate>
@@ -49,11 +49,6 @@
                             <asp:Label ID="Label41" runat="server" Text='<%#Eval("EventDate")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Seat_Type">
-                        <ItemTemplate>
-                            <asp:Label ID="Label51" runat="server" Text='<%#Eval("SeatType")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Seat_Capacity">
                         <ItemTemplate>
                             <asp:Label ID="Label10" runat="server" Text='<%#Eval("SeatCapacity")%>'></asp:Label>
@@ -66,7 +61,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Picture">
                         <ItemTemplate>
-                            <asp:Image ID="Image1" style="width: 75px; height: 75px;" runat="server" ImageUrl='<%#Eval("Picture") %>' />
+                            <asp:Image ID="Image1" Style="width: 75px; height: 75px;" runat="server" ImageUrl='<%#Eval("Picture") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Action">
@@ -86,7 +81,7 @@
             $("#<%=txtSearch.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: "/WebService.asmx/GetMovie",
+                        url: "/WebService.asmx/GetEvent",
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",

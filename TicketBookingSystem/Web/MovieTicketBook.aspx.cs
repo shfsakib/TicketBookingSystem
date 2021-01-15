@@ -86,7 +86,59 @@ namespace TicketBookingSystem.Web
 
         protected void btnBuy_OnClick(object sender, EventArgs e)
         {
-            
+            if (txtSeatNo.Text == "" || txtSeatNo.Text == "0")
+            {
+                Response.Write("<script language=javascript>alert('Please choose seat first');</script>");
+            }
+            else if (txtBkashNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Bkash no is required');</script>");
+            }
+            else if (txtTransNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Transaction no is required');</script>");
+            }
+            else if (txtAmount.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Amount is required');</script>");
+            }
+            else
+            {
+                bookTicketModal.CompanyId = Convert.ToInt32(Request.QueryString["cId"]);
+                bookTicketModal.CoachId = Convert.ToInt32(Request.QueryString["MId"]);
+                bookTicketModal.FromLocation = Convert.ToInt32(Request.QueryString["location"]);
+                bookTicketModal.ToLocation = 0;
+                bookTicketModal.JourneyDate = Request.QueryString["dt"];
+                bookTicketModal.CoachType = "Event";
+                bookTicketModal.SubTotal = Convert.ToDouble(txtSubTotal.Text);
+                bookTicketModal.ServiceCharge = Convert.ToDouble(txtService.Text);
+                bookTicketModal.Advance = Convert.ToDouble(paymentPercentage.InnerText);
+                bookTicketModal.GrandTotal = Convert.ToDouble(txtTotal.Text);
+                bookTicketModal.TokenId = lblRandom.Text;
+                bookTicketModal.BkashNo = txtBkashNo.Text;
+                bookTicketModal.TransactionNo = txtTransNo.Text;
+                bookTicketModal.SeatName = txtSeatNo.Text;
+                bookTicketModal.Amount = txtAmount.Text;
+                bookTicketModal.BookTime = masterClass.Date();
+                bookTicketModal.Status = "A";
+                bookTicketModal.Fare = Convert.ToDouble(Request.QueryString["p"]);
+                bookTicketModal.UserId = masterClass.UserIdCookie();
+                bool ans = bookTicketGateway.BookTicket(bookTicketModal);
+                if (ans)
+                {
+                    string email =
+                        masterClass.IsExist($"SELECT Email FROM Registration WHERE RegId='{masterClass.UserIdCookie()}'");
+                    bool a = masterClass.SendEmail("myticket995@gmail.com", email, "Token", "<h3>Hello Passenger,</h3><br/>Your Token id is: '<b>" + lblRandom.Text + "</b>'.Use this token to print your ticket.", "@myticket1");
+                    if (a)
+                    {
+                        Response.Redirect("/Web/MovieTicket.aspx?b=1");
+                    }
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Ticket booking failed');</script>");
+                }
+            }
         }
     }
 }

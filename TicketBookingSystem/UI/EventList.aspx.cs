@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,17 +10,17 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class MovieList : System.Web.UI.Page
+    public partial class EventList : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private EventModel eventModel;
         private EventGateway eventGateway;
 
-        public MovieList()
+        public EventList()
         {
-            masterClass=MasterClass.GetInstance();;
-            eventModel=EventModel.GetInstance();
-           eventGateway=EventGateway.GetInstance();
+            masterClass = MasterClass.GetInstance(); ;
+            eventModel = EventModel.GetInstance();
+            eventGateway = EventGateway.GetInstance();
 
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -30,28 +29,28 @@ namespace TicketBookingSystem.UI
             {
                 if (Request.QueryString["b"] == "1")
                 {
-                    Response.Write("<script language=javascript>alert('Movie updated successfully');</script>");
+                    Response.Write("<script language=javascript>alert('Event updated successfully');</script>");
 
                 }
                 Load();
             }
         }
-
         private void Load()
         {
-            masterClass.LoadGrid(gridMovie,$@"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
+            masterClass.LoadGrid(gridMovie, $@"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON District.Id = EventInfo.EventLocation WHERE EventInfo.CompanyId = '{masterClass.UserIdCookie()}' AND EventInfo.Status='{ddlStatus.SelectedValue}' AND Type='Movie'");
+                         District ON District.Id = EventInfo.EventLocation WHERE EventInfo.CompanyId = '{masterClass.UserIdCookie()}' AND EventInfo.Status='{ddlStatus.SelectedValue}'  AND Type='Event'");
         }
         protected void ddlStatus_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Load();
+
         }
 
         protected void txtSearch_OnTextChanged(object sender, EventArgs e)
         {
-            if (txtSearch.Text=="")
+            if (txtSearch.Text == "")
             {
                 Load();
             }
@@ -60,7 +59,7 @@ FROM            EventInfo INNER JOIN
                 masterClass.LoadGrid(gridMovie, $@"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON District.Id = EventInfo.EventLocation WHERE EventInfo.CompanyId = '{masterClass.UserIdCookie()}' AND EventInfo.Status='{ddlStatus.SelectedValue}' AND EventInfo.EventName='{txtSearch.Text}'  AND Type='Movie'");
+                         District ON District.Id = EventInfo.EventLocation WHERE EventInfo.CompanyId = '{masterClass.UserIdCookie()}' AND EventInfo.Status='{ddlStatus.SelectedValue}' AND EventInfo.EventName='{txtSearch.Text}'  AND Type='Event'");
 
             }
         }
@@ -100,12 +99,12 @@ FROM            EventInfo INNER JOIN
             bool a = eventGateway.UpdateEventStatus(eventModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Movie inactivate successfully');</script>");
+                Response.Write("<script language=javascript>alert('Event inactivate successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Movie inactive failed');</script>");
+                Response.Write("<script language=javascript>alert('Event inactive failed');</script>");
             }
         }
 
@@ -113,7 +112,7 @@ FROM            EventInfo INNER JOIN
         {
             LinkButton linkButton = (LinkButton)sender;
             HiddenField eventid = (HiddenField)linkButton.Parent.FindControl("HiddenField1");
-            Response.Write("<script>window.open ('/UI/UpdateMovie.aspx?MId=" + eventid.Value + "','_blank');</script>");
+            Response.Write("<script>window.open ('/UI/UpdateEvent.aspx?EId=" + eventid.Value + "','_blank');</script>");
 
         }
 
@@ -126,12 +125,12 @@ FROM            EventInfo INNER JOIN
             bool a = eventGateway.UpdateEventStatus(eventModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Movie removed successfully');</script>");
+                Response.Write("<script language=javascript>alert('Event removed successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Movie removed failed');</script>");
+                Response.Write("<script language=javascript>alert('Event removed failed');</script>");
             }
         }
 
@@ -144,12 +143,12 @@ FROM            EventInfo INNER JOIN
             bool a = eventGateway.UpdateEventStatus(eventModel);
             if (a)
             {
-                Response.Write("<script language=javascript>alert('Movie activate successfully');</script>");
+                Response.Write("<script language=javascript>alert('Event activate successfully');</script>");
                 Load();
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Movie active failed');</script>");
+                Response.Write("<script language=javascript>alert('Event active failed');</script>");
             }
         }
     }

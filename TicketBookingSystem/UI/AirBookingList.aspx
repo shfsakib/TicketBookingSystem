@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Air Booking List</h2>
+        <h2>Booked Air List</h2>
     </div>
     <div class="row">
         <div class="col-12 table-responsive p-3">
