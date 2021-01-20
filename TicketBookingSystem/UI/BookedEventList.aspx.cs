@@ -10,13 +10,13 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class BookMovieList : System.Web.UI.Page
+    public partial class BookedEventList : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private BookTicketModal bookTicketModal;
         private BookTicketGateway bookTicketGateway;
 
-        public BookMovieList()
+        public BookedEventList()
         {
             masterClass = MasterClass.GetInstance();
             bookTicketModal = BookTicketModal.GetInstance();
@@ -39,7 +39,7 @@ namespace TicketBookingSystem.UI
 FROM            BookTicket INNER JOIN
                          Registration ON BookTicket.UserId = Registration.RegId INNER JOIN
                          District AS A ON A.Id = BookTicket.FromLocation INNER JOIN
-                         EventInfo ON BookTicket.CoachId = EventInfo.EventId AND A.Id = EventInfo.EventLocation WHERE BookTicket.CoachType='Movie' AND BookTicket.CompanyId='" + masterClass.UserIdCookie() + "' ORDER BY BookTicket.BookTime DESC");
+                         EventInfo ON BookTicket.CoachId = EventInfo.EventId AND A.Id = EventInfo.EventLocation WHERE BookTicket.CoachType='Event' AND BookTicket.CompanyId='" + masterClass.UserIdCookie() + "' ORDER BY BookTicket.BookTime DESC");
         }
         public string TimeC(string time)
         {
@@ -61,19 +61,6 @@ FROM            BookTicket INNER JOIN
             return value;
         }
 
-        protected void lnkDel_OnClick(object sender, EventArgs e)
-        {
-            LinkButton linkButton = (LinkButton)sender;
-            HiddenField HiddenField2 = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
-            bookTicketModal.TokenId = HiddenField2.Value;
-            bookTicketModal.Status = "R";
-            bool ans = bookTicketGateway.UpdateStatus(bookTicketModal);
-            if (ans)
-            {
-                Load();
-            }
-        }
-
         protected void gridBooking_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridBooking.PageIndex = e.NewPageIndex;
@@ -84,7 +71,7 @@ FROM            BookTicket INNER JOIN
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                HiddenField tokenId = (HiddenField)e.Row.FindControl("HiddenField2"); 
+                HiddenField tokenId = (HiddenField)e.Row.FindControl("HiddenField2");
                 HiddenField HiddenField3 = (HiddenField)e.Row.FindControl("HiddenField3");
                 LinkButton lnkDel = (LinkButton)e.Row.FindControl("lnkDel");
                 if (HiddenField3.Value == "A")
@@ -95,6 +82,19 @@ FROM            BookTicket INNER JOIN
                 {
                     lnkDel.Visible = false;
                 }
+            }
+        }
+
+        protected void lnkDel_OnClick(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+            HiddenField HiddenField2 = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
+            bookTicketModal.TokenId = HiddenField2.Value;
+            bookTicketModal.Status = "R";
+            bool ans = bookTicketGateway.UpdateStatus(bookTicketModal);
+            if (ans)
+            {
+                Load();
             }
         }
     }

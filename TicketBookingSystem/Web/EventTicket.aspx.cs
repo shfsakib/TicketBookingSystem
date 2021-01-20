@@ -64,7 +64,7 @@ namespace TicketBookingSystem.Web
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE  EventLocation='" + location + "'  ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE  EventLocation='" + location + "' AND EventInfo.Type='Event'  ORDER By CompanyId ASC");
             }
         }
         private void LoadPage()
@@ -73,7 +73,7 @@ FROM            EventInfo INNER JOIN
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE EventLocation='" + ViewState["location"].ToString() + "' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE EventLocation='" + ViewState["location"].ToString() + "'  AND EventInfo.Type='Event' ORDER By CompanyId ASC");
 
         }
         protected void gridMovie_OnPageIndexChanging(object sender, GridViewPageEventArgs e)

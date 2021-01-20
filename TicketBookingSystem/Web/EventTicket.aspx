@@ -4,19 +4,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row mp">
-        <div class="col-12 ticketSearchDiv">
+        <div class="col-12 ticketSearchDiv" style="text-align: center;">
             <div class="row">
-                <div class="col-12 ticketSearchBar">
+                <div class="ticketSearchBar" style="width: 40%; margin: 0 auto;">
                     <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col-12 col-lg-3">
-                            <i class="fas fa-map-marker-alt fa-lg txtIcon"></i>
+                        <div class="col-12 col-lg-6">
+                            <i class="fas fa-map-marker-alt fa-lg" style="position: absolute;left: 25px!important;margin-top: 25px;"></i>
                             <asp:TextBox ID="txtLocation" AutoPostBack="True" OnTextChanged="txtLocation_OnTextChanged" class="form-control wd-100 textbox" Style="height: 60px; text-transform: uppercase" placeholder="District" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-12 col-lg-3  mt-1 mt-lg-0">
-                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-film fa-lg"></i>&nbsp;&nbsp;Search Movies</asp:LinkButton>
+                        <div class="col-12 col-lg-6 mt-1 mt-lg-0">
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" class="btn btn-success wd-100" Style="height: 60px; padding-top: 20px;" runat="server"><i class="fas fa-calendar-alt fa-lg"></i>&nbsp;&nbsp;Search Event</asp:LinkButton>
                         </div>
-                        <div class="col-lg-3"></div>
 
                     </div>
                 </div>
@@ -25,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-12 busList table-responsive p-5" style="min-height: 250px">
-            <asp:GridView ID="gridMovie" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridMovie_OnPageIndexChanging" OnRowDataBound="gridMovie_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Movie Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridMovie" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridMovie_OnPageIndexChanging" OnRowDataBound="gridMovie_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Event Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -43,15 +41,15 @@
                                         <asp:Label ID="lbldate" runat="server" Style="font-size: 16px;" Text='<%#Eval("EventDate")%>'></asp:Label></span>
                                 </div>
                                 <div class="col-12 col-lg-2 text-lg-center">
-                                    <span>Movie_Time</span><br class="d-none d-lg-block" />
+                                    <span>Event_Time</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label6" class="d-inline-block font-weight-bold" runat="server" Text='<%# TimeC(Eval("StartTime").ToString())+" - "+ TimeC(Eval("EndTime").ToString())%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
-                                    <span>Premier_Date</span><br class="d-none d-lg-block" />
+                                    <span>Start_From</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label4" class="d-inline-block font-weight-bold" runat="server" Text='<%#Eval("EventDate")%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
-                                    <span>Seat Capacity</span><br class="d-none d-lg-block" />
+                                    <span>Ticket Limit</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="lblSeat" class="d-inline-block  font-weight-bold" runat="server" Text='<%#Eval("SeatCapacity") %>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">

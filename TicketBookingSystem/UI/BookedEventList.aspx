@@ -1,14 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="BookMovieList.aspx.cs" Inherits="TicketBookingSystem.UI.BookMovieList" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="BookedEventList.aspx.cs" Inherits="TicketBookingSystem.UI.BookedEventList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <h2>Booked Movie List</h2>
+        <h2>Booked Event List</h2>
     </div>
     <div class="row">
         <div class="col-12 table-responsive p-3">
-            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Movie Found" AllowPaging="True" PageSize="30" runat="server">
+            <asp:GridView ID="gridBooking" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridBooking_OnPageIndexChanging" OnRowDataBound="gridBooking_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="False" ShowHeaderWhenEmpty="True" EmptyDataText="No Event Found" AllowPaging="True" PageSize="30" runat="server">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -21,7 +20,7 @@
                                     <asp:Label ID="Label1" class="d-block" Style="font-size: 18px; font-weight: bold" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
                                     <asp:Label ID="Label11" class="d-block" Style="font-size: 16px;" runat="server" Text='<%#Eval("Email") %>'></asp:Label>
                                     <span class="d-block">
-                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("EventName") %>'></asp:Label>&nbsp;<asp:Label ID="lblType" Style="font-size: 14px; font-weight: bold" runat="server" Text='<%#Eval("SeatType") %>'></asp:Label></span>
+                                        <asp:Label ID="Label2" runat="server" Style="font-size: 16px;" Text='<%#Eval("EventName") %>'></asp:Label></span>
                                     <i class="fas fa-map-marker-alt"></i>
                                     <asp:Label ID="Label5" class="d-inline-block" Style="font-size: 14px; font-weight: bold; color: cornflowerblue" runat="server" Text='<%#Eval("EventAddress")+"," +Eval("EventLocation") %>'></asp:Label><br />
 

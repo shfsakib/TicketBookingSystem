@@ -73,7 +73,7 @@ namespace TicketBookingSystem.Web
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text+"%' AND EventLocation='"+ location + "' AND EventDate='"+txtDate.Text+"' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text+"%' AND EventLocation='"+ location + "' AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text+"' ORDER By CompanyId ASC");
             }
         }
 
@@ -83,7 +83,7 @@ FROM            EventInfo INNER JOIN
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" +ViewState["location"].ToString() + "' AND EventDate='" + txtDate.Text + "' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" +ViewState["location"].ToString() + "' AND EventDate='" + txtDate.Text + "' AND EventInfo.Type='Movie' ORDER By CompanyId ASC");
 
         }
         public string TimeC(string time)

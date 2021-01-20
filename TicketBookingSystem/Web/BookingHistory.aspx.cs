@@ -35,7 +35,20 @@ FROM    BookTicket   INNER JOIN  Registration ON
  BookTicket.CompanyId=Registration.RegId  INNER JOIN 
   District A ON A.Id=BookTicket.FromLocation INNER JOIN
   District B ON B.Id=BookTicket.ToLocation INNER JOIN
-                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId WHERE BookTicket.UserId='" + masterClass.UserIdCookie() + "' ORDER BY BookTicket.BookTime DESC");
+                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId  
+						 UNION
+SELECT DISTINCT 
+                         BookTicket.CompanyId, BookTicket.CoachId, BookTicket.JourneyDate, BookTicket.Fare, BookTicket.CoachType, BookTicket.SubTotal, BookTicket.ServiceCharge, BookTicket.Advance, 
+                         BookTicket.GrandTotal, BookTicket.TokenId, BookTicket.BkashNo, BookTicket.TransactionNo, BookTicket.Amount, BookTicket.BookTime, BookTicket.Status, Registration.CompanyName, EventInfo.EventName AS CoachName, 
+                         A.Name AS FromLocation, B.Name AS ToLocation, EventInfo.StartTime AS DepartureTime,
+                             (SELECT        COUNT(SeatName) AS Seat
+                               FROM            BookTicket
+                               WHERE        (TokenId = TokenId)) AS Seat
+FROM            BookTicket AS BookTicket INNER JOIN
+                         Registration ON BookTicket.CompanyId = Registration.RegId INNER JOIN
+                         District AS A ON A.Id = BookTicket.FromLocation INNER JOIN
+                         District AS B ON B.Id = BookTicket.FromLocation INNER JOIN
+                         EventInfo ON BookTicket.CoachId = EventInfo.EventId WHERE BookTicket.UserId='" + masterClass.UserIdCookie() + "' ORDER BY BookTicket.BookTime DESC");
         }
         public string TimeC(string time)
         {
@@ -63,6 +76,7 @@ FROM    BookTicket   INNER JOIN  Registration ON
                 DataList DataListSeat = (DataList)e.Row.FindControl("DataListSeat");
                 HiddenField status = (HiddenField)e.Row.FindControl("HiddenField3");
                 Label statusResult = (Label)e.Row.FindControl("lblStatus");
+                Label lblType = (Label)e.Row.FindControl("lblType");
                 if (status.Value == "A")
                 {
                     statusResult.Text = "Accepted";
@@ -102,7 +116,20 @@ FROM    BookTicket   INNER JOIN  Registration ON
  BookTicket.CompanyId=Registration.RegId  INNER JOIN 
   District A ON A.Id=BookTicket.FromLocation INNER JOIN
   District B ON B.Id=BookTicket.ToLocation INNER JOIN
-                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId WHERE BookTicket.UserId='" + masterClass.UserIdCookie() + "' AND BookTicket LIKE '%" + txtToken.Text + "%' ORDER BY BookTicket.BookTime DESC");
+                         CoachInfo ON BookTicket.CoachId = CoachInfo.CoachId  
+						 UNION
+SELECT DISTINCT 
+                         BookTicket.CompanyId, BookTicket.CoachId, BookTicket.JourneyDate, BookTicket.Fare, BookTicket.CoachType, BookTicket.SubTotal, BookTicket.ServiceCharge, BookTicket.Advance, 
+                         BookTicket.GrandTotal, BookTicket.TokenId, BookTicket.BkashNo, BookTicket.TransactionNo, BookTicket.Amount, BookTicket.BookTime, BookTicket.Status, Registration.CompanyName, EventInfo.EventName AS CoachName, 
+                         A.Name AS FromLocation, B.Name AS ToLocation, EventInfo.StartTime AS DepartureTime,
+                             (SELECT        COUNT(SeatName) AS Seat
+                               FROM            BookTicket
+                               WHERE        (TokenId = TokenId)) AS Seat
+FROM            BookTicket AS BookTicket INNER JOIN
+                         Registration ON BookTicket.CompanyId = Registration.RegId INNER JOIN
+                         District AS A ON A.Id = BookTicket.FromLocation INNER JOIN
+                         District AS B ON B.Id = BookTicket.FromLocation INNER JOIN
+                         EventInfo ON BookTicket.CoachId = EventInfo.EventId WHERE BookTicket.UserId='" + masterClass.UserIdCookie() + "' AND BookTicket.Token LIKE '%" + txtToken.Text + "%' ORDER BY BookTicket.BookTime DESC");
             }
             else
             {

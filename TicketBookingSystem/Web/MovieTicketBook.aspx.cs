@@ -109,7 +109,7 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.FromLocation = Convert.ToInt32(Request.QueryString["location"]);
                 bookTicketModal.ToLocation = 0;
                 bookTicketModal.JourneyDate = Request.QueryString["dt"];
-                bookTicketModal.CoachType = "Event";
+                bookTicketModal.CoachType = "Movie";
                 bookTicketModal.SubTotal = Convert.ToDouble(txtSubTotal.Text);
                 bookTicketModal.ServiceCharge = Convert.ToDouble(txtService.Text);
                 bookTicketModal.Advance = Convert.ToDouble(paymentPercentage.InnerText);

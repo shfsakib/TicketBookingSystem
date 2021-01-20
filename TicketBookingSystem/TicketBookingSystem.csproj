@@ -194,6 +194,7 @@
     <Content Include="UI\AirBookingList.aspx" />
     <Content Include="UI\AirList.aspx" />
     <Content Include="UI\BookedBusList.aspx" />
+    <Content Include="UI\BookedEventList.aspx" />
     <Content Include="UI\BookMovieList.aspx" />
     <Content Include="UI\BusList.aspx" />
     <Content Include="UI\EventList.aspx" />
@@ -207,7 +208,6 @@
     <Content Include="WebService.asmx" />
     <Content Include="Web\AirBook.aspx" />
     <Content Include="Web\AirTicket.aspx" />
-    <Content Include="Web\BookingHistory.aspx" />
     <Content Include="Web\BusSeatBookNAc.aspx" />
     <Content Include="Web\BusTicket.aspx" />
     <Content Include="Web\EventTicket.aspx" />
@@ -565,6 +565,13 @@
     <Compile Include="UI\BookedBusList.aspx.designer.cs">
       <DependentUpon>BookedBusList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\BookedEventList.aspx.cs">
+      <DependentUpon>BookedEventList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BookedEventList.aspx.designer.cs">
+      <DependentUpon>BookedEventList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\BookMovieList.aspx.cs">
       <DependentUpon>BookMovieList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -652,13 +659,6 @@
     </Compile>
     <Compile Include="Web\AirTicket.aspx.designer.cs">
       <DependentUpon>AirTicket.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\BookingHistory.aspx.cs">
-      <DependentUpon>BookingHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\BookingHistory.aspx.designer.cs">
-      <DependentUpon>BookingHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\BusSeatBookNAc.aspx.cs">
       <DependentUpon>BusSeatBookNAc.aspx</DependentUpon>
