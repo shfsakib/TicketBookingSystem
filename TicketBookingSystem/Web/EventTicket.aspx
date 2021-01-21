@@ -45,7 +45,7 @@
                                     <asp:Label ID="Label6" class="d-inline-block font-weight-bold" runat="server" Text='<%# TimeC(Eval("StartTime").ToString())+" - "+ TimeC(Eval("EndTime").ToString())%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
-                                    <span>Start_From</span><br class="d-none d-lg-block" />
+                                    <span>Event_Date</span><br class="d-none d-lg-block" />
                                     <asp:Label ID="Label4" class="d-inline-block font-weight-bold" runat="server" Text='<%#Eval("EventDate")%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">

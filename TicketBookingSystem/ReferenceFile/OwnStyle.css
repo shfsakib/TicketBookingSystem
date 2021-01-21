@@ -3,11 +3,11 @@
 }
 
 .wd-100 {
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .ht-100 {
-    height: 100%!important;
+    height: 100% !important;
 }
 
 .color-white {
@@ -21,6 +21,7 @@
     padding: 20px;
     border-radius: 10px;
 }
+
 .font-18 {
     font-size: 18px;
 }
@@ -66,17 +67,74 @@
     border-radius: 10px;
 }
 
+.demoModalBg {
+    position: absolute;
+    width: calc(100%);
+    height: calc(100%);
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: auto;
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+.backgroundModal {
+    min-height: 450px;
+    width: 550px;
+    max-width: 550px;
+    height: 500px;
+    background: white;
+    padding: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    border-radius: 10px;
+    border-bottom: 10px solid lightgreen;
+}
+
+.modalHead {
+    margin: 0;
+    padding: 8px 15px;
+    height: 50px;
+    border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid #a5a3d1;
+}
+
+.headTitle {
+    font-size: 20px;
+}
+
+    .headTitle img {
+        width: 25px;
+        height: 25px;
+    }
+
+.modalClose {
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    font-size: 36px;
+    transform: rotate( 90deg );
+}
+
 @media screen and (min-width:0px) and (max-width:990px) {
     .ticketSearchBar {
         width: 100%;
-        height: 215px!important;
+        height: 215px !important;
         padding: 10px 20px 10px 20px;
         background: white;
         border-radius: 10px;
     }
-    .ticketSearchDiv {
-    padding: 60px 30px 60px 30px;
 
+    .ticketSearchDiv {
+        padding: 60px 30px 60px 30px;
     }
 }
 
@@ -96,4 +154,4 @@
     position: absolute;
     margin-left: 10px;
     font-size: 12px;
-} 
+}

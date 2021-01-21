@@ -64,7 +64,7 @@ namespace TicketBookingSystem.Web
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE  EventLocation='" + location + "' AND EventInfo.Type='Event'  ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE  EventInfo.EventLocation='" + location + "' AND EventInfo.Type='Event'  ORDER By CompanyId ASC");
             }
         }
         private void LoadPage()
@@ -90,7 +90,7 @@ FROM            EventInfo INNER JOIN
                 Label lblSeat = (Label)e.Row.FindControl("lblSeat");
                 string countSeat =
                     masterClass.IsExist(
-                        $"SELECT Count(Fare) FROM BookTicket WHERE CoachId='{eventId}'");
+                        $@"SELECT SUM(Convert(int, SeatName)) FROM BookTicket WHERE CoachType='Event' WHERE CoachId='{eventId}'");
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }

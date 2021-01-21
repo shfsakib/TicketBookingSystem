@@ -175,7 +175,7 @@ FROM            CoachInfo INNER JOIN
                 Label lblSeat = (Label)e.Row.FindControl("lblSeat");
                 string countSeat =
                     masterClass.IsExist(
-                        $"SELECT Count(Fare) FROM BookTicket WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                        $@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }

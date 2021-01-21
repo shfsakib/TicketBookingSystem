@@ -178,6 +178,7 @@
     <Content Include="ReferenceFile\Admin\vendor\vector-map\jqvmap.min.css" />
     <Content Include="ReferenceFile\Admin\vendor\wow\animate.css" />
     <Content Include="ReferenceFile\Admin\vendor\wow\wow.min.js" />
+    <Content Include="ReferenceFile\buy1.png" />
     <Content Include="ReferenceFile\images\background.png" />
     <Content Include="ReferenceFile\images\DummyPic.png" />
     <Content Include="ReferenceFile\logo.png" />

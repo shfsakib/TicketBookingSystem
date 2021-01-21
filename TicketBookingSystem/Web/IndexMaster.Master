@@ -81,16 +81,16 @@
                                         <asp:LinkButton class="btnSign" runat="server" ID="btnLogin" OnClick="btnLogin_OnClick" Style="color: white;"><i class="fas fa-lock-open"></i>&nbsp;Log in</asp:LinkButton>
                                     </span></a>
                                 <a class="nav-link" href="#" id="logP" runat="server" visible="False" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span id="userImage" runat="server" >
+                                    <span id="userImage" runat="server">
                                         <% HttpCookie cookies = HttpContext.Current.Request.Cookies["Ticket"];%>
 
                                         <img style="height: 50px; width: 50px; border-radius: 50%; border: 0.8px solid #696969;" src='<%=cookies["Picture"].ToString() %>' />
                                     </span></a>
-                                <div class="dropdown-menu userMenu" aria-labelledby="dropdownMenuLink" runat="server" id="menuDiv" Visible="False">
+                                <div class="dropdown-menu userMenu" aria-labelledby="dropdownMenuLink" runat="server" id="menuDiv" visible="False">
                                     <a class="dropdown-item" runat="server" id="btnTicketList" href="/Web/PrintTicket.aspx">Print Ticket</a>
                                     <%--<a class="dropdown-item" runat="server" id="btnCancelReq" href="/Web/BookingHistory.aspx">Booking History</a>--%>
                                     <a class="dropdown-item" runat="server" id="btnPayment" href="#">Payment List</a>
-                                    
+
                                     <a class="dropdown-item" runat="server" id="logOut" onserverclick="logOut_OnServerClick" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Log out</a>
                                 </div>
                                 <style>
@@ -183,7 +183,20 @@
             </div>
         </footer>
     </form>
-
+    <div class="demoModalBg">
+        <div class="backgroundModal">
+            <div class="modalHead">
+                <span class="headTitle text-left font-600">
+                   How to buy ticket</span>
+                <span class="modalClose text-right close" title="Close">
+                   x</span>
+            </div>
+            <div style="width: calc(100%); padding: 10px;">
+                <h6>1. Choose any option and search for ticket by fillup all required fields</h6>
+                <img class="d-block" src="../ReferenceFile/buy1.png" style="width: 100%; height:30px"/>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
