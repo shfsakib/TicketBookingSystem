@@ -49,6 +49,11 @@
                         <asp:LinkButton ID="btnLogin" OnClick="btnLogin_OnClick" CssClass="btn btn-success wd-100" runat="server">Log in</asp:LinkButton>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 p-1">
+                        <a href="/Web/Index.aspx">Back to home</a>
+                    </div>
+                </div>
             </div>
             <div class="col-4"></div>
         </div>

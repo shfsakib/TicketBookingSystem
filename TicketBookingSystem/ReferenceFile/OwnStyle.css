@@ -76,11 +76,10 @@
     top: 0;
     left: 0;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     pointer-events: auto;
     justify-content: center;
     align-items: center;
-    display: block;
 }
 
 .backgroundModal {
@@ -95,6 +94,8 @@
     transform: translate(-50%, -50%);
     position: relative;
     border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
     border-bottom: 10px solid lightgreen;
 }
 

@@ -71,7 +71,7 @@
                                         <span>Confirm Password</span>
                                         <asp:TextBox ID="txtConfirmPassword" class="form-control wd-100" runat="server" placeholder="********" TextMode="Password"></asp:TextBox>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
                                     </div>
                                     <div class="col-12 p-2">

@@ -10,8 +10,9 @@ namespace TicketBookingSystem.UI
 {
     public partial class Admin : System.Web.UI.MasterPage
     {
+        HttpCookie cookieIndex = HttpContext.Current.Request.Cookies["Ticket"];
         private MasterClass masterClass;
-
+        
         public Admin()
         {
             masterClass=MasterClass.GetInstance();
@@ -20,7 +21,14 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
-                
+                if (cookieIndex != null)
+                {
+                    
+                }
+                else
+                {
+                    Response.Redirect("/Web/Login.aspx");
+                }
             }
         }
 

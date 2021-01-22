@@ -11,7 +11,7 @@
             display: block;
         }
     </style>
-    <div class="row p-2">
+    <div class="row p-2" style="justify-content: center;">
         <asp:Repeater ID="Repeater1" runat="server">
             <ItemTemplate>
                 <div class="col-sm-3 col-md-3" style="border: 1px solid #a5a3d1; text-align: center; border-radius: 10px;">

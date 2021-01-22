@@ -25,7 +25,36 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
+                HttpCookie cookieIndex = HttpContext.Current.Request.Cookies["Ticket"];
 
+                if (cookieIndex != null)
+                {
+
+                    if (masterClass.TypeCookie() == "")
+                    {
+                        Response.Redirect("/Web/Login.aspx");
+                    }
+                    else if (masterClass.TypeCookie() == "A")
+                    {
+                    }
+                    else if (masterClass.TypeCookie() == "Ad")
+                    {
+                        Response.Redirect("/UI/PassengerList.aspx");
+
+                    }
+                    else if (masterClass.TypeCookie() == "P")
+                    {
+                        Response.Redirect("/Web/index.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/Web/Login.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/Web/index.aspx");
+                }
                 masterClass.BindDropDown(ddlDistrict, "SELECT", "SELECT Name,ID FROM District ORDER By Name ASC");
 
             }

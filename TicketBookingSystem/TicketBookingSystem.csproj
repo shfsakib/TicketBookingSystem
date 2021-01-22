@@ -179,6 +179,9 @@
     <Content Include="ReferenceFile\Admin\vendor\wow\animate.css" />
     <Content Include="ReferenceFile\Admin\vendor\wow\wow.min.js" />
     <Content Include="ReferenceFile\buy1.png" />
+    <Content Include="ReferenceFile\buy2.png" />
+    <Content Include="ReferenceFile\buy3.png" />
+    <Content Include="ReferenceFile\buy4.png" />
     <Content Include="ReferenceFile\images\background.png" />
     <Content Include="ReferenceFile\images\DummyPic.png" />
     <Content Include="ReferenceFile\logo.png" />
@@ -186,11 +189,13 @@
     <Content Include="ReferenceFile\OwnStyle.css" />
     <Content Include="ReferenceFile\select2.css" />
     <Content Include="ReferenceFile\wheel.png" />
+    <Content Include="UI\AddAdmin.aspx" />
     <Content Include="UI\AddAir.aspx" />
     <Content Include="UI\AddBus.aspx" />
     <Content Include="UI\AddEvent.aspx" />
     <Content Include="UI\AddLaunch.aspx" />
     <Content Include="UI\AddMovie.aspx" />
+    <Content Include="UI\AdminList.aspx" />
     <Content Include="UI\AgencyList.aspx" />
     <Content Include="UI\AirBookingList.aspx" />
     <Content Include="UI\AirList.aspx" />
@@ -496,6 +501,13 @@
     <Compile Include="DAL\Model\EventModel.cs" />
     <Compile Include="DAL\Model\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AddAdmin.aspx.cs">
+      <DependentUpon>AddAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AddAdmin.aspx.designer.cs">
+      <DependentUpon>AddAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\AddAir.aspx.cs">
       <DependentUpon>AddAir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -537,6 +549,13 @@
     </Compile>
     <Compile Include="UI\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AdminList.aspx.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AdminList.aspx.designer.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\AgencyList.aspx.cs">
       <DependentUpon>AgencyList.aspx</DependentUpon>

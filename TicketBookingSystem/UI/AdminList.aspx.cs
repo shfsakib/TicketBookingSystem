@@ -10,13 +10,13 @@ using TicketBookingSystem.DAL.Model;
 
 namespace TicketBookingSystem.UI
 {
-    public partial class AgencyList : System.Web.UI.Page
+    public partial class AdminList : System.Web.UI.Page
     {
         private MasterClass masterClass;
         private RegistrationModel registrationModel;
         private RegistrationGateway registrationGateway;
 
-        public AgencyList()
+        public AdminList()
         {
             masterClass = MasterClass.GetInstance();
             registrationModel = RegistrationModel.GetInstance();
@@ -41,8 +41,6 @@ namespace TicketBookingSystem.UI
                     }
                     else if (masterClass.TypeCookie() == "Ad")
                     {
-
-
                     }
                     else if (masterClass.TypeCookie() == "P")
                     {
@@ -63,16 +61,17 @@ namespace TicketBookingSystem.UI
         }
         private void Load()
         {
-            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='A' AND Status='{ddlType.SelectedValue}' ORDER BY CompanyName ASC");
+            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='Ad' AND Status='{ddlType.SelectedValue}' ORDER BY Name ASC");
         }
         protected void ddlType_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Load();
+
         }
 
         protected void txtSearch_OnTextChanged(object sender, EventArgs e)
         {
-            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='A' AND Status='{ddlType.SelectedValue}' AND CompanyName +' | '+ContactNo LIKE '%" + txtSearch.Text + "%' ORDER BY CompanyName ASC");
+            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='Ad' AND Status='{ddlType.SelectedValue}' AND Name +' | '+ContactNo LIKE '%" + txtSearch.Text + "%' ORDER BY Name ASC");
 
         }
 

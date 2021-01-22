@@ -77,6 +77,28 @@ namespace TicketBookingSystem
             return result;
         }
         [WebMethod]
+        public List<string> GetAdmin(string txt)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                string query = @"SELECT Name +' | '+ContactNo txt FROM Registration WHERE Name +' | '+Email +' | '+ContactNo LIKE '%" + txt + "%' AND Type='Ad'";
+                using (cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != System.Data.ConnectionState.Open) con.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(reader["txt"].ToString().TrimEnd());
+                    }
+                }
+            }
+            catch (Exception ex) { }
+            return result;
+        }
+        [WebMethod]
         public List<string> GetBus(string txt)
         {
             List<string> result = new List<string>();

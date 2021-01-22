@@ -15,7 +15,7 @@ namespace TicketBookingSystem.Web
 
         public IndexMaster()
         {
-            masterClass=MasterClass.GetInstance();
+            masterClass = MasterClass.GetInstance();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,8 +31,8 @@ namespace TicketBookingSystem.Web
                 }
                 else if (masterClass.TypeCookie() == "P")
                 {
-                    logA.Visible = btnSign.Visible= false;
-                    userName.Visible = logP.Visible= menuDiv.Visible = true;
+                    logA.Visible = btnSign.Visible = false;
+                    userName.Visible = logP.Visible = menuDiv.Visible = true;
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace TicketBookingSystem.Web
 
         protected void btnLogin_OnClick(object sender, EventArgs e)
         {
-            Response.Write("<script>window.open ('/Web/Login.aspx','_blank');</script>"); 
+            Response.Write("<script>window.open ('/Web/Login.aspx','_blank');</script>");
         }
 
         protected void logOut_OnServerClick(object sender, EventArgs e)

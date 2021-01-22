@@ -119,5 +119,41 @@ namespace TicketBookingSystem.DAL.Gateway
             }
             return result;
         }
+        internal bool CreateAdmin(RegistrationModel model)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("INSERT INTO Registration(RegId,Name,Email,ContactNo,Gender,DateofBirth,Address,Password,Picture,Status,Type,InTime) VALUES(@RegId,@Name,@Email,@ContactNo,@Gender,@DateofBirth,@Address,@Password,@Picture,@Status,@Type,@InTime)", connection);
+                command.Parameters.AddWithValue("@RegId", model.RegId);
+                command.Parameters.AddWithValue("@Name", model.Name);
+                command.Parameters.AddWithValue("@Email", model.Email);
+                command.Parameters.AddWithValue("@ContactNo", model.ContactNo);
+                command.Parameters.AddWithValue("@Gender", model.Gender);
+                command.Parameters.AddWithValue("@DateofBirth", model.DateofBirth);
+                command.Parameters.AddWithValue("@Address", model.Address);
+                command.Parameters.AddWithValue("@Password", model.Password);
+                command.Parameters.AddWithValue("@Picture", model.Picture);
+                command.Parameters.AddWithValue("@Status", model.Status);
+                command.Parameters.AddWithValue("@Type", model.Type);
+                command.Parameters.AddWithValue("@InTime", model.InTime);
+
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (connection.State != ConnectionState.Closed)
+                    connection.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

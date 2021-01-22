@@ -26,6 +26,37 @@ namespace TicketBookingSystem.UI
         {
             if (!IsPostBack)
             {
+                HttpCookie cookieIndex = HttpContext.Current.Request.Cookies["Ticket"];
+
+                if (cookieIndex != null)
+                {
+
+                    if (masterClass.TypeCookie() == "")
+                    {
+                        Response.Redirect("/Web/Login.aspx");
+                    }
+                    else if (masterClass.TypeCookie() == "A")
+                    {
+                        Response.Redirect("/UI/AddBus.aspx");
+                    }
+                    else if (masterClass.TypeCookie() == "Ad")
+                    {
+
+
+                    }
+                    else if (masterClass.TypeCookie() == "P")
+                    {
+                        Response.Redirect("/Web/index.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/Web/Login.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/Web/index.aspx");
+                }
                 Load();
 
             }
@@ -103,7 +134,7 @@ namespace TicketBookingSystem.UI
 
         protected void txtSearch_OnTextChanged(object sender, EventArgs e)
         {
-            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='p' AND Status='{ddlType.SelectedValue}' AND Name +' | '+ContactNo LIKE '%"+txtSearch.Text+"%' ORDER BY Name ASC");
+            masterClass.LoadGrid(gridUser, $@"SELECT * FROM Registration WHERE Type='p' AND Status='{ddlType.SelectedValue}' AND Name +' | '+ContactNo LIKE '%" + txtSearch.Text + "%' ORDER BY Name ASC");
         }
     }
 }

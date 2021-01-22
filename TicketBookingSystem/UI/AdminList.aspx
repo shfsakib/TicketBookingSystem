@@ -1,11 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="PassengerList.aspx.cs" Inherits="TicketBookingSystem.UI.UserList" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UI/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AdminList.aspx.cs" Inherits="TicketBookingSystem.UI.AdminList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
     <div class="row">
-        <h2>Passenger List</h2>
+        <h2>Admin List</h2>
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -30,9 +29,9 @@
     <div class="row p-4"></div>
     <div class="row">
         <div class="col-12 mt-2 table-responsive">
-            <asp:GridView ID="gridUser" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridUser_OnRowDataBound" OnPageIndexChanging="gridUser_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Passenger Found" AllowPaging="True" PageSize="15" runat="server">
+            <asp:GridView ID="gridUser" Width="100%" class="table table-hover table-bordered table-striped" OnRowDataBound="gridUser_OnRowDataBound" OnPageIndexChanging="gridUser_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Admin Found" AllowPaging="True" PageSize="15" runat="server">
                 <Columns>
-                    <asp:TemplateField HeaderText="Passenger_Name">
+                    <asp:TemplateField HeaderText="Admin_Name">
                         <ItemTemplate>
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("RegId")%>' />
                             <asp:Label ID="Label1" runat="server" Text='<%#Eval("Name")%>'></asp:Label>
@@ -84,7 +83,7 @@
             $("#<%=txtSearch.ClientID %>").autocomplete({
                     source: function (request, response) {
                         $.ajax({
-                            url: "/WebService.asmx/GetPassenger",
+                            url: "/WebService.asmx/GetAdmin",
                             type: "POST",
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
