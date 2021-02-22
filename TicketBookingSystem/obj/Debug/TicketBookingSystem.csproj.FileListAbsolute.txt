@@ -24,7 +24,6 @@ D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.Web.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.WindowsServer.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.ApplicationInsights.dll
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Git\TicketBookingSystem\TicketBookingSystem\bin\BitsMasterClass.pdb
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.DependencyCollector.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Git\TicketBookingSystem\TicketBookingSystem\bin\Microsoft.AI.Web.xml

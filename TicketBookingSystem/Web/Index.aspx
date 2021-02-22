@@ -35,6 +35,13 @@
                         <asp:LinkButton ID="lnkBook" class="btn btn-success wd-100" OnClick="lnkBook_OnClick" runat="server">Book now</asp:LinkButton></span>
                 </div>
             </ItemTemplate>
+            <FooterTemplate>
+                <div class="col-lg-12" style="text-align: center; height: 400px; padding: 150px;">
+                    <h1>
+                        <asp:Label ID="defaultItem" runat="server" style="font-size: 50px;"
+                            Visible='<%# Repeater1.Items.Count == 0 %>' Text="No Events found" /></h1>
+                </div>
+            </FooterTemplate>
         </asp:Repeater>
     </div>
 </asp:Content>

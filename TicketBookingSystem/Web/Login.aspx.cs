@@ -93,5 +93,32 @@ namespace TicketBookingSystem.Web
                 }
             }
         }
+
+        protected void lnkForgot_OnClick(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Type your email first, then click on forgot password');</script>");
+            }
+            else
+            {
+                string pass = masterClass.IsExist($"SELECT Password FROM Registration WHERE Email='{txtEmail.Text}'");
+                if (pass == "")
+                {
+                    Response.Write("<script language=javascript>alert('Email id does not exist');</script>");
+
+                }
+                else
+                {
+                    bool ans = masterClass.SendEmail("myticket995@gmail.com", txtEmail.Text, "Password", "<h3>Hello User,</h3><br/>Your Password is: " + pass, "@myticket1");
+                    if (ans)
+                    {
+                        Response.Write("<script language=javascript>alert('Password has been sent to your email address.');</script>");
+
+                    }
+                }
+
+            }
+        }
     }
 }

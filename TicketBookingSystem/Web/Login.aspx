@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 p-1">
-                        <asp:LinkButton ID="lnkForgot" CssClass="text-primary" runat="server">Forgot password</asp:LinkButton>
+                        <asp:LinkButton ID="lnkForgot" OnClick="lnkForgot_OnClick" CssClass="text-primary" runat="server">Forgot password</asp:LinkButton>
                     </div>
                 </div>
                 <div class="row">
