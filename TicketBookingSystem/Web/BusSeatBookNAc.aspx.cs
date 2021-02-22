@@ -1694,7 +1694,126 @@ namespace TicketBookingSystem.Web
                 btnC4.Enabled = false;
                 btnC4.BackColor = Color.Purple;
             }
-
+            if (CheckSeatExist("D1"))
+            {
+                btnD1.Enabled = false;
+                btnD1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("D2"))
+            {
+                btnD2.Enabled = false;
+                btnD2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("D3"))
+            {
+                btnD3.Enabled = false;
+                btnD3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("D4"))
+            {
+                btnD4.Enabled = false;
+                btnD4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("E1"))
+            {
+                btnE1.Enabled = false;
+                btnE1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("E2"))
+            {
+                btnE2.Enabled = false;
+                btnE2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("E3"))
+            {
+                btnE3.Enabled = false;
+                btnE3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("E4"))
+            {
+                btnE4.Enabled = false;
+                btnE4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("F1"))
+            {
+                btnF1.Enabled = false;
+                btnF1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("F2"))
+            {
+                btnF2.Enabled = false;
+                btnF2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("F3"))
+            {
+                btnF3.Enabled = false;
+                btnF3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("F4"))
+            {
+                btnF4.Enabled = false;
+                btnF4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("G1"))
+            {
+                btnG1.Enabled = false;
+                btnG1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("G2"))
+            {
+                btnG2.Enabled = false;
+                btnG2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("G3"))
+            {
+                btnG3.Enabled = false;
+                btnG3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("G4"))
+            {
+                btnG4.Enabled = false;
+                btnG4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("H1"))
+            {
+                btnH1.Enabled = false;
+                btnH1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("H2"))
+            {
+                btnH2.Enabled = false;
+                btnH2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("H3"))
+            {
+                btnH3.Enabled = false;
+                btnH3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("H4"))
+            {
+                btnH4.Enabled = false;
+                btnH4.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("I1"))
+            {
+                btnI1.Enabled = false;
+                btnI1.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("I2"))
+            {
+                btnI2.Enabled = false;
+                btnI2.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("I3"))
+            {
+                btnI3.Enabled = false;
+                btnI3.BackColor = Color.Purple;
+            }
+            if (CheckSeatExist("I4"))
+            {
+                btnI4.Enabled = false;
+                btnI4.BackColor = Color.Purple;
+            }
         }
 
     }

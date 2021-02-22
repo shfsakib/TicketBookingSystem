@@ -60,6 +60,10 @@ namespace TicketBookingSystem.Web
         }
         protected void txtSeatNo_OnTextChanged(object sender, EventArgs e)
         {
+            if (txtSeatNo.Text == "")
+            {
+                txtSeatNo.Text = "1";
+            }
             if (Convert.ToInt32(txtSeatNo.Text) <= 3)
             {
                 charge = "50";
@@ -68,7 +72,12 @@ namespace TicketBookingSystem.Web
             {
                 charge = "100";
             }
-            if (txtSeatNo.Text != "" || txtSeatNo.Text != "0")
+            if (Convert.ToInt32(Request.QueryString["S"]) < Convert.ToInt32(txtSeatNo.Text))
+            {
+                Response.Write("<script language=javascript>alert('Insufficient Ticket No.');</script>");
+
+            }
+            else if ((txtSeatNo.Text != "" && Convert.ToInt32(txtSeatNo.Text) <= 6) || (txtSeatNo.Text != "0" && Convert.ToInt32(txtSeatNo.Text) <= 6))
             {
                 int seat = Convert.ToInt32(txtSeatNo.Text);
                 double price = Convert.ToDouble(Request.QueryString["p"]);
@@ -81,12 +90,16 @@ namespace TicketBookingSystem.Web
                 paymentPercentage.InnerText = txtAmount.Text;
 
             }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Can not Book More Than 6 Tickets');</script>");
 
+            }
         }
 
         protected void btnBuy_OnClick(object sender, EventArgs e)
         {
-            if (txtSeatNo.Text == "" || txtSeatNo.Text == "0")
+            if (txtSeatNo.Text == "" || txtSeatNo.Text == "0" || Convert.ToInt32(txtSeatNo.Text) >= 6)
             {
                 Response.Write("<script language=javascript>alert('Please choose seat first');</script>");
             }

@@ -173,9 +173,11 @@ FROM            CoachInfo INNER JOIN
             {
                 int CoachId = Convert.ToInt32(((HiddenField)e.Row.FindControl("HiddenField2")).Value);
                 Label lblSeat = (Label)e.Row.FindControl("lblSeat");
-                string countSeat =
-                    masterClass.IsExist(
-                        $@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                string countSeat =masterClass.IsExist($@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                if (countSeat=="")
+                {
+                    countSeat = "0";
+                }
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }

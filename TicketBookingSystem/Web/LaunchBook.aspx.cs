@@ -35,6 +35,9 @@ namespace TicketBookingSystem.Web
                 txtSeatAvailable.Text = Request.QueryString["S"];
                 lblRandom.Text = RandomString(8, false);
                 txtSeatNo.Focus();
+                number.InnerText =
+                  masterClass.IsExist($"SELECT ContactNo FROM Registration WHERE RegId='{Request.QueryString["cId"]}'");
+
             }
         }
         public string RandomString(int size, bool lowerCase = false)
@@ -60,6 +63,10 @@ namespace TicketBookingSystem.Web
         }
         protected void txtSeatNo_OnTextChanged(object sender, EventArgs e)
         {
+            if (txtSeatNo.Text=="")
+            {
+                txtSeatNo.Text = "1";
+            }
             if (Convert.ToInt32(txtSeatNo.Text)<=3)
             {
                 charge = "50";
@@ -68,18 +75,32 @@ namespace TicketBookingSystem.Web
             {
                 charge = "100";
             }
-            if (txtSeatNo.Text != "" || txtSeatNo.Text != "0")
+            if (Convert.ToInt32(Request.QueryString["S"]) < Convert.ToInt32(txtSeatNo.Text))
+            {
+                Response.Write("<script language=javascript>alert('Insufficient Ticket No.');</script>");
+
+            }
+            else if ((txtSeatNo.Text != "" && Convert.ToInt32(txtSeatNo.Text) <= 6) || (txtSeatNo.Text != "0" && Convert.ToInt32(txtSeatNo.Text)<=6))
             {
                 int seat = Convert.ToInt32(txtSeatNo.Text);
                 double price = Convert.ToDouble(Request.QueryString["p"]);
                 double subtotal = seat * price;
                 txtSubTotal.Text = subtotal.ToString();
                 txtService.Text = charge.Trim();
+                if (txtService.Text=="")
+                {
+                    txtService.Text = "0";
+                }
                 double total = Convert.ToDouble(txtSubTotal.Text)+ Convert.ToDouble(txtService.Text);
                 txtTotal.Text = total.ToString();
                 txtAmount.Text = (Convert.ToDouble(total) * .2).ToString();
                 paymentPercentage.InnerText = txtAmount.Text;
                 
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Can not Book More Than 6 Tickets');</script>");
+
             }
 
             //txtAmount.Text = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
@@ -87,9 +108,9 @@ namespace TicketBookingSystem.Web
 
         protected void btnBuy_OnClick(object sender, EventArgs e)
         {
-            if (txtSeatNo.Text == "" || txtSeatNo.Text == "0")
+            if (txtSeatNo.Text == "" || txtSeatNo.Text == "0" || Convert.ToInt32(txtSeatNo.Text) >= 6)
             {
-                Response.Write("<script language=javascript>alert('Please choose seat first');</script>");
+                Response.Write("<script language=javascript>alert('Please choose correct seat first');</script>");
             }
             else if (txtBkashNo.Text == "")
             {

@@ -134,7 +134,7 @@ FROM            CoachInfo INNER JOIN
                 string p = price.Text.Substring(1, price.Text.Length - 4);
                 if (lblSeat.Text != "0")
                 {
-                    Response.Write("<script>window.open ('/Web/AirBook.aspx?cId=" + companyId.Value + "&AId=" +
+                    Response.Write("<script>window.open('/Web/AirBook.aspx?cId=" + companyId.Value + "&AId=" +
                                        CoachId.Value + "&from=" + ViewState["from"].ToString() + "&to=" +
                                        ViewState["to"].ToString() + "&dt=" + txtJourneyDate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
                 }
@@ -168,9 +168,11 @@ FROM            CoachInfo INNER JOIN
             {
                 int CoachId = Convert.ToInt32(((HiddenField)e.Row.FindControl("HiddenField2")).Value);
                 Label lblSeat = (Label)e.Row.FindControl("lblSeat");
-                string countSeat =
-                    masterClass.IsExist(
-                        $@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket  WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                string countSeat =masterClass.IsExist($@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket  WHERE CoachId='{CoachId}' AND JourneyDate='{txtJourneyDate.Text}'");
+                if (countSeat == "")
+                {
+                    countSeat = "0";
+                }
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }

@@ -53,7 +53,7 @@ namespace TicketBookingSystem.Web
 
         protected void btnSearch_OnClick(object sender, EventArgs e)
         {
-           if (txtLocation.Text == "")
+            if (txtLocation.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Please enter to location');</script>");
             }
@@ -91,6 +91,10 @@ FROM            EventInfo INNER JOIN
                 string countSeat =
                     masterClass.IsExist(
                         $@"SELECT SUM(Convert(int, SeatName)) FROM BookTicket WHERE CoachType='Event' WHERE CoachId='{eventId}'");
+                if (countSeat == "")
+                {
+                    countSeat = "0";
+                }
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }
@@ -125,15 +129,25 @@ FROM            EventInfo INNER JOIN
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
                 Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
                 Label lbldate = (Label)linkButton.Parent.FindControl("lbldate");
-                string p = price.Text.Substring(1, price.Text.Length - 4);
-                if (lblSeat.Text != "0")
+                DateTime date = Convert.ToDateTime(lbldate.Text);
+
+                if (date < DateTime.Now)
                 {
-                    Response.Write("<script>window.open ('/Web/EventTicketBook.aspx?cId=" + companyId.Value + "&EId=" +
-                                       CoachId.Value + "&location=" + ViewState["location"].ToString() + "&dt=" + lbldate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
+                    Response.Write("<script language=javascript>alert('Event is expired');</script>");
                 }
                 else
                 {
-                    linkButton.Enabled = false;
+
+                    string p = price.Text.Substring(1, price.Text.Length - 4);
+                    if (lblSeat.Text != "0")
+                    {
+                        Response.Write("<script>window.open('/Web/EventTicketBook.aspx?cId=" + companyId.Value + "&EId=" +
+                                           CoachId.Value + "&location=" + ViewState["location"].ToString() + "&dt=" + lbldate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
+                    }
+                    else
+                    {
+                        linkButton.Enabled = false;
+                    }
                 }
             }
         }

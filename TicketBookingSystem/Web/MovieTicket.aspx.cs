@@ -35,7 +35,7 @@ namespace TicketBookingSystem.Web
             gridMovie.DataSource = null;
             gridMovie.DataBind();
         }
-        
+
         protected void txtLocation_OnTextChanged(object sender, EventArgs e)
         {
             string from = "";
@@ -68,12 +68,12 @@ namespace TicketBookingSystem.Web
             }
             else
             {
-                string location = ViewState["location"].ToString(); 
+                string location = ViewState["location"].ToString();
                 masterClass.LoadGrid(gridMovie,
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text+"%' AND EventLocation='"+ location + "' AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text+"' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" + location + "' AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text + "' ORDER By CompanyId ASC");
             }
         }
 
@@ -83,7 +83,7 @@ FROM            EventInfo INNER JOIN
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" +ViewState["location"].ToString() + "' AND EventDate='" + txtDate.Text + "' AND EventInfo.Type='Movie' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" + ViewState["location"].ToString() + "' AND EventDate='" + txtDate.Text + "' AND EventInfo.Type='Movie' ORDER By CompanyId ASC");
 
         }
         public string TimeC(string time)
@@ -123,15 +123,27 @@ FROM            EventInfo INNER JOIN
                 HiddenField CoachId = (HiddenField)linkButton.Parent.FindControl("HiddenField2");
                 Label price = (Label)linkButton.Parent.FindControl("lblPrice");
                 Label lblSeat = (Label)linkButton.Parent.FindControl("lblSeat");
+                Label lbldate = (Label)linkButton.Parent.FindControl("lblDate");
+
                 string p = price.Text.Substring(1, price.Text.Length - 4);
-                if (lblSeat.Text != "0")
+                DateTime date = Convert.ToDateTime(lbldate.Text);
+                if (date < DateTime.Now)
                 {
-                    Response.Write("<script>window.open ('/Web/MovieTicketBook.aspx?cId=" + companyId.Value + "&MId=" +
-                                       CoachId.Value + "&location=" + ViewState["location"].ToString() + "&dt=" + txtDate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
+                    Response.Write("<script language=javascript>alert('Movie premier date is expired');</script>");
                 }
                 else
                 {
-                    linkButton.Enabled = false;
+
+                    if (lblSeat.Text != "0")
+                    {
+                        Response.Write("<script>window.open('/Web/MovieTicketBook.aspx?cId=" + companyId.Value + "&MId=" +
+                                       CoachId.Value + "&location=" + ViewState["location"].ToString() + "&dt=" +
+                                       txtDate.Text + "&p=" + p + "&S=" + lblSeat.Text + "','_blank');</script>");
+                    }
+                    else
+                    {
+                        linkButton.Enabled = false;
+                    }
                 }
             }
         }
@@ -151,6 +163,10 @@ FROM            EventInfo INNER JOIN
                 string countSeat =
                     masterClass.IsExist(
                         $@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket  WHERE CoachId='{eventId}'");
+                if (countSeat == "")
+                {
+                    countSeat = "0";
+                }
                 int totalSeat = (Convert.ToInt32(lblSeat.Text) - Convert.ToInt32(countSeat));
                 lblSeat.Text = totalSeat.ToString();
             }

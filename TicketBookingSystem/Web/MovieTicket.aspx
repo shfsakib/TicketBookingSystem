@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
                                     <span>Premier_Date</span><br class="d-none d-lg-block" />
-                                    <asp:Label ID="Label4" class="d-inline-block font-weight-bold" runat="server" Text='<%#Eval("EventDate")%>'></asp:Label>
+                                    <asp:Label ID="lblDate" class="d-inline-block font-weight-bold" runat="server" Text='<%#Eval("EventDate")%>'></asp:Label>
                                 </div>
                                 <div class="col-12 col-lg-1 text-lg-center">
                                     <span>Seat Capacity</span><br class="d-none d-lg-block" />
