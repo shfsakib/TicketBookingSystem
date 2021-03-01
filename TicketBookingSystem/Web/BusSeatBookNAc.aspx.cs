@@ -110,7 +110,7 @@ namespace TicketBookingSystem.Web
         }
         private void CalculateSum()
         {
-            double total = 0.00, gTotal = 100;
+            double total = 0.00, gTotal = Convert.ToDouble(lblServiceCharge.Text);
             int row = gridTicket.Rows.Count;
             dataTable = (DataTable)Session["Grid"];
 
