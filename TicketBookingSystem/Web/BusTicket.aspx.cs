@@ -131,17 +131,17 @@ FROM            CoachInfo INNER JOIN
 
         protected void ddlType_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (txtDisFrom.Text != "" && txtDisTo.Text != "" && txtJourneyDate.Text != "")
-            {
-                masterClass.LoadGrid(gridBuses, @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
-                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
-FROM            CoachInfo INNER JOIN
-                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE CoachInfo.CoachType='" + ddlType.Text + "' AND CoachStatus='Bus' AND CoachInfo.DistrictFrom='" + ViewState["from"].ToString() + "' And CoachInfo.DistrictTo='" + ViewState["to"].ToString() + "' ORDER By CompanyId ASC");
-            }
-            else
-            {
-                Load();
-            }
+//            if (txtDisFrom.Text != "" && txtDisTo.Text != "" && txtJourneyDate.Text != "")
+//            {
+//                masterClass.LoadGrid(gridBuses, @"SELECT    DISTINCT    CoachInfo.CoachId, CoachInfo.CoachName, CoachInfo.CoachType, CoachInfo.CoachNo, CoachInfo.DistrictFrom, CoachInfo.DistrictTo, CoachInfo.StartingPoint, CoachInfo.EndPoint, CoachInfo.DepartureTime, CoachInfo.ArrivalTime, CoachInfo.TicketPrice, 
+//                         CoachInfo.Status, CoachInfo.CompanyId, CoachInfo.InTime, Registration.CompanyName
+//FROM            CoachInfo INNER JOIN
+//                         Registration ON CoachInfo.CompanyId=Registration.RegId WHERE CoachInfo.CoachType='" + ddlType.Text + "' AND CoachStatus='Bus' AND CoachInfo.DistrictFrom='" + ViewState["from"].ToString() + "' And CoachInfo.DistrictTo='" + ViewState["to"].ToString() + "' ORDER By CompanyId ASC");
+//            }
+//            else
+//            {
+//                Load();
+//            }
         }
 
         protected void lnkView_OnClick(object sender, EventArgs e)

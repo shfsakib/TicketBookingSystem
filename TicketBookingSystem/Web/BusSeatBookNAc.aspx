@@ -13,7 +13,7 @@
     </div>
     <div class="row" style="overflow-x: hidden">
         <div class="col-12 col-lg-6 p-2 text-right" style="border-right: 1px solid #e6e6fa">
-            <div class="row p-3">
+            <div class="row p-3" runat="server" id="seatType">
                 <div class="col-3"></div>
                 <div class="col-2 text-center">
                     <asp:Button ID="btnB" runat="server" Style="width: 60px; height: 50px; color: white; border: 1px solid #696969; border-radius: 5px;" />
@@ -40,7 +40,7 @@
                 }
             </style>
             <div class="row text-center">
-                <div class="col-5 pb-2 seatDiv">
+                <div class="col-5 pb-2 seatDiv" runat="server" id="seatDiv">
                     <div class="row">
                         <div class="col-8">
                         </div>

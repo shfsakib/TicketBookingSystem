@@ -73,6 +73,10 @@ FROM            EventInfo INNER JOIN
 
         public string Limit(string cap, string book)
         {
+            if (book == "")
+            {
+                book ="0";
+            }
             return (Convert.ToInt32(cap) - Convert.ToInt32(book)).ToString();
         }
         protected void lnkBook_OnClick(object sender, EventArgs e)

@@ -13,6 +13,15 @@ namespace TicketBookingSystem.Web {
     public partial class BusSeatBook {
         
         /// <summary>
+        /// seatType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seatType;
+        
+        /// <summary>
         /// btnB control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace TicketBookingSystem.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnS;
+        
+        /// <summary>
+        /// seatDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seatDiv;
         
         /// <summary>
         /// btnA1 control.

@@ -1611,6 +1611,7 @@ namespace TicketBookingSystem.Web
                     if (a)
                     {
                         panelPayment.Visible = true;
+                        seatDiv.Visible = seatType.Visible = false;
                     }
                 }
                 else
