@@ -63,11 +63,11 @@ namespace TicketBookingSystem.Web
         }
         protected void txtSeatNo_OnTextChanged(object sender, EventArgs e)
         {
-            if (txtSeatNo.Text=="")
+            if (txtSeatNo.Text == "")
             {
                 txtSeatNo.Text = "1";
             }
-            if (Convert.ToInt32(txtSeatNo.Text)<=3)
+            if (Convert.ToInt32(txtSeatNo.Text) <= 3)
             {
                 charge = "50";
             }
@@ -80,22 +80,22 @@ namespace TicketBookingSystem.Web
                 Response.Write("<script language=javascript>alert('Insufficient Ticket No.');</script>");
 
             }
-            else if ((txtSeatNo.Text != "" && Convert.ToInt32(txtSeatNo.Text) <= 6) || (txtSeatNo.Text != "0" && Convert.ToInt32(txtSeatNo.Text)<=6))
+            else if ((txtSeatNo.Text != "" && Convert.ToInt32(txtSeatNo.Text) <= 6) || (txtSeatNo.Text != "0" && Convert.ToInt32(txtSeatNo.Text) <= 6))
             {
                 int seat = Convert.ToInt32(txtSeatNo.Text);
                 double price = Convert.ToDouble(Request.QueryString["p"]);
                 double subtotal = seat * price;
                 txtSubTotal.Text = subtotal.ToString();
                 txtService.Text = charge.Trim();
-                if (txtService.Text=="")
+                if (txtService.Text == "")
                 {
                     txtService.Text = "0";
                 }
-                double total = Convert.ToDouble(txtSubTotal.Text)+ Convert.ToDouble(txtService.Text);
+                double total = Convert.ToDouble(txtSubTotal.Text) + Convert.ToDouble(txtService.Text);
                 txtTotal.Text = total.ToString();
                 txtAmount.Text = (Convert.ToDouble(total) * .2).ToString();
                 paymentPercentage.InnerText = txtAmount.Text;
-                
+
             }
             else
             {
@@ -106,6 +106,17 @@ namespace TicketBookingSystem.Web
             //txtAmount.Text = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
         }
 
+        private int AvailableSeat()
+        {
+            int seatCap = Convert.ToInt32(Request.QueryString["S"]);
+            string countSeat = masterClass.IsExist($@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket WHERE CoachId='{Request.QueryString["LId"].ToString()}' AND JourneyDate='{Request.QueryString["dt"].ToString()}'");
+            if (countSeat == "")
+            {
+                countSeat = "0";
+            }
+            int totalSeat = (Convert.ToInt32(seatCap) - Convert.ToInt32(countSeat));
+            return totalSeat;
+        }
         protected void btnBuy_OnClick(object sender, EventArgs e)
         {
             if (txtSeatNo.Text == "" || txtSeatNo.Text == "0" || Convert.ToInt32(txtSeatNo.Text) >= 6)
@@ -123,6 +134,10 @@ namespace TicketBookingSystem.Web
             else if (txtAmount.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Amount is required');</script>");
+            }
+            else if (AvailableSeat() < Convert.ToInt32(txtSeatNo.Text))
+            {
+                Response.Write("<script language=javascript>alert('Ticket not available.');</script>");
             }
             else
             {
@@ -143,7 +158,7 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.Amount = txtAmount.Text;
                 bookTicketModal.BookTime = masterClass.Date();
                 bookTicketModal.Status = "A";
-                bookTicketModal.Fare= Convert.ToDouble(Request.QueryString["p"]);
+                bookTicketModal.Fare = Convert.ToDouble(Request.QueryString["p"]);
                 bookTicketModal.UserId = masterClass.UserIdCookie();
                 bool ans = bookTicketGateway.BookTicket(bookTicketModal);
                 if (ans)

@@ -58,9 +58,19 @@ namespace TicketBookingSystem.Web
 
             return lowerCase ? builder.ToString().ToLower() : builder.ToString();
         }
+        private int AvailableSeat()
+        {
+            int seatCap = Convert.ToInt32(Request.QueryString["S"]);
+            string countSeat = masterClass.IsExist($@"SELECT SUM(Convert(int,SeatName)) FROM BookTicket WHERE CoachId='{Request.QueryString["AId"].ToString()}' AND JourneyDate='{Request.QueryString["dt"].ToString()}'");
+            if (countSeat == "")
+            {
+                countSeat = "0";
+            }
+            int totalSeat = (Convert.ToInt32(seatCap) - Convert.ToInt32(countSeat));
+            return totalSeat;
+        }
         protected void txtSeatNo_OnTextChanged(object sender, EventArgs e)
         {
-
             if (txtSeatNo.Text == "")
             {
                 txtSeatNo.Text = "1";
@@ -115,6 +125,10 @@ namespace TicketBookingSystem.Web
             else if (txtAmount.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Amount is required');</script>");
+            }
+            else if (AvailableSeat() < Convert.ToInt32(txtSeatNo.Text))
+            {
+                Response.Write("<script language=javascript>alert('Ticket not available.');</script>");
             }
             else
             {

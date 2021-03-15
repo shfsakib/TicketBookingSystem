@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BitsMasterClass;
@@ -33,6 +34,7 @@ namespace TicketBookingSystem.Web
         {
             if (!IsPostBack)
             {
+                panelPayment.Visible = false;
                 if (Request.QueryString["cId"] == null)
                 {
                     Response.Redirect("/Web/BusTicket.aspx");
@@ -131,7 +133,7 @@ namespace TicketBookingSystem.Web
             if (gridTicket.Rows.Count >= 0)
             {
                 paymentPercentage.InnerText = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
-                txtAmount.Text= (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
+                txtAmount.Text = (Convert.ToDouble(lblGrandTotal.Text) * .2).ToString();
             }
         }
 
@@ -1558,21 +1560,6 @@ namespace TicketBookingSystem.Web
             {
                 Response.Write("<script language=javascript>alert('Please choose your seat first');</script>");
             }
-            else if (txtBkashNo.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('Bkash no is required');</script>");
-                txtBkashNo.Focus();
-            }
-            else if (txtTransNo.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('Transaction no is required');</script>");
-                txtTransNo.Focus();
-            }
-            else if (txtAmount.Text == "")
-            {
-                Response.Write("<script language=javascript>alert('Please enter transaction amount');</script>");
-                txtAmount.Focus();
-            }
             else if (Convert.ToDouble(txtAmount.Text) < Convert.ToDouble(paymentPercentage.InnerText))
             {
                 Response.Write("<script language=javascript>alert('Please pay full advance or your booking will be cancelled');</script>");
@@ -1590,10 +1577,11 @@ namespace TicketBookingSystem.Web
                 bookTicketModal.ServiceCharge = Convert.ToDouble(lblServiceCharge.Text);
                 bookTicketModal.Advance = Convert.ToDouble(paymentPercentage.InnerText);
                 bookTicketModal.GrandTotal = Convert.ToDouble(lblGrandTotal.Text);
-                bookTicketModal.TokenId = lblRandom.Text;
-                bookTicketModal.BkashNo = txtBkashNo.Text;
-                bookTicketModal.TransactionNo = txtTransNo.Text;
-                bookTicketModal.Amount = txtAmount.Text;
+                Session["token"] = lblRandom.Text;
+                bookTicketModal.TokenId = Session["token"].ToString();
+                bookTicketModal.BkashNo = "";
+                bookTicketModal.TransactionNo = "";
+                bookTicketModal.Amount = "";
                 bookTicketModal.BookTime = masterClass.Date();
                 bookTicketModal.Status = "A";
                 bookTicketModal.UserId = masterClass.UserIdCookie();
@@ -1601,8 +1589,18 @@ namespace TicketBookingSystem.Web
                 foreach (GridViewRow row in gridTicket.Rows)
                 {
                     bookTicketModal.SeatName = ((Label)row.FindControl("lblSeat")).Text;
-                    bookTicketModal.Fare = Convert.ToInt32(((Label)row.FindControl("lblFare")).Text);
-                    ans = bookTicketGateway.BookTicket(bookTicketModal);
+                    bool a = CheckSeatExist(bookTicketModal.SeatName);
+                    if (!a)
+                    {
+                        bookTicketModal.Fare = Convert.ToInt32(((Label)row.FindControl("lblFare")).Text);
+                        ans = bookTicketGateway.BookTicket(bookTicketModal);
+                    }
+                    else
+                    {
+                        Response.Write("<script language=javascript>alert('" + bookTicketModal.SeatName + " already booked for the day');</script>");
+                        break;
+                    }
+
                 }
                 if (ans)
                 {
@@ -1612,7 +1610,7 @@ namespace TicketBookingSystem.Web
                     bool a = masterClass.SendEmail("myticket995@gmail.com", email, "Token", "<h3>Hello Passenger,</h3><br/>Your Token id is: '<b>" + lblRandom.Text + "</b>'.Use this token to print your ticket.", "@myticket1");
                     if (a)
                     {
-                        Response.Redirect("/Web/BusTicket.aspx?b=1");
+                        panelPayment.Visible = true;
                     }
                 }
                 else
@@ -1816,5 +1814,38 @@ namespace TicketBookingSystem.Web
             }
         }
 
+        protected void btnPay_OnClick(object sender, EventArgs e)
+        {
+            if (txtBkashNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Bkash no is required');</script>");
+                txtBkashNo.Focus();
+            }
+            else if (txtTransNo.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Transaction no is required');</script>");
+                txtTransNo.Focus();
+            }
+            else if (txtAmount.Text == "")
+            {
+                Response.Write("<script language=javascript>alert('Please enter transaction amount');</script>");
+                txtAmount.Focus();
+            }
+            else
+            {
+                bookTicketModal.BkashNo = txtBkashNo.Text;
+                bookTicketModal.TransactionNo = txtTransNo.Text;
+                bookTicketModal.Amount = txtAmount.Text;
+                bool ans = bookTicketGateway.UpdateNAC(bookTicketModal);
+                if (ans)
+                {
+                    Response.Redirect("/Web/BusTicket.aspx?b=1");
+                }
+                else
+                {
+                Response.Write("<script language=javascript>alert('Payment failed');</script>");
+                }
+            }
+        }
     }
 }

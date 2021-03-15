@@ -400,6 +400,24 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.Label lblGrandTotal;
         
         /// <summary>
+        /// btnBuy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuy;
+        
+        /// <summary>
+        /// panelPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelPayment;
+        
+        /// <summary>
         /// paymentPercentage control.
         /// </summary>
         /// <remarks>
@@ -454,12 +472,12 @@ namespace TicketBookingSystem.Web {
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
-        /// btnBuy control.
+        /// btnPay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuy;
+        protected global::System.Web.UI.WebControls.Button btnPay;
     }
 }

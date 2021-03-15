@@ -244,49 +244,59 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-3 p-2 pt-4 text-left">
-            <div class="row pl-3">
-                <h2 style="color: purple">Payment Method</h2>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-12 text-left">
-                    <h6>
-                        <p>
-                            Please pay BDT <span runat="server" id="paymentPercentage"></span> as advance for book your ticket. You won't get it back if you cancel your ticket. Bkash your advance to this number <b><span id="number" runat="server"></span></b>.Use 
-                                "<b><asp:Label ID="lblRandom" runat="server"></asp:Label></b>" as reference id.
-                        </p>
-                    </h6>
-                </div>
-            </div>
-            <div class="row p-1">
-                <br/>
+
             </div>
             <div class="row">
                 <div class="col-12">
-                    <span>Bkash No.(Last 6 digits only)</span>
-                    <asp:TextBox ID="txtBkashNo" runat="server" TextMode="Number" min="0" placeholder="XXXXXX" MaxLength="6" class="form-control wd-100"></asp:TextBox>
-                </div>
-            </div>
-             <div class="row">
-                <div class="col-12">
-                    <span>Transaction no.</span>
-                    <asp:TextBox ID="txtTransNo" autocomplete="off" runat="server" placeholder="XXXXXXXXXX" class="form-control wd-100"></asp:TextBox>
-                </div>
-            </div>
-             <div class="row">
-                <div class="col-12">
-                    <span>Amount</span>
-                    <asp:TextBox ID="txtAmount" runat="server" placeholder="XXXXXXXX" TextMode="Number" class="form-control wd-100"></asp:TextBox>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 pt-2">
                     <asp:Button ID="btnBuy" runat="server" OnClick="btnBuy_OnClick" CssClass="btn btn-success wd-100" Text="Confirm Ticket" />
-                     </div>
+                </div>
             </div>
         </div>
+
+        <div class="col-12 col-lg-3 p-2 pt-4 text-left">
+            <asp:Panel ID="panelPayment" runat="server">
+                <div class="row pl-3">
+                    <h2 style="color: purple">Payment Method</h2>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <h6>
+                            <p>
+                                Please pay BDT <span runat="server" id="paymentPercentage"></span>as advance for book your ticket. You won't get it back if you cancel your ticket. Bkash your advance to this number <b><span id="number" runat="server"></span></b>.Use 
+                                "<b><asp:Label ID="lblRandom" runat="server"></asp:Label></b>" as reference id.
+                            </p>
+                        </h6>
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <br />
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Bkash No.(Last 6 digits only)</span>
+                        <asp:TextBox ID="txtBkashNo" runat="server" TextMode="Number" min="0" placeholder="XXXXXX" MaxLength="6" class="form-control wd-100"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Transaction no.</span>
+                        <asp:TextBox ID="txtTransNo" autocomplete="off" runat="server" placeholder="XXXXXXXXXX" class="form-control wd-100"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Amount</span>
+                        <asp:TextBox ID="txtAmount" runat="server" placeholder="XXXXXXXX" TextMode="Number" class="form-control wd-100"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-2">
+                        <asp:Button ID="btnPay" runat="server" OnClick="btnPay_OnClick" CssClass="btn btn-primary wd-100" Text="Pay Bill" />
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+
     </div>
 </asp:Content>

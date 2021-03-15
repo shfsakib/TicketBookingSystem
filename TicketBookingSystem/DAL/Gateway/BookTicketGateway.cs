@@ -97,5 +97,33 @@ namespace TicketBookingSystem.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateNAC(BookTicketModal ob)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("UPDATE BookTicket SET BkashNo=@BkashNo,TransactionNo=@TransactionNo,Amount=@Amount WHERE TokenId=@TokenId", connection);
+                command.Parameters.AddWithValue("@BkashNo", ob.BkashNo);
+                command.Parameters.AddWithValue("@TransactionNo", ob.TransactionNo);
+                command.Parameters.AddWithValue("@Amount", ob.Amount);
+                command.Parameters.AddWithValue("@TokenId", ob.TokenId);
+
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (connection.State != ConnectionState.Closed)
+                    connection.Close();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }
