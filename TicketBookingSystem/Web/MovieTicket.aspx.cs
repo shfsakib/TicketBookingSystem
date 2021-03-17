@@ -58,7 +58,7 @@ namespace TicketBookingSystem.Web
             //{
             //    Response.Write("<script language=javascript>alert('Please enter movie name');</script>");
             //}
-              if (txtLocation.Text == "")
+               if (txtLocation.Text == "")
             {
                 Response.Write("<script language=javascript>alert('Please enter to location');</script>");
             }
@@ -66,14 +66,24 @@ namespace TicketBookingSystem.Web
             {
                 Response.Write("<script language=javascript>alert('Please enter premier date');</script>");
             }
-            else
+            else if (txtMovie.Text=="")
             {
                 string location = ViewState["location"].ToString();
                 masterClass.LoadGrid(gridMovie,
                     @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
                          EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
 FROM            EventInfo INNER JOIN
-                         District ON EventInfo.EventLocation = District.Id WHERE ((EventName LIKE '%" + txtMovie.Text + "%' AND EventLocation='" + location + "') OR (EventLocation='" + location + "'))  AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text + "' ORDER By CompanyId ASC");
+                         District ON EventInfo.EventLocation = District.Id WHERE (EventLocation='" + location + "') AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text + "' ORDER By CompanyId ASC");
+
+            }
+            else if (txtMovie.Text!= "")
+            {
+                string location = ViewState["location"].ToString();
+                masterClass.LoadGrid(gridMovie,
+                    @"SELECT        EventInfo.EventId, EventInfo.EventName, EventInfo.EventAddress, EventInfo.StartTime, EventInfo.EndTime, EventInfo.EventDate, EventInfo.SeatType, EventInfo.SeatCapacity, EventInfo.Fare, 
+                         EventInfo.Picture, EventInfo.CompanyId, EventInfo.Status, EventInfo.InTime, EventInfo.Type, District.Name AS EventLocation
+FROM            EventInfo INNER JOIN
+                         District ON EventInfo.EventLocation = District.Id WHERE EventName='" + txtMovie.Text + "' AND EventLocation='" + location + "'  AND EventInfo.Type='Movie' AND EventDate='" + txtDate.Text + "' ORDER By CompanyId ASC");
             }
         }
 
