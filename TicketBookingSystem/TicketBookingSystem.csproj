@@ -201,6 +201,7 @@
     <Content Include="UI\AirList.aspx" />
     <Content Include="UI\BookedBusList.aspx" />
     <Content Include="UI\BookedEventList.aspx" />
+    <Content Include="UI\BookedListAll.aspx" />
     <Content Include="UI\BookMovieList.aspx" />
     <Content Include="UI\BusList.aspx" />
     <Content Include="UI\EventList.aspx" />
@@ -591,6 +592,13 @@
     </Compile>
     <Compile Include="UI\BookedEventList.aspx.designer.cs">
       <DependentUpon>BookedEventList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BookedListAll.aspx.cs">
+      <DependentUpon>BookedListAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BookedListAll.aspx.designer.cs">
+      <DependentUpon>BookedListAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\BookMovieList.aspx.cs">
       <DependentUpon>BookMovieList.aspx</DependentUpon>
