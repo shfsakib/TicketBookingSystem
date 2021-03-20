@@ -68,9 +68,13 @@
                                 }
                                 else if (masterClass.TypeCookie() == "Ad")
                                 {%>
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="/UI/BookedListAll.aspx">
+                                    <i class="fas fa-book"></i>Booked List</a>
+                            </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-user-tie"></i>User List</a>
+                                    <i class="fas fa-user"></i>User List</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="/UI/PassengerList.aspx">Passenger List</a>

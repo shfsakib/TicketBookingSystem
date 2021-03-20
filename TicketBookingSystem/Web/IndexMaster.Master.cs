@@ -27,7 +27,7 @@ namespace TicketBookingSystem.Web
                 }
                 else if (masterClass.TypeCookie() == "Ad")
                 {
-                    Response.Redirect("/UI/PassengerList.aspx");
+                    Response.Redirect("/UI/BookedListAll.aspx");
                 }
                 else if (masterClass.TypeCookie() == "P")
                 {
